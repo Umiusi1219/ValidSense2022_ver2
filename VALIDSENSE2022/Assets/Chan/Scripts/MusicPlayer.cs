@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    private CriAtomEx.CueInfo[] SongcueInfoList,SEcueInfoList;
-    private CriAtomExPlayer SongPlayer,SEPlayer;
-    private CriAtomExAcb SongExAcb,SEExAcb;
-    private CriAtomExPlayback SongPlayback,SEPlayback;
+    private CriAtomEx.CueInfo[] SongcueInfoList;
+    private CriAtomExPlayer SongPlayer;
+    private CriAtomExAcb SongExAcb;
+    private CriAtomExPlayback SongPlayback;
     public static MusicPlayer instance;
     public long PlayTime;
     public static int SongNum = 0;
@@ -26,13 +26,9 @@ public class MusicPlayer : MonoBehaviour
         /* Cue情報の取得 */
         SongExAcb = CriAtom.GetAcb("BGMCueSheet");
         SongcueInfoList = SongExAcb.GetCueInfoList();
-        SEExAcb = CriAtom.GetAcb("SECue");
-        SEcueInfoList = SEExAcb.GetCueInfoList();
 
         /* AtomExPlayerの生成 */
-        SongPlayer = new CriAtomExPlayer(true);
-
-        SEPlayer = new CriAtomExPlayer();    
+        SongPlayer = new CriAtomExPlayer(true); 
         
     }
     private void Update() 
@@ -49,19 +45,5 @@ public class MusicPlayer : MonoBehaviour
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
         SongPlayback = SongPlayer.Start();
     }
-    public void SETap(int SEtype)
-    {
-        SEPlayer.SetCue(SEExAcb,SEcueInfoList[SEtype].name);
-        SEPlayback = SEPlayer.Start();
-    }
-    public void SETap2()
-    {
-        SEPlayer.SetCue(SEExAcb,SEcueInfoList[1].name);
-        SEPlayback = SEPlayer.Start();
-    }
-    public void SEHold()
-    {
-        SEPlayer.SetCue(SEExAcb,SEcueInfoList[2].name);
-        SEPlayback = SEPlayer.Start();
-    }
+
 }

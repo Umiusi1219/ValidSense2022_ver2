@@ -16,14 +16,14 @@ public class MainGameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // pƒL[‚ğ‰Ÿ‚µ‚½‚ç‹È‚ğcriwearÄ¶‚·‚é
+        // pï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½criwearï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½
         if(!isStart && Input.GetKeyDown(KeyCode.P))
         {
-            MusicPlayer.instance.MusicPlay(1);   
+            MusicPlayer.instance.MusicPlay(0);   
             isStart = true;
         }
 
-        // ‹È‚ÌÄ¶ŠÔ•\‹L‚ğXV m/s
+        // ï¿½È‚ÌÄï¿½ï¿½ï¿½ï¿½Ô•\ï¿½Lï¿½ï¿½ï¿½Xï¿½V m/s
         text.text = MusicData.Timer+ "ms";
     }
 }

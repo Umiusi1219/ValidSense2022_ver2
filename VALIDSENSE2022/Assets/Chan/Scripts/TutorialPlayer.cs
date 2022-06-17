@@ -41,14 +41,6 @@ public class TutorialPlayer : MonoBehaviour
         {
             Tutorial_Play();
         } 
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            MusicPlayer.instance.SETap(0);
-        }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            MusicPlayer.instance.SETap(1);
-        }
         //Timer = MusicData.Timer;
         Timing.text = PlayTime + "ms";
     }
