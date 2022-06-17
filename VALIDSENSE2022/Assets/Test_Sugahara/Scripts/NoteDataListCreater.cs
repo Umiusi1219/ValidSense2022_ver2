@@ -25,7 +25,8 @@ public class NoteDataListCreater : MonoBehaviour
 
     void Start()
     {
-        foreach(JsonReader.NoteList item in jsonReader._songList.difflist.easy.notelist)
+        foreach(JsonReader.NoteList item in jsonReader._songList.difflist.natural.notelist)
+        
         {
             Debug.Log(item.type+item.time+item.line+item.endtime);
 
