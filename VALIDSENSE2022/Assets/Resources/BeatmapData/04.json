@@ -1,0 +1,34 @@
+{
+    "songdata": {
+        "name": "Test4",
+        "songnum": 4,
+        "bpm": 200,
+        "offset": 1000
+    },
+    "difflist": 
+        {
+            "natural": {
+                "level" : 12,
+                "notelist": [
+
+                ]
+            }
+        ,
+            "highSense": {
+                "level" : 5,
+                "notelist": [
+
+                ]
+            }
+        ,
+            "sixthSense": {
+                "level" : 90,
+                "notelist": [
+
+                ]
+            }
+        }
+    
+    
+}
+    
