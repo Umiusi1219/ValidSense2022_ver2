@@ -77,10 +77,16 @@ public class JsonReader : MonoBehaviour
         {
             _songList = JsonUtility.FromJson<SongList>(textJSON[i].text);
         }*/
+        //textJSON = Resources.Load("BeatmapData/02") as TextAsset;
         _songList = JsonUtility.FromJson<SongList>(textJSON.text);
     }
     void Update() 
     {
         
+    }
+    public void ChangeJson(int num)
+    {
+        textJSON = Resources.Load($"BeatmapData/0{num}") as TextAsset;
+        _songList = JsonUtility.FromJson<SongList>(textJSON.text);
     }
 }

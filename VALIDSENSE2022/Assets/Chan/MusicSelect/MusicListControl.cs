@@ -11,6 +11,8 @@ public class MusicListControl : MonoBehaviour
     private GameObject[] musicList;
 
     private int musicListNum;
+    private int nowMusicNum = 1;
+    public JsonReader jsonReader;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,8 +53,16 @@ public class MusicListControl : MonoBehaviour
                     musicList[i].transform.position = musicListPosDatas[i + 1];
                     musicList[i].transform.rotation = musicListRotationDatas[i + 1];
                 }
-
             }
+            if(nowMusicNum < musicListNum)
+            {
+                nowMusicNum++;
+            }
+            else
+            {
+                nowMusicNum = 1;
+            }
+            jsonReader.ChangeJson(nowMusicNum);
         }
 
         else if(Input.GetKeyDown(KeyCode.W))
@@ -68,8 +78,16 @@ public class MusicListControl : MonoBehaviour
                     musicList[i].transform.position = musicListPosDatas[i - 1];
                     musicList[i].transform.rotation = musicListRotationDatas[i - 1];
                 }
-
             }
+            if(nowMusicNum > 1)
+            {
+                nowMusicNum--;
+            }
+            else
+            {
+                nowMusicNum = musicListNum;
+            }
+            jsonReader.ChangeJson(nowMusicNum);
         }
     }
 }
