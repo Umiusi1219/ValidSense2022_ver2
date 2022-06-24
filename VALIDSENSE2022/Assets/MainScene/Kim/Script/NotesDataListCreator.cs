@@ -38,7 +38,7 @@ public class NotesDataListCreator : MonoBehaviour
     {
 
         // Easyの譜面データの読み込み
-       foreach(JsonReader.NoteList item in _jsonReader._songList.difflist.easy.notelist)
+       foreach(JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
         {
             //ノーツのデータを各レーンに振り分け
             switch(item.line)
