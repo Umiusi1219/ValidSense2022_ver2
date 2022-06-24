@@ -18,6 +18,7 @@ public class JsonReader : MonoBehaviour
     {
         public string name;
         public int songnum;
+        public string artist;
         public float bpm;
         public int offset;
     }
@@ -67,11 +68,15 @@ public class JsonReader : MonoBehaviour
         public DiffList difflist;
     }
 
-    public SongList _songList = new SongList();
+    public SongList _songList;
 
 
     void Awake() 
     {
+        /*for(int i = 0; i<transform.childCount; i++)
+        {
+            _songList = JsonUtility.FromJson<SongList>(textJSON[i].text);
+        }*/
         _songList = JsonUtility.FromJson<SongList>(textJSON.text);
     }
     void Update() 
