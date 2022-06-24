@@ -33,29 +33,32 @@ public class JsonReader : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Easy
+    public class Natural
     {
+        public int level;
         public NoteList[] notelist;
     }
     
     [System.Serializable]
-    public class Normal
+    public class HighSense
     {
+        public int level;
         public NoteList[] notelist;
     }
 
     [System.Serializable]
-    public class Hard
+    public class SixthSense
     {
+        public int level;
         public NoteList[] notelist;
     }
 
     [System.Serializable]
     public class DiffList
     {
-        public Easy easy;
-        public Normal normal;
-        public Hard hard;
+        public Natural natural;
+        public HighSense highSense;
+        public SixthSense sixthSense;
     }
 
     [System.Serializable]
