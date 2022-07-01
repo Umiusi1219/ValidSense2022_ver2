@@ -24,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
         /* キューシートファイルのロード待ち */
         while (CriAtom.CueSheetsAreLoading) { yield return null; }
         /* Cue情報の取得 */
-        SongExAcb = CriAtom.GetAcb("BGMCueSheet");
+        SongExAcb = CriAtom.GetAcb("BGMCue");
         SongcueInfoList = SongExAcb.GetCueInfoList();
 
         /* AtomExPlayerの生成 */
@@ -33,7 +33,7 @@ public class MusicPlayer : MonoBehaviour
     }
     private void Update() 
     {
-        PlayTime = SongPlayback.GetTimeSyncedWithAudio();
+        PlayTime = SongPlayback.GetTime();
         MusicData.Timer = PlayTime;
     }
     public void MusicPlay(int num)
@@ -42,7 +42,7 @@ public class MusicPlayer : MonoBehaviour
         {
             SongPlayer.Stop();
         }
-        SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name);
+        SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name); 
         SongPlayback = SongPlayer.Start();
     }
 

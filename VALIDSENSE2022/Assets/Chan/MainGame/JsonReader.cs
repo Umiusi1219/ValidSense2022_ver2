@@ -29,7 +29,8 @@ public class JsonReader : MonoBehaviour
         public int type;
         public int line;
         public long time;
-        public int endtime;
+        public long endtime;
+        public bool isPoison;
     }
 
     [System.Serializable]
