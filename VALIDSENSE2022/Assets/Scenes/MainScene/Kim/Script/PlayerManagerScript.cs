@@ -5,51 +5,51 @@ using UnityEngine;
 public class PlayerManagerScript
 {
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‘I‘ğƒLƒƒƒ‰ƒNƒ^[‹L‰¯—p
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼é¸æŠã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] playerWinCount = { 0, 0 };
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌŸ—˜”‹L‰¯—p
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å‹åˆ©æ•°è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] playerCharaNum = { 0, 0 };
     /// <summary>
-    /// Œ»İ‘I‘ğŠy‹È”Ô†‹L‰¯—p
+    /// ç¾åœ¨é¸æŠæ¥½æ›²ç•ªå·è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] nowMusicNum = { 0, 0 };
     /// <summary>
-    /// “ïˆÕ“x‹L‰¯—p
+    /// é›£æ˜“åº¦è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] nowMusicLevel = { 0, 0 };
     /// <summary>
-    /// ƒXƒRƒA‹L‰¯—p
+    /// ã‚¹ã‚³ã‚¢è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] score = { 0, 0 };
     /// <summary>
-    /// ’D‚Á‚½ƒŒ[ƒ“”‹L‰¯—p
+    /// å¥ªã£ãŸãƒ¬ãƒ¼ãƒ³æ•°è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] stolenLane = { 0, 0 };
     /// <summary>
-    /// ’D‚í‚ê‚½ƒŒ[ƒ“”‹L‰¯—p
+    /// å¥ªã‚ã‚ŒãŸãƒ¬ãƒ¼ãƒ³æ•°è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] losLanes = { 0, 0 };
     /// <summary>
-    /// ‘‘Å”‹L‰¯—p
+    /// ç·æ‰“æ•°è¨˜æ†¶ç”¨
     /// </summary>
     public static int[] totalHitsNum = { 0, 0 };
     /// <summary>
-    /// Ÿ—˜ƒLƒƒƒ‰ƒNƒ^[‹L‰¯—p
+    /// å‹åˆ©ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼è¨˜æ†¶ç”¨
     /// </summary>
     public static int winCharaNum;
     /// <summary>
-    /// ƒLƒƒƒ‰ƒNƒ^[sight‚ÌƒJƒ‰[ƒR[ƒh
+    /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼sightã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
     /// </summary>
     public static string sightColorCode;
     /// <summary>
-    /// ƒLƒƒƒ‰ƒNƒ^[hear‚ÌƒJƒ‰[ƒR[ƒh
+    /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼hearã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
     /// </summary>
     public static string hearColorCode;
     /// <summary>
-    /// ƒLƒƒƒ‰ƒNƒ^[tactile‚ÌƒJƒ‰[ƒR[ƒh
+    /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼tactileã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰
     /// </summary>
     public static string tactileColorCode;
 }

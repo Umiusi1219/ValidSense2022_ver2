@@ -7,41 +7,50 @@ public class NotesDataList : MonoBehaviour
 {
 
     /// <summary>
-    /// “Ç‚İ‚Ş—p‚Ì•ˆ–Êƒf[ƒ^iJsonReaderj
+    /// èª­ã¿è¾¼ã‚€ç”¨ã®è­œé¢ãƒ‡ãƒ¼ã‚¿ï¼ˆJsonReaderï¼‰
     /// </summary>
     [SerializeField]
     private JsonReader _jsonReader;
 
     /// <summary>
-    /// ŠeƒŒ[ƒ“‚Ìƒm[ƒc‘”
+    /// musicNoteDataã®é€²è¡Œåº¦è¨˜æ†¶
+    /// </summary>
+    public int nowNoteDataNum;
+
+    /// <summary>
+    /// å„ãƒ¬ãƒ¼ãƒ³ã®ãƒãƒ¼ãƒ„ç·æ•°
     /// </summary>
     public static int[] listNumMax = {0,0,0,0};
     
     /// <summary>
-    /// ƒŒ[ƒ“Q‚O‚Ìƒm[ƒcƒf[ƒ^ƒŠƒXƒg
+    /// ãƒ¬ãƒ¼ãƒ³ï¼¿ï¼ã®ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
     /// </summary>
     public static List<JsonReader.NoteList> notesList_0 = new List<JsonReader.NoteList>();
     /// <summary>
-    /// ƒŒ[ƒ“Q1‚Ìƒm[ƒcƒf[ƒ^ƒŠƒXƒg
+    /// ãƒ¬ãƒ¼ãƒ³ï¼¿1ã®ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
     /// </summary>
     public static List<JsonReader.NoteList> notesList_1 = new List<JsonReader.NoteList>();
     /// <summary>
-    /// ƒŒ[ƒ“Q2‚Ìƒm[ƒcƒf[ƒ^ƒŠƒXƒg
+    /// ãƒ¬ãƒ¼ãƒ³ï¼¿2ã®ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
     /// </summary>
     public static List<JsonReader.NoteList> notesList_2 = new List<JsonReader.NoteList>();
     /// <summary>
-    /// ƒŒ[ƒ“Q‚R‚Ìƒm[ƒcƒf[ƒ^ƒŠƒXƒg
+    /// ãƒ¬ãƒ¼ãƒ³ï¼¿ï¼“ã®ãƒãƒ¼ãƒ„ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
     /// </summary>
     public static List<JsonReader.NoteList> notesList_3 = new List<JsonReader.NoteList>();
+
+    [SerializeField]
+    public List<JsonReader.NoteList> musicNotesDate;
     
+
     void Start()
     {
 
-        // Easy‚Ì•ˆ–Êƒf[ƒ^‚Ì“Ç‚İ‚İ
+        // Easyã®è­œé¢ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
        foreach(JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
         {
-            //ƒm[ƒc‚Ìƒf[ƒ^‚ğŠeƒŒ[ƒ“‚ÉU‚è•ª‚¯
-            switch(item.line)
+            //ãƒãƒ¼ãƒ„ã®ãƒ‡ãƒ¼ã‚¿ã‚’å„ãƒ¬ãƒ¼ãƒ³ã«æŒ¯ã‚Šåˆ†ã‘
+            switch (item.line)
             {
                 case 0:
                     listNumMax[0]++;
@@ -64,10 +73,16 @@ public class NotesDataList : MonoBehaviour
                     break;
 
                 default:
-                    Debug.LogError("”z—ñŠOQÆ");
+                    Debug.LogError("é…åˆ—å¤–å‚ç…§");
                     break;
             }
+            
+        }
 
+        //ã€€ãƒãƒ¼ãƒ„ã®ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿
+        foreach (JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
+        {
+            musicNotesDate.Add(item);
         }
     }
 }
