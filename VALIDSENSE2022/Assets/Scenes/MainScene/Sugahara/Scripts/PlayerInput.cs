@@ -36,14 +36,14 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         //判定バーデバック用
-        //if(MusicData.Timer >= NotesDataList.notesList_0[lineNotesNum[0]].time)
+        //if (MusicData.Timer >= NotesDataList.notesList_0[lineNotesNum[0]].time)
         //{
         //    Debug.Log("Timer" + MusicData.Timer);
         //    Debug.Log("Judge" + NotesDataList.notesList_0[lineNotesNum[0]].time);
-
-        //    #if UNITY_EDITOR
-        //        UnityEditor.EditorApplication.isPaused = true;
-        //    #endif
+        //
+        //#if UNITY_EDITOR
+        //    UnityEditor.EditorApplication.isPaused = true;
+        //#endif
         //}
 
 
