@@ -13,6 +13,11 @@ public class NotesDataList : MonoBehaviour
     private JsonReader _jsonReader;
 
     /// <summary>
+    /// musicNoteDataの進行度記憶
+    /// </summary>
+    public int nowNoteDataNum;
+
+    /// <summary>
     /// 各レーンのノーツ総数
     /// </summary>
     public static int[] listNumMax = {0,0,0,0};
@@ -33,7 +38,11 @@ public class NotesDataList : MonoBehaviour
     /// レーン＿３のノーツデータリスト
     /// </summary>
     public static List<JsonReader.NoteList> notesList_3 = new List<JsonReader.NoteList>();
+
+    [SerializeField]
+    public List<JsonReader.NoteList> musicNotesDate;
     
+
     void Start()
     {
 
@@ -41,7 +50,7 @@ public class NotesDataList : MonoBehaviour
        foreach(JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
         {
             //ノーツのデータを各レーンに振り分け
-            switch(item.line)
+            switch (item.line)
             {
                 case 0:
                     listNumMax[0]++;
@@ -67,7 +76,13 @@ public class NotesDataList : MonoBehaviour
                     Debug.LogError("配列外参照");
                     break;
             }
+            
+        }
 
+        //　ノーツのデータを読み込み
+        foreach (JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
+        {
+            musicNotesDate.Add(item);
         }
     }
 }

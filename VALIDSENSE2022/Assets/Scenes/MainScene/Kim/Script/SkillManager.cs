@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillManager : MonoBehaviour
 {
@@ -15,6 +16,12 @@ public class SkillManager : MonoBehaviour
     /// </summary>
     [SerializeField]
     ViewNotesManager viewNotesManager;
+
+    /// <summary>
+    /// NoteDataListの参照
+    /// </summary>
+    [SerializeField]
+    NotesDataList notesDataList;
 
     /// <summary>
     /// 1PのbarLineTopを動かす
@@ -46,11 +53,26 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private float skillCoolTime;
 
-    /// <summary>
-    /// 
-    /// </summary>
     [SerializeField]
     private bool canSightSkill;
+
+    /// <summary>
+    /// サイトスキルの速度
+    /// </summary>
+    [SerializeField]
+    private float sightSkillSpeed;
+
+    /// <summary>
+    /// サイトスキルのイメージ
+    /// </summary>
+    [SerializeField]
+    private RawImage[] sightSkillUI;
+
+    /// <summary>
+    /// サイトスキルの持続時間
+    /// </summary>
+    [SerializeField]
+    private float sightSkilltime;
 
     /// <summary>
     /// タクタイルスキルの持続時間
@@ -113,15 +135,67 @@ public class SkillManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            StartCoroutine(SightSkill(0));
+        }
+
+        if(Input.GetKeyDown(KeyCode.N))
+        {
+            StartCoroutine(TactileSkill());
+        }
+
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            StartCoroutine(HearSkill());
+        }
     }
 
-    //IEnumerator SightSkill()
-    //{
-    //    canSightSkill = false;
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="usePlayerNum">プレイヤーの番号を入れる（０からカウント）</param>
+    /// <returns></returns>
+    IEnumerator SightSkill(int usePlayerNum)
+    {
+        canSightSkill = false;
 
+        // 下に移動
+        while(sightSkillUI[usePlayerNum].transform.position.y >= 0)
+        {
+            sightSkillUI[usePlayerNum].transform.position -= 
+                new Vector3(0, 1080 / 60 / sightSkillSpeed, 0);
 
-    //}
+            yield return null;
+        }
+
+        //　ｙのずれ防止
+        sightSkillUI[usePlayerNum].transform.position = 
+            new Vector3(sightSkillUI[usePlayerNum].transform.position.x,
+            0, sightSkillUI[usePlayerNum].transform.position.z);
+
+        // タクタイルのスキル時間だけ待つ
+        yield return new WaitForSeconds(sightSkilltime);
+
+        //　上に移動
+        while (sightSkillUI[usePlayerNum].transform.position.y <= 0)
+        {
+            sightSkillUI[usePlayerNum].transform.position +=
+                new Vector3(0, 1080 / 60 / sightSkillSpeed, 0);
+        }
+
+        // ｙのずれ防止
+        sightSkillUI[usePlayerNum].transform.position =
+            new Vector3(sightSkillUI[usePlayerNum].transform.position.x,
+            1080, sightSkillUI[usePlayerNum].transform.position.z);
+
+        // スキルが終わってcooltimeがかかる
+        yield return new WaitForSeconds(skillCoolTime);
+
+        // cooltimeが終わったらスキル使用可能
+        canSightSkill = true;
+
+    }
 
     IEnumerator TactileSkill()
     {
@@ -161,10 +235,16 @@ public class SkillManager : MonoBehaviour
         canTactileSkill = true;
     }
 
-    //IEnumerator SmaillTasteSkill ()
-    //{
-        
-    //}
+    IEnumerator SmaillTasteSkill() // 途中
+    {
+        //　スキル使用不可にす
+        canSmaillTasteSkill = false;
+
+        // スキルが終わってcooltimeがかかる
+        yield return new WaitForSeconds(skillCoolTime);
+
+        canSmaillTasteSkill = true;
+    }
 
     IEnumerator HearSkill()
     {
@@ -178,7 +258,7 @@ public class SkillManager : MonoBehaviour
         yield return new WaitForSeconds(hearSkillTime);
 
         // ヒアのスキルが終わったら判定を初期化
-        hearSkillValue = 1;
+        notesJudge.judgeLeverage = 1;
 
         // スキルが終わってcooltimeがかかる
         yield return new WaitForSeconds(skillCoolTime);
