@@ -7,38 +7,38 @@ public class NotesJudge : MonoBehaviour
 {
 
     /// <summary>
-    /// ViewNoteManager‚ÉQÆ‚·‚é—p
+    /// ViewNoteManagerã«å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     ViewNotesManager viewNotesManager;
-
+    
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬—p‚ÌƒGƒtƒFƒNƒgƒŠƒXƒg
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆç”¨ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆãƒªã‚¹ãƒˆ
     /// </summary>
     [SerializeField]
     List<GameObject> effectList;
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬‚ÌAxPosw’è—p
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆæ™‚ã®ã€xPosæŒ‡å®šç”¨
     /// </summary>
     [SerializeField]
     private float[] instancePosXs;
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬‚ÌAxPosw’è—p
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆæ™‚ã®ã€xPosæŒ‡å®šç”¨
     /// </summary>
     [SerializeField]
     private float instancePosY;
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬‚ÌAxPosw’è—p
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆæ™‚ã®ã€xPosæŒ‡å®šç”¨
     /// </summary>
     [SerializeField]
     private float instancePosZ;
 
 
     /// <summary>
-    /// NoteJudge‚Ìí—Ş
+    /// NoteJudgeã®ç¨®é¡
     /// </summary>
     enum JudgeType
     {
@@ -56,7 +56,7 @@ public class NotesJudge : MonoBehaviour
     */
 
 
-    ////Poor”»’è‚Ìmp4¶¬—p
+    ////Pooråˆ¤å®šã®mp4ç”Ÿæˆç”¨
     //float x = -19.5f;
     //float y = -260;
     //float z = 300;
@@ -67,46 +67,46 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// Briliant‚Ì”»’è—p‚Ì’l
+    /// Briliantã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long briliantJudge = 20;
     /// <summary>
-    /// Great‚Ì”»’è—p‚Ì’l
+    /// Greatã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long greatJudge = 40;
     /// <summary>
-    /// Good‚Ì”»’è—p‚Ì’l
+    /// Goodã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long goodJudge = 100;
 
     /// <summary>
-    /// ƒXƒLƒ‹‚Å”»’è‚ği‚éˆ×‚Ì’l
+    /// ã‚¹ã‚­ãƒ«ã§åˆ¤å®šã‚’çµã‚‹ç‚ºã®å€¤
     /// </summary>
     [SerializeField]
     public long judgeRate;
 
 
     /// <summary>
-    /// ƒXƒRƒA—pUIQÆ—p
+    /// ã‚¹ã‚³ã‚¢ç”¨UIå‚ç…§ç”¨
     /// </summary>
     [SerializeField]
     private ScoreScript scoreValue;
 
 
     /// <summary>
-    /// Briliant‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Briliantã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _briliantScore;
 
     /// <summary>
-    /// Great‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Greatã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _greatScore;
 
     /// <summary>
-    /// Good‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Goodã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _goodScore;
@@ -130,75 +130,75 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// “n‚³‚ê‚½ŠÔ‚ğ‚à‚Æ‚ÉA¡‚Ìó‹µ‚Å“KØ‚È”»’è‚ğŒvZ‚·‚é
+    /// æ¸¡ã•ã‚ŒãŸæ™‚é–“ã‚’ã‚‚ã¨ã«ã€ä»Šã®çŠ¶æ³ã§é©åˆ‡ãªåˆ¤å®šã‚’è¨ˆç®—ã™ã‚‹
     /// </summary>
-    /// <param name="time">”»’è‚·‚éƒm[ƒc‚ÌŠÔ</param>
-    /// <param name="line">”»’è‚·‚éƒm[ƒc‚ªŠ‘®‚µ‚Ä‚¢‚éƒŒ[ƒ“</param>
+    /// <param name="time">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ã®æ™‚é–“</param>
+    /// <param name="line">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ãŒæ‰€å±ã—ã¦ã„ã‚‹ãƒ¬ãƒ¼ãƒ³</param>
     public void NotesJudgement(long time, int line)
     {
-        // Briliant‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Briliantã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         if (time <= briliantJudge / judgeRate)
         {
             //Debug.Log(JudgeType.Briliant);
             //Debug.Log("JudgeTime" + MusicData.Timer);
 
-            // Briliant‚ÌƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É¶¬
+            // Briliantã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«ç”Ÿæˆ
             Instantiate(effectList[(int)JudgeType.Briliant],
                 new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
 
 
-            //ƒXƒRƒA‘”‚ÉABriliant‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Briliantã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _briliantScore;
         }
 
-        // Graet‚Ì”»’èŠÔ * ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Graetã®åˆ¤å®šæ™‚é–“ * ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         else if (time <= greatJudge / judgeRate)
         {
             //Debug.Log(JudgeType.Great);
             //Debug.Log("JudgeTime" + MusicData.Timer);
 
-            // Graet‚ÌƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É¶¬
+            // Graetã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«ç”Ÿæˆ
             Instantiate(effectList[(int)JudgeType.Great],
                 new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
 
 
-            //ƒXƒRƒA‘”‚ÉAGraet‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Graetã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _greatScore;
         }
 
-        // Good‚Ì”»’èŠÔ * ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Goodã®åˆ¤å®šæ™‚é–“ * ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         else if (time <= goodJudge / judgeRate)
         {
             //Debug.Log(JudgeType.Good);
             //Debug.Log("JudgeTime" + MusicData.Timer);
 
-            // Good‚ÌƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É¶¬
+            // Goodã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«ç”Ÿæˆ
             Instantiate(effectList[(int)JudgeType.Good],
                 new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
 
 
-            //ƒXƒRƒA‘”‚ÉAGood‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Goodã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _goodScore;
         }
 
-        //poor”»’è
+        //pooråˆ¤å®š
         else
         {
             //Debug.Log(JudgeType.Poor);
             //Debug.Log("JudgeTime" + MusicData.Timer);
 
-            // Poor‚ÌƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É¶¬
+            // Poorã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«ç”Ÿæˆ
             Instantiate(effectList[(int)JudgeType.Poor],
                 new Vector3(instancePosXs[line], instancePosY, instancePosZ), 
                 instanceTransform.rotation);
         }
 
 
-        // ƒXƒRƒAUI‚ÌXV
+        // ã‚¹ã‚³ã‚¢UIã®æ›´æ–°
         scoreValue.ScoreUpdate();
 
 
-        // ”»’è‚ğæ“¾‚µ‚½Notes‚ÌƒtƒF[ƒhƒAƒEƒg
+        // åˆ¤å®šã‚’å–å¾—ã—ãŸNotesã®ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
         viewNotesManager.NowNotesFadeOut(line);
     }
 }

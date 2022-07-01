@@ -5,13 +5,13 @@ using UnityEngine;
 public class JudgeEffectScript : MonoBehaviour
 {
     /// <summary>
-    /// Ž©•ª‚ÌƒJƒ‰[ƒR[ƒh‚ÉŠ±Â‚·‚é—p
+    /// è‡ªåˆ†ã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã«å¹²æ¸‰ã™ã‚‹ç”¨
     /// </summary>
     SpriteRenderer sprite;
 
     private void Start()
     {
-        // Ž©•ª‚ÌSpriteRenderer‚ð“ü‚ê‚é
+        // è‡ªåˆ†ã®SpriteRendererã‚’å…¥ã‚Œã‚‹
         sprite = GetComponent<SpriteRenderer>();
 
         StartCoroutine(FadeOut());

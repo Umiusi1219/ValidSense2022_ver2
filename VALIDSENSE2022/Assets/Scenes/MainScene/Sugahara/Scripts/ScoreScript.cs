@@ -6,23 +6,23 @@ using UnityEngine.UI;
 public class ScoreScript : MonoBehaviour
 {
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚ÌƒXƒRƒA‹L‰¯—p
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ã‚¹ã‚³ã‚¢è¨˜æ†¶ç”¨
     /// </summary>
     public int scoreValue;
 
 
     /// <summary>
-    /// ©g‚ÌƒeƒLƒXƒgŠ±Â—p
+    /// è‡ªèº«ã®ãƒ†ã‚­ã‚¹ãƒˆå¹²æ¸‰ç”¨
     /// </summary>
     private Text _scoreText;
 
 
     private void Start()
     {
-        // scoreText ‚É©g‚ğ“ü‚ê‚é
+        // scoreText ã«è‡ªèº«ã‚’å…¥ã‚Œã‚‹
         _scoreText = GetComponent<Text>();
 
-        // score‚Ì•\¦‚Ì‰Šú‰»
+        // scoreã®è¡¨ç¤ºã®åˆæœŸåŒ–
         ScoreUpdate();
     }
 

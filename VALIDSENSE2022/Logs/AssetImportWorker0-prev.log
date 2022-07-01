@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56289
+58647
 Successfully changed project path to: /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022
 /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -54,7 +54,7 @@ Successfully changed project path to: /Users/katzxn/Unity/VS2022-2/VALIDSENSE202
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 102.97 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 104.00 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.15f1 (3b8567f665bb)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -69,37 +69,37 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56891
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56007
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.000466 seconds.
+Registered in 0.001074 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 94.74 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 97.82 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.541 seconds
+- Completed reload, in  1.604 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1542ms)
-		BeginReloadAssembly (136ms)
+	ReloadAssembly (1606ms)
+		BeginReloadAssembly (153ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (2ms)
-		EndReloadAssembly (1148ms)
-			LoadAssemblies (133ms)
+		EndReloadAssembly (1199ms)
+			LoadAssemblies (151ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (135ms)
+			SetupTypeCache (138ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (35ms)
-			SetupLoadedEditorAssemblies (817ms)
+			RebuildScriptCaches (36ms)
+			SetupLoadedEditorAssemblies (871ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (21ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (95ms)
+				RefreshPlugins (98ms)
 				BeforeProcessingInitializeOnLoad (4ms)
-				ProcessInitializeOnLoadAttributes (515ms)
+				ProcessInitializeOnLoadAttributes (567ms)
 				ProcessInitializeOnLoadMethodAttributes (181ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -107,7 +107,7 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.001631 seconds.
+Registered in 0.004868 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
 Symbol file LoadedFromMemory doesn't match image /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
@@ -115,29 +115,29 @@ Native extension for OSXStandalone target not found
 Refreshing native plugins compatible for Editor in 0.82 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.452 seconds
+- Completed reload, in  2.490 seconds
 Domain Reload Profiling:
-	ReloadAssembly (2455ms)
-		BeginReloadAssembly (247ms)
+	ReloadAssembly (2493ms)
+		BeginReloadAssembly (267ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (40ms)
+			DisableScriptedObjects (41ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (31ms)
-		EndReloadAssembly (1903ms)
-			LoadAssemblies (132ms)
+			CreateAndSetChildDomain (34ms)
+		EndReloadAssembly (1911ms)
+			LoadAssemblies (146ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (332ms)
+			SetupTypeCache (340ms)
 			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (68ms)
-			SetupLoadedEditorAssemblies (1191ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (1182ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (16ms)
+				InitializePlatformSupportModulesInManaged (14ms)
 				SetLoadedEditorAssemblies (2ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (159ms)
-				ProcessInitializeOnLoadAttributes (902ms)
-				ProcessInitializeOnLoadMethodAttributes (111ms)
+				BeforeProcessingInitializeOnLoad (165ms)
+				ProcessInitializeOnLoadAttributes (887ms)
+				ProcessInitializeOnLoadMethodAttributes (113ms)
 				AfterProcessingInitializeOnLoad (1ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
@@ -146,13 +146,13 @@ Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launching external process: /Applications/Unity/Hub/Editor/2021.2.15f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.08 seconds
+Launched and connected shader compiler UnityShaderCompiler after 0.07 seconds
 Refreshing native plugins compatible for Editor in 0.70 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3502 Unused Serialized files (Serialized files now loaded: 0)
 Unloading 48 unused Assets / (44.0 KB). Loaded Objects now: 3939.
-Memory consumption went from 240.0 MB to 239.9 MB.
-Total: 3.148458 ms (FindLiveObjects: 0.210083 ms CreateObjectMapping: 0.089458 ms MarkObjects: 2.760958 ms  DeleteObjects: 0.086875 ms)
+Memory consumption went from 239.9 MB to 239.9 MB.
+Total: 3.386959 ms (FindLiveObjects: 0.228708 ms CreateObjectMapping: 0.089208 ms MarkObjects: 2.973542 ms  DeleteObjects: 0.094042 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -166,132 +166,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 353095.460837 seconds.
-  path: Assets/Test_Kim/Textuer/Level_UI_1.png
-  artifactKey: Guid(84a5bd0d7c0947045b65c01bb34f780b) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Test_Kim/Textuer/Level_UI_1.png using Guid(84a5bd0d7c0947045b65c01bb34f780b) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '7c66ba2d2215c16b391a0244da629bb9') in 0.180028 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000162 seconds.
-  path: Assets/Scenes/MainScene/Texture/Lane/lane_1.png
-  artifactKey: Guid(a7fc0e9686796cb4b8ba3393a3f09961) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/Lane/lane_1.png using Guid(a7fc0e9686796cb4b8ba3393a3f09961) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'af4c7b0d89f2b707149645ea1860b4d1') in 0.046724 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000084 seconds.
-  path: Assets/Test_Kim/Textuer/musicLevel_Cursol_2p.png
-  artifactKey: Guid(17324394b11897246be148d237265dad) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Test_Kim/Textuer/musicLevel_Cursol_2p.png using Guid(17324394b11897246be148d237265dad) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'db5361b34323f3aa1ca4822bf70a2eb1') in 0.123383 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000078 seconds.
-  path: Assets/Test_Kim/Textuer/musicLevel_Cursol_1p.png
-  artifactKey: Guid(adf6d612e64628d48ae3a09e7c72c7ba) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Test_Kim/Textuer/musicLevel_Cursol_1p.png using Guid(adf6d612e64628d48ae3a09e7c72c7ba) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '9aef1f80cd012f58c27fb91b3d544d60') in 0.135291 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000081 seconds.
-  path: Assets/Scenes/MainScene/Texture/Lane/bar_line.png
-  artifactKey: Guid(69e8e556b90f4d54c9c196bf80e1612b) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/Lane/bar_line.png using Guid(69e8e556b90f4d54c9c196bf80e1612b) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '207d22d01ccaa1052bf52f38d8c24c9e') in 0.002327 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000074 seconds.
-  path: Assets/Scenes/MainScene/Texture/notes/Poison.png
-  artifactKey: Guid(d246efb979b68494695c2dc845317324) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/notes/Poison.png using Guid(d246efb979b68494695c2dc845317324) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'cdf427ca34b060390e21dfb824388263') in 0.006237 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000058 seconds.
-  path: Assets/Scenes/MainScene/Texture/NotesEffect/Brilliant.png
-  artifactKey: Guid(f2b1d20ee84601248bcd082b0e6864a9) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/NotesEffect/Brilliant.png using Guid(f2b1d20ee84601248bcd082b0e6864a9) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'a7d302abd489ef1454295fd95920bb19') in 0.002691 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000078 seconds.
-  path: Assets/Scenes/MainScene/Texture/Lane/lane_2.png
-  artifactKey: Guid(2bc7cc803c06f2141b90d908af2b596e) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/Lane/lane_2.png using Guid(2bc7cc803c06f2141b90d908af2b596e) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'b4c970e748ca5de02e7c96d57f86e3d1') in 0.044445 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000091 seconds.
-  path: Assets/Test_Kim/配置イメージ_レベル選択.jpg
-  artifactKey: Guid(75279a869aa65ff41996c53e63106379) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Test_Kim/配置イメージ_レベル選択.jpg using Guid(75279a869aa65ff41996c53e63106379) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '67cd9ebd22df01a627d825c27b766c30') in 0.157954 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000079 seconds.
-  path: Assets/Scenes/MainScene/Texture/notes/hold.png
-  artifactKey: Guid(ec2d0afcb54aedc4882f8917eae19191) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/notes/hold.png using Guid(ec2d0afcb54aedc4882f8917eae19191) Importer(-1,00000000000000000000000000000000)  -> (artifact id: 'b9f5c946c136eafca18a6cf3c6f86368') in 0.083803 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000077 seconds.
-  path: Assets/Test_Kim/Textuer/musicLevel_BG.jpg
-  artifactKey: Guid(95f1bc3e93f388246bb7601041e204a4) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Test_Kim/Textuer/musicLevel_BG.jpg using Guid(95f1bc3e93f388246bb7601041e204a4) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '849da4a37a20cd70c7e5472d2e1e35f9') in 0.151787 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000071 seconds.
-  path: Assets/Scenes/MainScene/Texture/NotesEffect/Good.png
-  artifactKey: Guid(cf922a6b7cc1ec44a96ed7206b64f62c) Importer(-1,00000000000000000000000000000000)
-Start importing Assets/Scenes/MainScene/Texture/NotesEffect/Good.png using Guid(cf922a6b7cc1ec44a96ed7206b64f62c) Importer(-1,00000000000000000000000000000000)  -> (artifact id: '4227c3f7b77484a4ad3a5d3a23f5c7c3') in 0.002740 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.001956 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/YamlDotNet/Unity.VisualScripting.YamlDotNet.dll
-Symbol file LoadedFromMemory doesn't match image /Users/katzxn/Unity/VS2022-2/VALIDSENSE2022/Library/PackageCache/com.unity.visualscripting@1.7.8/Editor/VisualScripting.Core/Dependencies/DotNetZip/Unity.VisualScripting.IonicZip.dll
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.72 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.899 seconds
-Domain Reload Profiling:
-	ReloadAssembly (2902ms)
-		BeginReloadAssembly (314ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (46ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (71ms)
-		EndReloadAssembly (2314ms)
-			LoadAssemblies (132ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (354ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (52ms)
-			SetupLoadedEditorAssemblies (1522ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (39ms)
-				SetLoadedEditorAssemblies (5ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (175ms)
-				ProcessInitializeOnLoadAttributes (1105ms)
-				ProcessInitializeOnLoadMethodAttributes (195ms)
-				AfterProcessingInitializeOnLoad (1ms)
-				EditorAssembliesLoaded (1ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (14ms)
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 3.92 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3492 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 40 unused Assets / (21.9 KB). Loaded Objects now: 3942.
-Memory consumption went from 239.5 MB to 239.5 MB.
-Total: 3.921417 ms (FindLiveObjects: 0.293125 ms CreateObjectMapping: 0.100000 ms MarkObjects: 3.495000 ms  DeleteObjects: 0.032083 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
+  Time since last request: 370374.881670 seconds.
+  path: Assets/Chan/Scenes/CharaVoiceTest.unity
+  artifactKey: Guid(031039bb6f48b417cb4ba5f822c495c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Chan/Scenes/CharaVoiceTest.unity using Guid(031039bb6f48b417cb4ba5f822c495c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87062927d5101899e7fb55549ee857f2') in 0.009454 seconds 

@@ -5,93 +5,93 @@ using UnityEngine;
 public class ViewNotesManager : MonoBehaviour
 {
     /// <summary>
-    /// •\¦—pƒm[ƒcŠi”[line‚²‚Æ‚ÉŠi”[‚µA¶¬‚µ‚½Viewƒm[ƒc‚ğŠÇ—‚·‚é—p
-    /// 0”Ôƒ‰ƒCƒ“
+    /// è¡¨ç¤ºç”¨ãƒãƒ¼ãƒ„æ ¼ç´lineã”ã¨ã«æ ¼ç´ã—ã€ç”Ÿæˆã—ãŸViewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹ç”¨
+    /// 0ç•ªãƒ©ã‚¤ãƒ³
     /// </summary>
     [SerializeField]
     public List<GameObject> viewNotesListLine_0;
 
     /// <summary>
-    /// •\¦—pƒm[ƒcŠi”[line‚²‚Æ‚ÉŠi”[‚µA¶¬‚µ‚½Viewƒm[ƒc‚ğŠÇ—‚·‚é—p
-    /// 1”Ôƒ‰ƒCƒ“
+    /// è¡¨ç¤ºç”¨ãƒãƒ¼ãƒ„æ ¼ç´lineã”ã¨ã«æ ¼ç´ã—ã€ç”Ÿæˆã—ãŸViewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹ç”¨
+    /// 1ç•ªãƒ©ã‚¤ãƒ³
     /// </summary>
     [SerializeField]
     public List<GameObject> viewNotesListLine_1;
 
 
     /// <summary>
-    /// •\¦—pƒm[ƒcŠi”[line‚²‚Æ‚ÉŠi”[‚µA¶¬‚µ‚½Viewƒm[ƒc‚ğŠÇ—‚·‚é—p
-    /// 2”Ôƒ‰ƒCƒ“
+    /// è¡¨ç¤ºç”¨ãƒãƒ¼ãƒ„æ ¼ç´lineã”ã¨ã«æ ¼ç´ã—ã€ç”Ÿæˆã—ãŸViewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹ç”¨
+    /// 2ç•ªãƒ©ã‚¤ãƒ³
     /// </summary>
     [SerializeField]
     public List<GameObject> viewNotesListLine_2;
 
 
     /// <summary>
-    /// •\¦—pƒm[ƒcŠi”[line‚²‚Æ‚ÉŠi”[‚µA¶¬‚µ‚½Viewƒm[ƒc‚ğŠÇ—‚·‚é—p
-    /// 3”Ôƒ‰ƒCƒ“
+    /// è¡¨ç¤ºç”¨ãƒãƒ¼ãƒ„æ ¼ç´lineã”ã¨ã«æ ¼ç´ã—ã€ç”Ÿæˆã—ãŸViewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹ç”¨
+    /// 3ç•ªãƒ©ã‚¤ãƒ³
     /// </summary>
     [SerializeField]
     public List<GameObject> viewNotesListLine_3;
 
 
     /// <summary>
-    /// Šeƒ‰ƒCƒ“‚ª‰½”Ô–Ú‚ÌViewƒm[ƒc‚ÉŠ±Â‚·‚é‚©AŠÇ——p
+    /// å„ãƒ©ã‚¤ãƒ³ãŒä½•ç•ªç›®ã®Viewãƒãƒ¼ãƒ„ã«å¹²æ¸‰ã™ã‚‹ã‹ã€ç®¡ç†ç”¨
     /// </summary>
     [SerializeField]
     public int[] viewNotesLineNum;
 
 
     /// <summary>
-    /// Šeƒ‰ƒCƒ“‚ª‰½”Ô–Ú‚ÌViewƒm[ƒc‚ğÁ‚·‚©AŠÇ——p
+    /// å„ãƒ©ã‚¤ãƒ³ãŒä½•ç•ªç›®ã®Viewãƒãƒ¼ãƒ„ã‚’æ¶ˆã™ã‹ã€ç®¡ç†ç”¨
     /// </summary>
     [SerializeField]
     public int[] viewNotesDereatNum_Line;
 
 
     /// <summary>
-    /// Viewƒm[ƒc‚ğ‚Ç‚ê‚­‚ç‚¢‚Ì‘¬‚³‚Å—¬‚·‚©‚ÌŠî€‚É‚È‚éA’l
-    /// å‚É“ïˆÕ“x‚É‘Î‰
+    /// Viewãƒãƒ¼ãƒ„ã‚’ã©ã‚Œãã‚‰ã„ã®é€Ÿã•ã§æµã™ã‹ã®åŸºæº–ã«ãªã‚‹ã€å€¤
+    /// ä¸»ã«é›£æ˜“åº¦ã«å¯¾å¿œ
     /// </summary>
     public float viewNotesSpeed;
 
 
     /// <summary>
-    /// ƒXƒLƒ‹‚É‚æ‚éViewƒm[ƒcSpeed‚Ì•Ï‰»—p‚Ì’l(”{—¦)
+    /// ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹Viewãƒãƒ¼ãƒ„Speedã®å¤‰åŒ–ç”¨ã®å€¤(å€ç‡)
     /// </summary>
     [Range(0.5f, 2.5f)]
     public float NotesSpeedLeverage;
 
 
     /// <summary>
-    /// // ˆø””Ô‚Ìƒ‰ƒCƒ“‚ÌAviewNotesDereatNum_Line”Ô‚ÌViewNotes‚ÌƒtƒF[ƒhƒAƒEƒg
+    /// // å¼•æ•°ç•ªã®ãƒ©ã‚¤ãƒ³ã®ã€viewNotesDereatNum_Lineç•ªã®ViewNotesã®ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
     /// </summary>
-    /// <param name="line"> Š±Â‚·‚éƒ‰ƒCƒ“‚Ìw’è </param>
+    /// <param name="line"> å¹²æ¸‰ã™ã‚‹ãƒ©ã‚¤ãƒ³ã®æŒ‡å®š </param>
     public void NowNotesFadeOut(int line)
     {
-        // ƒ‰ƒCƒ“‚ÌƒXƒCƒbƒ`
+        // ãƒ©ã‚¤ãƒ³ã®ã‚¹ã‚¤ãƒƒãƒ
         switch (line)
         {
             case 0:
-                // ƒ‰ƒCƒ“0‚ÌAviewNotesDereatNum_Line”Ô‚ÌViewNotes‚ÌƒtƒF[ƒhƒAƒEƒg
+                // ãƒ©ã‚¤ãƒ³0ã®ã€viewNotesDereatNum_Lineç•ªã®ViewNotesã®ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
                 viewNotesListLine_0[viewNotesDereatNum_Line[0]].GetComponent<ViewNotesScript>().NotesFadeOut();
-                // ƒ‰ƒCƒ“0‚ÌAViewNotesDereatNum‚ğŸ‚É‚¸‚ç‚·
+                // ãƒ©ã‚¤ãƒ³0ã®ã€ViewNotesDereatNumã‚’æ¬¡ã«ãšã‚‰ã™
                 viewNotesDereatNum_Line[0]++;
                 break;
 
-            //ã‚Ìƒ‰ƒCƒ“ˆá‚¢
+            //ä¸Šã®ãƒ©ã‚¤ãƒ³é•ã„
             case 1:
                 viewNotesListLine_1[viewNotesDereatNum_Line[1]].GetComponent<ViewNotesScript>().NotesFadeOut();
                 viewNotesDereatNum_Line[1]++;
                 break;
 
-            //ã‚Ìƒ‰ƒCƒ“ˆá‚¢
+            //ä¸Šã®ãƒ©ã‚¤ãƒ³é•ã„
             case 2:
                 viewNotesListLine_2[viewNotesDereatNum_Line[2]].GetComponent<ViewNotesScript>().NotesFadeOut();
                 viewNotesDereatNum_Line[2]++;
                 break;
 
-            //ã‚Ìƒ‰ƒCƒ“ˆá‚¢
+            //ä¸Šã®ãƒ©ã‚¤ãƒ³é•ã„
             case 3:
                 viewNotesListLine_3[viewNotesDereatNum_Line[3]].GetComponent<ViewNotesScript>().NotesFadeOut();
                 viewNotesDereatNum_Line[3]++;

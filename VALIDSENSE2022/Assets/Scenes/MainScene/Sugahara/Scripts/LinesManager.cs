@@ -5,32 +5,32 @@ using UnityEngine;
 public class LinesManager : MonoBehaviour
 {
     /// <summary>
-    /// ƒLƒƒƒ‰‚ğ‚¢‚¶‚Á‚Ä‚éq‚ÉQÆ—p
+    /// ã‚­ãƒ£ãƒ©ã‚’ã„ã˜ã£ã¦ã‚‹å­ã«å‚ç…§ç”¨
     /// </summary>
     [SerializeField]
     TestChara testChara;
 
     /// <summary>
-    /// LineQÆ—p
+    /// Lineå‚ç…§ç”¨
     /// </summary>
     [SerializeField]
     List<GameObject> lines;
 
 
     /// <summary>
-    /// Line‚ÌF•ÏXg—p‚·‚éƒJƒ‰[ƒR[ƒh‚ÌA”z—ñ
+    /// Lineã®è‰²å¤‰æ›´æ™‚ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®ã€é…åˆ—
     /// </summary>
     public string[] charaColorCode;
 
 
     /// <summary>
-    ///stringŒ^‚ÌƒJƒ‰[ƒR[ƒh‚ğColor•ÏŠ·‚µ‚½‚Ìó‚¯æ‚èæ
+    ///stringå‹ã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’Colorå¤‰æ›ã—ãŸæ™‚ã®å—ã‘å–ã‚Šå…ˆ
     /// </summary>
     Color colorCode;
 
 
     /// <summary>
-    /// Œ»İŠ‚µ‚Ä‚¢‚éƒ‰ƒCƒ“‚Ì–{”(”z—ñ—p‚É0‚©‚çŒvZ)
+    /// ç¾åœ¨æ‰€æŒã—ã¦ã„ã‚‹ãƒ©ã‚¤ãƒ³ã®æœ¬æ•°(é…åˆ—ç”¨ã«0ã‹ã‚‰è¨ˆç®—)
     /// </summary>
     [Range(1, 6)]
     [SerializeField]
@@ -38,7 +38,7 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
-    /// line‚Ì“§–¾“x‚ğw’è‚·‚é
+    /// lineã®é€æ˜åº¦ã‚’æŒ‡å®šã™ã‚‹
     /// </summary>
     [Range(0f, 1.0f)]
     [SerializeField]
@@ -46,25 +46,25 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
-    /// Šƒ‰ƒCƒ“‚Ìˆê”Ô‘Šè‘¤‚ğ‘Šè‚ÌF‚É•ÏX‚·‚é
+    /// æ‰€æŒãƒ©ã‚¤ãƒ³ã®ä¸€ç•ªç›¸æ‰‹å´ã‚’ç›¸æ‰‹ã®è‰²ã«å¤‰æ›´ã™ã‚‹
     /// </summary>
-    /// <param name="opponentChara">‘Îí‘Šè‚ÌƒLƒƒƒ‰”Ô†</param>
+    /// <param name="opponentChara">å¯¾æˆ¦ç›¸æ‰‹ã®ã‚­ãƒ£ãƒ©ç•ªå·</param>
     void LineIsStolen_1p(int opponentCharaNum)
     {
-        //”z—ñQÆ‚ğ–h‚®
+        //é…åˆ—å‚ç…§ã‚’é˜²ã
         if(_1pHaveLines > 0 )
         {
-            // ColorŒ^‚Ö‚Ì•ÏŠ·¬Œ÷‚·‚é‚Æcolor‚ÉColorŒ^‚ÌÔF‚ª‘ã“ü‚³‚ê‚éjoutƒL[ƒ[ƒh‚ÅQÆ“n‚µ‚É‚·‚é
+            // Colorå‹ã¸ã®å¤‰æ›æˆåŠŸã™ã‚‹ã¨colorã«Colorå‹ã®èµ¤è‰²ãŒä»£å…¥ã•ã‚Œã‚‹ï¼‰outã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§å‚ç…§æ¸¡ã—ã«ã™ã‚‹
             if (ColorUtility.TryParseHtmlString(charaColorCode[opponentCharaNum],
                 out colorCode))
             {
-                // “§–¾“x‚Ìİ’è
+                // é€æ˜åº¦ã®è¨­å®š
                 colorCode.a = _lineAlpha;
 
-                // Šƒ‰ƒCƒ“‚Ìˆê”Ô‘Šè‘¤‚ğ‘Šè‚ÌF‚É•ÏX‚·‚é
+                // æ‰€æŒãƒ©ã‚¤ãƒ³ã®ä¸€ç•ªç›¸æ‰‹å´ã‚’ç›¸æ‰‹ã®è‰²ã«å¤‰æ›´ã™ã‚‹
                 lines[_1pHaveLines].GetComponent<SpriteRenderer>().color = colorCode;
 
-                // Šƒ‰ƒCƒ“‚ğŒ¸Z
+                // æ‰€æŒãƒ©ã‚¤ãƒ³ã‚’æ¸›ç®—
                 _1pHaveLines--;
             }
         }
@@ -72,26 +72,26 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
-    /// ‘Šè‚ÌŠƒ‰ƒCƒ“‚Ìˆê”Ô©•ª‘¤‚ğ©•ª‚ÌF‚É•ÏX‚·‚é
+    /// ç›¸æ‰‹ã®æ‰€æŒãƒ©ã‚¤ãƒ³ã®ä¸€ç•ªè‡ªåˆ†å´ã‚’è‡ªåˆ†ã®è‰²ã«å¤‰æ›´ã™ã‚‹
     /// </summary>
-    /// <param name="opponentChara">©•ª‚ÌƒLƒƒƒ‰”Ô†</param>
+    /// <param name="opponentChara">è‡ªåˆ†ã®ã‚­ãƒ£ãƒ©ç•ªå·</param>
     void LineIsStolen_2p(int myCharaNum)
     {
-        //”z—ñQÆ‚ğ–h‚®
+        //é…åˆ—å‚ç…§ã‚’é˜²ã
         if (_1pHaveLines < 6)
         {
-            // ColorŒ^‚Ö‚Ì•ÏŠ·¬Œ÷‚·‚é‚Æicolor‚ÉColorŒ^‚ÌÔF‚ª‘ã“ü‚³‚ê‚éjoutƒL[ƒ[ƒh‚ÅQÆ“n‚µ‚É‚·‚é
+            // Colorå‹ã¸ã®å¤‰æ›æˆåŠŸã™ã‚‹ã¨ï¼ˆcolorã«Colorå‹ã®èµ¤è‰²ãŒä»£å…¥ã•ã‚Œã‚‹ï¼‰outã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§å‚ç…§æ¸¡ã—ã«ã™ã‚‹
             if (ColorUtility.TryParseHtmlString(charaColorCode[myCharaNum],
                 out colorCode))
             {
 
-                // Šƒ‰ƒCƒ“‚ğ‰ÁZ
+                // æ‰€æŒãƒ©ã‚¤ãƒ³ã‚’åŠ ç®—
                 _1pHaveLines++;
 
-                // “§–¾“x‚Ìİ’è
+                // é€æ˜åº¦ã®è¨­å®š
                 colorCode.a = _lineAlpha;
 
-                // ‘Šè‚ÌŠƒ‰ƒCƒ“‚Ìˆê”Ô1p‘¤‚ğ1p‚ÌF‚É•ÏX‚·‚é
+                // ç›¸æ‰‹ã®æ‰€æŒãƒ©ã‚¤ãƒ³ã®ä¸€ç•ª1på´ã‚’1pã®è‰²ã«å¤‰æ›´ã™ã‚‹
                 lines[_1pHaveLines].GetComponent<SpriteRenderer>().color = colorCode;
 
             }
@@ -99,21 +99,21 @@ public class LinesManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ‘Sƒ‰ƒCƒ“‚ğŠDF‰»‚·‚é
+    /// å…¨ãƒ©ã‚¤ãƒ³ã‚’ç°è‰²åŒ–ã™ã‚‹
     /// </summary>
     void OllLineColorChange()
     {
-        // ‘Sƒ‰ƒCƒ“‚ÉQÆ
+        // å…¨ãƒ©ã‚¤ãƒ³ã«å‚ç…§
         foreach (GameObject line in lines)
         {
-            //ŠDF‚Éw’è
+            //ç°è‰²ã«æŒ‡å®š
             if (ColorUtility.TryParseHtmlString(charaColorCode[4],
                 out colorCode))
             {
-                // “§–¾“x‚Ìİ’è
+                // é€æ˜åº¦ã®è¨­å®š
                 colorCode.a = _lineAlpha;
 
-                // Šƒ‰ƒCƒ“‚ğŠDF‚É•ÏX‚·‚é
+                // æ‰€æŒãƒ©ã‚¤ãƒ³ã‚’ç°è‰²ã«å¤‰æ›´ã™ã‚‹
                 line.GetComponent<SpriteRenderer>().color = colorCode;
             }
         }
@@ -121,34 +121,34 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
-    /// 1p2p‚Ìƒ‰ƒCƒ“‚ğŠeƒLƒƒƒ‰ƒJƒ‰[‚É•ÏX‚·‚é
+    /// 1p2pã®ãƒ©ã‚¤ãƒ³ã‚’å„ã‚­ãƒ£ãƒ©ã‚«ãƒ©ãƒ¼ã«å¤‰æ›´ã™ã‚‹
     /// </summary>
     void SetLineColor_1p2p()
     {
-        //ƒŒ[ƒ“”•ªŒJ‚è•Ô‚·
+        //ãƒ¬ãƒ¼ãƒ³æ•°åˆ†ç¹°ã‚Šè¿”ã™
         for(int i = 0; i < lines.Count; i++)
         {
             if(i <4)
             {
-                //1P‚ÌƒJƒ‰[ƒR[ƒh‚ğcolorCode‚É“ü‚ê‚é
+                //1Pã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’colorCodeã«å…¥ã‚Œã‚‹
                 ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P], out colorCode);
 
-                // “§–¾“x‚Ìİ’è
+                // é€æ˜åº¦ã®è¨­å®š
                 colorCode.a = _lineAlpha;
 
-                // ƒ‰ƒCƒ“‚ÌF‚ğ•ÏX‚·‚é
+                // ãƒ©ã‚¤ãƒ³ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹
                 lines[i].GetComponent<SpriteRenderer>().color = colorCode;
 
             }
             else
             {
-                //2P‚ÌƒJƒ‰[ƒR[ƒh‚ğcolorCode‚É“ü‚ê‚é
+                //2Pã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’colorCodeã«å…¥ã‚Œã‚‹
                 ColorUtility.TryParseHtmlString(charaColorCode[testChara.count2P], out colorCode);
 
-                // “§–¾“x‚Ìİ’è
+                // é€æ˜åº¦ã®è¨­å®š
                 colorCode.a = _lineAlpha;
 
-                // ƒ‰ƒCƒ“‚ÌF‚ğ•ÏX‚·‚é
+                // ãƒ©ã‚¤ãƒ³ã®è‰²ã‚’å¤‰æ›´ã™ã‚‹
                 lines[i].GetComponent<SpriteRenderer>().color = colorCode;
             }
         }
@@ -157,7 +157,7 @@ public class LinesManager : MonoBehaviour
 
     private void Start()
     {
-        // 1p2p‚ÌƒLƒƒƒ‰‚É‡‚í‚¹‚ÄLine‚ÌF‚ğ•Ï‚¦‚é
+        // 1p2pã®ã‚­ãƒ£ãƒ©ã«åˆã‚ã›ã¦Lineã®è‰²ã‚’å¤‰ãˆã‚‹
         SetLineColor_1p2p();
     }
 
@@ -166,7 +166,7 @@ public class LinesManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log("1P‚ªƒ‰ƒCƒ“‚Æ‚ç‚ê‚½");
+            Debug.Log("1PãŒãƒ©ã‚¤ãƒ³ã¨ã‚‰ã‚ŒãŸ");
 
             LineIsStolen_1p(testChara.count2P);
         }
@@ -174,7 +174,7 @@ public class LinesManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Debug.Log("2P‚ªƒ‰ƒCƒ“‚Æ‚ç‚ê‚½");
+            Debug.Log("2PãŒãƒ©ã‚¤ãƒ³ã¨ã‚‰ã‚ŒãŸ");
 
             LineIsStolen_2p(testChara.count1P);
         }
@@ -182,14 +182,14 @@ public class LinesManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Debug.Log("‘Sƒ‰ƒCƒ“‚ğŠDF‰»");
+            Debug.Log("å…¨ãƒ©ã‚¤ãƒ³ã‚’ç°è‰²åŒ–");
 
             OllLineColorChange();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Debug.Log("ƒ‰ƒCƒ“‚ğƒŠƒZƒbƒg");
+            Debug.Log("ãƒ©ã‚¤ãƒ³ã‚’ãƒªã‚»ãƒƒãƒˆ");
             SetLineColor_1p2p();
 
             _1pHaveLines = 3;

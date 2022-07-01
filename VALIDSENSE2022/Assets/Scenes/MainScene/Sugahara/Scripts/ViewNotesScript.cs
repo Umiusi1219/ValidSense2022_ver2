@@ -5,24 +5,24 @@ using UnityEngine;
 public class ViewNotesScript : MonoBehaviour
 {
     /// <summary>
-    /// ƒtƒF[ƒhƒAƒEƒg—p‚É©g‚Ìsprite‚ğæ“¾—p
+    /// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆç”¨ã«è‡ªèº«ã®spriteã‚’å–å¾—ç”¨
     /// </summary>
     private SpriteRenderer _sprite;
 
 
     /// <summary>
-    /// 60fps‚Å—‰º‚·‚é‘¬“x
+    /// 60fpsã§è½ä¸‹ã™ã‚‹é€Ÿåº¦
     /// </summary>
     public float notesSpeed;
 
     private void Start()
     {
-        // ƒtƒF[ƒhƒAƒEƒg—p‚É©g‚Ì_sprite‚ğæ“¾
+        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆç”¨ã«è‡ªèº«ã®_spriteã‚’å–å¾—
         _sprite = GetComponent<SpriteRenderer>();
     }
 
     /// <summary>
-    /// 60fps‚Å—‰º‚·‚é‘¬“x‚Ìİ’è
+    /// 60fpsã§è½ä¸‹ã™ã‚‹é€Ÿåº¦ã®è¨­å®š
     /// </summary>
     /// <param name="speed"></param>
     public void NotesSpeedSetter(double speed)
@@ -33,13 +33,13 @@ public class ViewNotesScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 60fps‚Åspeed•ª—‰º‚³‚¹‚é
+        // 60fpsã§speedåˆ†è½ä¸‹ã•ã›ã‚‹
         transform.position -= new Vector3(0, notesSpeed, 0);
     }
 
 
     /// <summary>
-    /// ƒR[ƒ‹ƒ`ƒ“‚ÌŠÖ”‚ğ—˜—p‚µ‚ÄAƒtƒF[ƒhƒAƒEƒg‚µ‚ÄA”ñƒAƒNƒeƒBƒu‰»‚·‚é
+    /// ã‚³ãƒ¼ãƒ«ãƒãƒ³ã®é–¢æ•°ã‚’åˆ©ç”¨ã—ã¦ã€ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã—ã¦ã€éã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã™ã‚‹
     /// </summary>
     public void NotesFadeOut()
     {
@@ -48,7 +48,7 @@ public class ViewNotesScript : MonoBehaviour
 
 
     /// <summary>
-    /// ©g‚ğƒtƒF[ƒhƒAƒEƒg‚µ‚ÄA”ñƒAƒNƒeƒBƒu‰»‚·‚é
+    /// è‡ªèº«ã‚’ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã—ã¦ã€éã‚¢ã‚¯ãƒ†ã‚£ãƒ–åŒ–ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     IEnumerator FadeOut()
