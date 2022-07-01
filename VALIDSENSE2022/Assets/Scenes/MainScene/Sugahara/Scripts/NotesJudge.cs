@@ -83,7 +83,7 @@ public class NotesJudge : MonoBehaviour
     /// スキルで判定を絞る為の値
     /// </summary>
     [SerializeField]
-    public long judgeRate;
+    public long judgeLeverage;
 
 
     /// <summary>
@@ -137,7 +137,7 @@ public class NotesJudge : MonoBehaviour
     public void NotesJudgement(long time, int line)
     {
         // Briliantの判定時間 / スキルによる倍率以下なら
-        if (time <= briliantJudge / judgeRate)
+        if (time <= briliantJudge * judgeLeverage)
         {
             //Debug.Log(JudgeType.Briliant);
             //Debug.Log("JudgeTime" + MusicData.Timer);
@@ -152,7 +152,7 @@ public class NotesJudge : MonoBehaviour
         }
 
         // Graetの判定時間 * スキルによる倍率以下なら
-        else if (time <= greatJudge / judgeRate)
+        else if (time <= greatJudge * judgeLeverage)
         {
             //Debug.Log(JudgeType.Great);
             //Debug.Log("JudgeTime" + MusicData.Timer);
@@ -167,7 +167,7 @@ public class NotesJudge : MonoBehaviour
         }
 
         // Goodの判定時間 * スキルによる倍率以下なら
-        else if (time <= goodJudge / judgeRate)
+        else if (time <= goodJudge * judgeLeverage)
         {
             //Debug.Log(JudgeType.Good);
             //Debug.Log("JudgeTime" + MusicData.Timer);
@@ -180,7 +180,6 @@ public class NotesJudge : MonoBehaviour
             //スコア総数に、Goodの値をたす
             scoreValue.scoreValue += _goodScore;
         }
-
         //poor判定
         else
         {
