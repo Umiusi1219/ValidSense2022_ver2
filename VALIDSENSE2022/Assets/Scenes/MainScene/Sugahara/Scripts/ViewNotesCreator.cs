@@ -5,13 +5,13 @@ using UnityEngine;
 public class ViewNotesCreator : MonoBehaviour
 {
     /// <summary>
-    /// Viewƒm[ƒc‚ğŠÇ—‚·‚éƒ}ƒl[ƒWƒƒ[
+    /// Viewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼
     [SerializeField]
     ViewNotesManager viewNotesManager;
 
 
     /// <summary>
-    /// •\¦—pƒm[ƒc‚ğ¶¬‚·‚éˆ×‚ÉA‘fŞ‚ğŠi”[‚µ‚Ä‚ ‚éList
+    /// è¡¨ç¤ºç”¨ãƒãƒ¼ãƒ„ã‚’ç”Ÿæˆã™ã‚‹ç‚ºã«ã€ç´ æã‚’æ ¼ç´ã—ã¦ã‚ã‚‹List
     /// </summary>
     [SerializeField]
     public List<GameObject> viewNotes;
@@ -19,28 +19,28 @@ public class ViewNotesCreator : MonoBehaviour
 
 
     /// <summary>
-    /// Viewƒm[ƒc‚ğ‚Ç‚Ì‚‚³‚©‚ç¶¬‚·‚é‚©‚ÌAŠî€‚Æ‚µ‚Äg‚¤”’l
+    /// Viewãƒãƒ¼ãƒ„ã‚’ã©ã®é«˜ã•ã‹ã‚‰ç”Ÿæˆã™ã‚‹ã‹ã®ã€åŸºæº–ã¨ã—ã¦ä½¿ã†æ•°å€¤
     /// </summary>
     [SerializeField]
     private float instantiatePosY;
 
 
     /// <summary>
-    /// Viewƒm[ƒc‚ğŠeƒ‰ƒCƒ“‚É¶¬‚·‚é—p‚Ì”z—ñ
+    /// Viewãƒãƒ¼ãƒ„ã‚’å„ãƒ©ã‚¤ãƒ³ã«ç”Ÿæˆã™ã‚‹æ™‚ç”¨ã®é…åˆ—
     /// </summary>
     [SerializeField]
     private float[] instantiatePosX;
 
 
     /// <summary>
-    /// Viewƒm[ƒc‚ğ‚Ç‚Ì‰œs‚Å¶¬‚·‚é—p‚Ì”’l
+    /// Viewãƒãƒ¼ãƒ„ã‚’ã©ã®å¥¥è¡Œã§ç”Ÿæˆã™ã‚‹æ™‚ç”¨ã®æ•°å€¤
     /// </summary>
     [SerializeField]
     private float instantiatePosZ;
 
 
     /// <summary>
-    /// Viewƒm[ƒc‚ğA”»’èƒo[“’B‚·‚éŠÔ‚æ‚èAm/s•b‘‚­¶¬‚·‚é‚©‚Ì’l
+    /// Viewãƒãƒ¼ãƒ„ã‚’ã€åˆ¤å®šãƒãƒ¼åˆ°é”ã™ã‚‹æ™‚é–“ã‚ˆã‚Šã€m/sç§’æ—©ãç”Ÿæˆã™ã‚‹ã‹ã®å€¤
     /// </summary>
     [SerializeField, Range(0, 9000)]
     long viewNotesTime = 4500;
@@ -49,39 +49,39 @@ public class ViewNotesCreator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // ”z—ñ‚Ì‘”‚ğ’´‚¦‚Ä”z—ñQÆ‚µ‚È‚¢‚æ‚¤‚É‚·‚é§Œä
+        // é…åˆ—ã®ç·æ•°ã‚’è¶…ãˆã¦é…åˆ—å‚ç…§ã—ãªã„ã‚ˆã†ã«ã™ã‚‹åˆ¶å¾¡
         if (NotesDataList.listNumMax[0] > viewNotesManager.viewNotesLineNum[0])
         {
-            // ƒ‰ƒCƒ“0‚ÌviewNotesLineNum[0]”Ô‚Ìƒf[ƒ^‚ğQÆ
-            // criwear‚ÌŠÔ‚ğŠî€‚Æ‚µ‚Ä”»’èƒo[“’B—\’èŠÔ - viewNotesTime‚ÌŠÔ‚ÉÀs
+            // ãƒ©ã‚¤ãƒ³0ã®viewNotesLineNum[0]ç•ªã®ãƒ‡ãƒ¼ã‚¿ã‚’å‚ç…§
+            // criwearã®æ™‚é–“ã‚’åŸºæº–ã¨ã—ã¦åˆ¤å®šãƒãƒ¼åˆ°é”äºˆå®šæ™‚é–“ - viewNotesTimeã®æ™‚é–“ã«å®Ÿè¡Œ
             if ((NotesDataList.notesList_0[viewNotesManager.viewNotesLineNum[0]].time - viewNotesTime) <= MusicData.Timer)
             {
 
-                // ƒ‰ƒCƒ“0‚ÌViewƒm[ƒc‚ğŠÇ—‚·‚éList‚ÉA’Ç‰Á‚·‚é
+                // ãƒ©ã‚¤ãƒ³0ã®Viewãƒãƒ¼ãƒ„ã‚’ç®¡ç†ã™ã‚‹Listã«ã€è¿½åŠ ã™ã‚‹
                 viewNotesManager.viewNotesListLine_0.Add(
-                    // ViewNotes‚ğAtype‚Å‘I‚ÑA¶¬‚µ
+                    // ViewNotesã‚’ã€typeã§é¸ã³ã€ç”Ÿæˆã—
                     Instantiate(viewNotes[NotesDataList.notesList_0[viewNotesManager.viewNotesLineNum[0]].type],
-                    // ƒ‰ƒCƒ“0—p‚Ìx²Pos
+                    // ãƒ©ã‚¤ãƒ³0ç”¨ã®xè»¸Pos
                     new Vector3(instantiatePosX[NotesDataList.notesList_0[viewNotesManager.viewNotesLineNum[0]].line],
-                    //Šî–{‚Ì’l * speed * ‚»‚Ì”{—¦‚ÅA‚‚³‚ğİ’è
+                    //åŸºæœ¬ã®å€¤ * speed * ãã®å€ç‡ã§ã€é«˜ã•ã‚’è¨­å®š
                     instantiatePosY * viewNotesManager.viewNotesSpeed * viewNotesManager.NotesSpeedLeverage, instantiatePosZ),
-                    // ‰ñ“]‚ÍA“Á‚É‚È‚µ
+                    // å›è»¢ã¯ã€ç‰¹ã«ãªã—
                     new Quaternion(0, 0, 0, 0)) as GameObject);
 
 
-                // ¶¬‚µ‚½ViewNotes‚Ì—¬‚ê‚éspeed‚ğİ’è
+                // ç”Ÿæˆã—ãŸViewNotesã®æµã‚Œã‚‹speedã‚’è¨­å®š
                 viewNotesManager.viewNotesListLine_0[viewNotesManager.viewNotesLineNum[0]].GetComponent<ViewNotesScript>().
-                    // ‹——£iŠî–{‚Ì’l * speed * ‚»‚Ì”{—¦j
+                    // è·é›¢ï¼ˆåŸºæœ¬ã®å€¤ * speed * ãã®å€ç‡ï¼‰
                     NotesSpeedSetter((instantiatePosY * viewNotesManager.viewNotesSpeed * viewNotesManager.NotesSpeedLeverage)
-                    // ŠÔim/s ‚ğ@m/s^2 ‚É•ÏŠ·j60fps—p‚Éİ’è
+                    // æ™‚é–“ï¼ˆm/s ã‚’ã€€m/s^2 ã«å¤‰æ›ï¼‰60fpsç”¨ã«è¨­å®š
                     / (viewNotesTime / 1000f) / 60);
 
-                // Š±Â‚·‚éƒm[ƒc‚ğŸ‚É‚·‚é
+                // å¹²æ¸‰ã™ã‚‹ãƒãƒ¼ãƒ„ã‚’æ¬¡ã«ã™ã‚‹
                 viewNotesManager.viewNotesLineNum[0]++;
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[1] > viewNotesManager.viewNotesLineNum[1])
         {
             if ((NotesDataList.notesList_1[viewNotesManager.viewNotesLineNum[1]].time - viewNotesTime) <= MusicData.Timer)
@@ -100,7 +100,7 @@ public class ViewNotesCreator : MonoBehaviour
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[2] > viewNotesManager.viewNotesLineNum[2])
         {
             if ((NotesDataList.notesList_2[viewNotesManager.viewNotesLineNum[2]].time - viewNotesTime) <= MusicData.Timer)
@@ -120,7 +120,7 @@ public class ViewNotesCreator : MonoBehaviour
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[3] > viewNotesManager.viewNotesLineNum[3])
         {
             if ((NotesDataList.notesList_3[viewNotesManager.viewNotesLineNum[3]].time - viewNotesTime) <= MusicData.Timer)

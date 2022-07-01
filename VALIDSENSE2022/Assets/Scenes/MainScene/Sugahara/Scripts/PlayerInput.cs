@@ -5,28 +5,28 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     /// <summary>
-    /// ”»’èƒo[“’B‚Ì‚Ç‚ê‚­‚ç‚¢‘O‚©‚ç”»’è‰Â‚·‚é‚©‚Ì’l
+    /// åˆ¤å®šãƒãƒ¼åˆ°é”ã®ã©ã‚Œãã‚‰ã„å‰ã‹ã‚‰åˆ¤å®šå¯ã™ã‚‹ã‹ã®å€¤
     /// </summary>
     [SerializeField]
     private double judgeTime;
 
 
     /// <summary>
-    /// ƒm[ƒc‚Ìƒf[ƒ^ƒXƒNƒŠƒvƒg‚ğQÆ‚·‚é—p
+    /// ãƒãƒ¼ãƒ„ã®ãƒ‡ãƒ¼ã‚¿ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     NotesDataList notesDataList;
 
 
     /// <summary>
-    /// ƒm[ƒc‚Ì”»’è—pƒXƒNƒŠƒvƒg‚ğQÆ‚·‚é—p
+    /// ãƒãƒ¼ãƒ„ã®åˆ¤å®šç”¨ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     NotesJudge notesJudge;
 
 
     /// <summary>
-    /// ‰½”Ô–Ú‚Ìƒm[ƒc‚ÉŠ±Â‚·‚é‚©‚Ì’l‚Ì”z—ñ
+    /// ä½•ç•ªç›®ã®ãƒãƒ¼ãƒ„ã«å¹²æ¸‰ã™ã‚‹ã‹ã®å€¤ã®é…åˆ—
     /// </summary>
     [SerializeField]
     public int[] lineNotesNum;
@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        //”»’èƒo[ƒfƒoƒbƒN—p
+        //åˆ¤å®šãƒãƒ¼ãƒ‡ãƒãƒƒã‚¯ç”¨
         //if (MusicData.Timer >= NotesDataList.notesList_0[lineNotesNum[0]].time)
         //{
         //    Debug.Log("Timer" + MusicData.Timer);
@@ -48,39 +48,39 @@ public class PlayerInput : MonoBehaviour
 
 
 
-        // ”z—ñ‚Ì‘”‚ğ’´‚¦‚Ä”z—ñQÆ‚µ‚È‚¢‚æ‚¤‚É‚·‚é§Œä
+        // é…åˆ—ã®ç·æ•°ã‚’è¶…ãˆã¦é…åˆ—å‚ç…§ã—ãªã„ã‚ˆã†ã«ã™ã‚‹åˆ¶å¾¡
         if (NotesDataList.listNumMax[0] > lineNotesNum[0])
         {
-            // QƒL[‚ğ‰Ÿ‚µ‚½‚Æ‚«
+            // Qã‚­ãƒ¼ã‚’æŠ¼ã—ãŸã¨ã
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                // criwear‚ÌŠÔ - ”»’èƒo[“’B—\’èŠÔ < judgeTime‚È‚çÀs
+                // criwearã®æ™‚é–“ - åˆ¤å®šãƒãƒ¼åˆ°é”äºˆå®šæ™‚é–“ < judgeTimeãªã‚‰å®Ÿè¡Œ
                 if (NotesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer < judgeTime)
                 {
-                    // ”»’è—pŠÖ”‚ÅA¡‚Ìƒm[ƒc‚Ì”»’è‚ğ‚·‚é
+                    // åˆ¤å®šç”¨é–¢æ•°ã§ã€ä»Šã®ãƒãƒ¼ãƒ„ã®åˆ¤å®šã‚’ã™ã‚‹
                     notesJudge.NotesJudgement(
-                        // criwear‚ÌŠÔ - ”»’èƒo[“’B—\’èŠÔ ‚ğâ‘Î’l‰»‚µ‚Äˆø”‚Éİ’è
+                        // criwearã®æ™‚é–“ - åˆ¤å®šãƒãƒ¼åˆ°é”äºˆå®šæ™‚é–“ ã‚’çµ¶å¯¾å€¤åŒ–ã—ã¦å¼•æ•°ã«è¨­å®š
                         (long)Mathf.Abs(NotesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
 
-                    // Š±Â‚·‚éƒm[ƒc‚ğŸ‚É‚¸‚ç‚·
+                    // å¹²æ¸‰ã™ã‚‹ãƒãƒ¼ãƒ„ã‚’æ¬¡ã«ãšã‚‰ã™
                     lineNotesNum[0]++;
                 }
             }
-            // poor”»’è‚Ì©“®‰»
-            // QƒL[‚ğ‰Ÿ‚µ‚Ä‚È‚¢‚Æ‚«A”»’èƒo[“’B—\’èŠÔ - criwear‚ÌŠÔ < poorTiming‚È‚çÀs
+            // pooråˆ¤å®šã®è‡ªå‹•åŒ–
+            // Qã‚­ãƒ¼ã‚’æŠ¼ã—ã¦ãªã„ã¨ãã€åˆ¤å®šãƒãƒ¼åˆ°é”äºˆå®šæ™‚é–“ - criwearã®æ™‚é–“ < poorTimingãªã‚‰å®Ÿè¡Œ
             else if (NotesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer < (long)ConstRepo.poorTiming)
             {
-                // ”»’è—pŠÖ”‚ÅA¡‚Ìƒm[ƒc‚Ì”»’è‚ğ‚·‚é
+                // åˆ¤å®šç”¨é–¢æ•°ã§ã€ä»Šã®ãƒãƒ¼ãƒ„ã®åˆ¤å®šã‚’ã™ã‚‹
                 notesJudge.NotesJudgement(
-                    // criwear‚ÌŠÔ - ”»’èƒo[“’B—\’èŠÔ ‚ğâ‘Î’l‰»‚µ‚Äˆø”‚Éİ’è
+                    // criwearã®æ™‚é–“ - åˆ¤å®šãƒãƒ¼åˆ°é”äºˆå®šæ™‚é–“ ã‚’çµ¶å¯¾å€¤åŒ–ã—ã¦å¼•æ•°ã«è¨­å®š
                     (long)Mathf.Abs(NotesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
 
-                // Š±Â‚·‚éƒm[ƒc‚ğŸ‚É‚¸‚ç‚·
+                // å¹²æ¸‰ã™ã‚‹ãƒãƒ¼ãƒ„ã‚’æ¬¡ã«ãšã‚‰ã™
                 lineNotesNum[0]++;
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[1] > lineNotesNum[1])
         {
             if (Input.GetKeyDown(KeyCode.W))
@@ -100,7 +100,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[2] > lineNotesNum[2])
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -120,7 +120,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        // ã‚Ìƒ‰ƒCƒ“‚ªˆá‚¤”Ô
+        // ä¸Šã®ãƒ©ã‚¤ãƒ³ãŒé•ã†ç•ª
         if (NotesDataList.listNumMax[3] > lineNotesNum[3])
         {
             if (Input.GetKeyDown(KeyCode.R))
