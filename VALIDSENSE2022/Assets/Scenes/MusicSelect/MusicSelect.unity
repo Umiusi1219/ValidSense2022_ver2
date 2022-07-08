@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff8c9bbf672a492a81273d8b6dfaa3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonReader: {fileID: 699544407}
+  scrollSpeed: 0.05
 --- !u!1 &925258874
 GameObject:
   m_ObjectHideFlags: 0

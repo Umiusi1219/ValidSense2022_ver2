@@ -12,11 +12,13 @@ public class MusicListControl : MonoBehaviour
 
     private int musicListNum;
     private int nowMusicNum = 1;
-    public JsonReader jsonReader;
-    // Start is called before the first frame update
+    private bool isScrolling = false;
+    [SerializeField]private float scrollSpeed = 0.05f;
+    private GameObject jsonReader;
     void Start()
     {
-        Debug.Log(transform.childCount);
+        //Debug.Log(transform.childCount);
+        jsonReader = GameObject.Find("Json");
         musicListNum = transform.childCount;
         musicListPosDatas = new Vector3[musicListNum];
         musicListRotationDatas = new Quaternion[musicListNum];
@@ -26,10 +28,8 @@ public class MusicListControl : MonoBehaviour
         {
             musicList[i] = transform.GetChild(i).gameObject;
         }
-
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -41,6 +41,7 @@ public class MusicListControl : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.W))
         {
+            StartCoroutine(ScrollUp());
             /*for(int i = musicListNum - 1; i > -1; i--)
             {
                 if(i == 0)
@@ -53,20 +54,11 @@ public class MusicListControl : MonoBehaviour
                     musicList[i].transform.rotation = musicListRotationDatas[i - 1];
                 }
             }*/
-            StartCoroutine(ScrollUp());
-            if(nowMusicNum > 1)
-            {
-                nowMusicNum--;
-            }
-            else
-            {
-                nowMusicNum = musicListNum;
-            }
-            jsonReader.ChangeJson(nowMusicNum);
         }
 
         else if(Input.GetKeyDown(KeyCode.S))
         {
+            StartCoroutine(ScrollDown());
             /*for(int i = 0; i < musicListNum ; i++)
             {
                 if(i == (musicListNum - 1))
@@ -80,22 +72,15 @@ public class MusicListControl : MonoBehaviour
                     musicList[i].transform.rotation = musicListRotationDatas[i + 1];
                 }
             }*/
-            StartCoroutine(ScrollDown());
-            if(nowMusicNum < musicListNum)
-            {
-                nowMusicNum++;
-            }
-            else
-            {
-                nowMusicNum = 1;
-            }
-            jsonReader.ChangeJson(nowMusicNum);
         }
 
     }
 
     private IEnumerator ScrollUp()
     {
+        if(isScrolling) { yield break; }
+
+        isScrolling = true;
         for(int i = 0; i < musicListNum; i++)
         {
             musicListPosDatas[i] = musicList[i].transform.position;
@@ -103,7 +88,7 @@ public class MusicListControl : MonoBehaviour
         }
         for(float t = 0; t <= 1.1f; t += 0.1f)
         {
-            for(int i = musicListNum - 1; i > -1; i--)
+            for(int i = musicListNum - 1; i >= 0; i--)
             {
                 if(i == 0)
                 {
@@ -116,11 +101,66 @@ public class MusicListControl : MonoBehaviour
                     musicList[i].transform.rotation = Quaternion.Lerp(musicListRotationDatas[i], musicListRotationDatas[i - 1], t);
                 }
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(scrollSpeed);
         }
+        ScrollUpNumChange();
+        jsonReader.SendMessage("ChangeJson",nowMusicNum);
+        isScrolling = false;
     }
     private IEnumerator ScrollDown()
     {
-        yield return null;
+        if(isScrolling) { yield break; }
+
+        isScrolling = true;
+        for(int i = musicListNum - 1; i >= 0; i--)
+        {
+            musicListPosDatas[i] = musicList[i].transform.position;
+            musicListRotationDatas[i] = musicList[i].transform.rotation;
+        }
+        for(float t = 0; t <= 1.1f; t += 0.1f)
+        {
+            for(int i = 0; i < musicListNum ; i++)
+            {
+                if(i == (musicListNum - 1))
+                {
+                    musicList[i].transform.position = Vector3.Lerp(musicListPosDatas[i], musicListPosDatas[0], t);
+                    musicList[i].transform.rotation = Quaternion.Lerp(musicListRotationDatas[i], musicListRotationDatas[0], t);
+                    
+                }else
+                {
+                    musicList[i].transform.position = Vector3.Lerp(musicListPosDatas[i], musicListPosDatas[i + 1], t);
+                    musicList[i].transform.rotation = Quaternion.Lerp(musicListRotationDatas[i], musicListRotationDatas[i + 1], t);
+                }
+            }
+            yield return new WaitForSeconds(scrollSpeed);
+        }
+        ScrollDownNumChange();
+        jsonReader.SendMessage("ChangeJson",nowMusicNum);
+        isScrolling = false;
     }
+
+    private void ScrollUpNumChange()
+    {
+        if(nowMusicNum > 1)
+        {
+            nowMusicNum--;
+        }
+        else
+        {
+            nowMusicNum = musicListNum;
+        }
+    }
+
+    private void ScrollDownNumChange()
+    {
+        if(nowMusicNum < musicListNum)
+        {
+            nowMusicNum++;
+        }
+        else
+        {
+            nowMusicNum = 1;
+        }
+    }
+
 }
