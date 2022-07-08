@@ -24,7 +24,7 @@ public class MusicPlayer : MonoBehaviour
         /* キューシートファイルのロード待ち */
         while (CriAtom.CueSheetsAreLoading) { yield return null; }
         /* Cue情報の取得 */
-        SongExAcb = CriAtom.GetAcb("BGMCue");
+        SongExAcb = CriAtom.GetAcb("BGM");
         SongcueInfoList = SongExAcb.GetCueInfoList();
 
         /* AtomExPlayerの生成 */

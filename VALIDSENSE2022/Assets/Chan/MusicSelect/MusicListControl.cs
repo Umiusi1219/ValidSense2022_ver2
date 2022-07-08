@@ -76,7 +76,7 @@ public class MusicListControl : MonoBehaviour
 
     }
 
-    private IEnumerator ScrollUp()
+    private IEnumerator ScrollDown()
     {
         if(isScrolling) { yield break; }
 
@@ -103,11 +103,11 @@ public class MusicListControl : MonoBehaviour
             }
             yield return new WaitForSeconds(scrollSpeed);
         }
-        ScrollUpNumChange();
+        ScrollDownNumChange();
         jsonReader.SendMessage("ChangeJson",nowMusicNum);
         isScrolling = false;
     }
-    private IEnumerator ScrollDown()
+    private IEnumerator ScrollUp()
     {
         if(isScrolling) { yield break; }
 
@@ -134,7 +134,7 @@ public class MusicListControl : MonoBehaviour
             }
             yield return new WaitForSeconds(scrollSpeed);
         }
-        ScrollDownNumChange();
+        ScrollUpNumChange();
         jsonReader.SendMessage("ChangeJson",nowMusicNum);
         isScrolling = false;
     }

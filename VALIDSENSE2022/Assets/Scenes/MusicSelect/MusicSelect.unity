@@ -1000,8 +1000,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9a592ff2c003c4616add700d3b5f5718, type: 3}
-  m_Color: {r: 0, g: 0.23381662, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bfb32564349b54323816a0aa70635dd5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2218,7 +2218,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 25d192430e8c54a598d7000d55706042, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bfb32564349b54323816a0aa70635dd5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2522,6 +2522,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882920525}
   m_CullTransparentMesh: 1
+--- !u!1001 &1934598913
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9219855760343079176, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_Name
+      value: CRIWARE
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079178, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079179, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: cueSheets.Array.data[0].name
+      value: BGMCue
+      objectReference: {fileID: 0}
+    - target: {fileID: 9219855760343079179, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
+      propertyPath: cueSheets.Array.data[0].acbFile
+      value: BGMData/BGMCue.acb
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: beb642596cccf471ab0a66c9f043c8d0, type: 3}
 --- !u!1 &2014851442
 GameObject:
   m_ObjectHideFlags: 0
