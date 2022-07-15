@@ -19,7 +19,7 @@ public class MusicListControl : MonoBehaviour
     private bool isScrolling = false;
     private float scrollingSpeed = 0.5f;
     private float scrollTime = 0;
-    [SerializeField]private float scrollSpeed = 0.05f;
+    [SerializeField]private float scrollSpeed = 0.02f;
     private GameObject jsonReader;
     void Start()
     {
@@ -51,36 +51,11 @@ public class MusicListControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             StartCoroutine(ScrollUp());
-            /*for(int i = musicListNum - 1; i > -1; i--)
-            {
-                if(i == 0)
-                {
-                    musicList[i].transform.position = musicListPosDatas[musicListNum - 1];
-                    musicList[i].transform.rotation = musicListRotationDatas[musicListNum - 1];
-                }else
-                {
-                    musicList[i].transform.position = musicListPosDatas[i - 1];
-                    musicList[i].transform.rotation = musicListRotationDatas[i - 1];
-                }
-            }*/
         }
 
         else if (Input.GetKeyDown(KeyCode.S))
         {
             StartCoroutine(ScrollDown());
-            /*for(int i = 0; i < musicListNum ; i++)
-            {
-                if(i == (musicListNum - 1))
-                {
-                    musicList[i].transform.position = musicListPosDatas[0];
-                    musicList[i].transform.rotation = musicListRotationDatas[0];
-                    
-                }else
-                {
-                    musicList[i].transform.position = musicListPosDatas[i + 1];
-                    musicList[i].transform.rotation = musicListRotationDatas[i + 1];
-                }
-            }*/
         }
 
 
