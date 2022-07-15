@@ -55,7 +55,7 @@
             }
         ,
             "sixthSense": {
-                "level" : 28,
+                "level" : 70,
                 "notelist": [
                     {"type": "Tap", "line": 1, "time": 2000 },
                     {"type": "Tap", "line": 2, "time": 2100 },
