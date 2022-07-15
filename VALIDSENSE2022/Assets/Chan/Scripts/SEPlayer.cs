@@ -7,7 +7,6 @@ public class SEPlayer : MonoBehaviour
     private CriAtomEx.CueInfo[] SEcueInfoList;
     private CriAtomExPlayer SEExPlayer;
     private CriAtomExAcb SEExAcb;
-    private CriAtomExPlayback SEPlayback;
     public static SEPlayer instance;
     private void Awake() 
     {
@@ -28,19 +27,9 @@ public class SEPlayer : MonoBehaviour
         SEExPlayer = new CriAtomExPlayer();    
         
     }
-    public void SETap(int SEtype)
+    public void SEOneShot(int SENum)
     {
-        SEExPlayer.SetCue(SEExAcb,SEcueInfoList[SEtype].name);
-        SEPlayback = SEExPlayer.Start();
-    }
-    public void SETap2()
-    {
-        SEExPlayer.SetCue(SEExAcb,SEcueInfoList[1].name);
-        SEPlayback = SEExPlayer.Start();
-    }
-    public void SEHold()
-    {
-        SEExPlayer.SetCue(SEExAcb,SEcueInfoList[2].name);
-        SEPlayback = SEExPlayer.Start();
+        SEExPlayer.SetCue(SEExAcb,SEcueInfoList[SENum].name);
+        SEExPlayer.Start();
     }
 }

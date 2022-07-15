@@ -11,19 +11,19 @@ public class Testi : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            SEPlayer.instance.SETap(0);
+            SEPlayer.instance.SEOneShot(0);
         }
         if(Input.GetKeyDown(KeyCode.O))
         {
-            SEPlayer.instance.SETap(1);
+            SEPlayer.instance.SEOneShot(1);
         }
         if(Input.GetKeyDown(KeyCode.W)||Input.GetKeyDown(KeyCode.S))
         {
-            SEPlayer.instance.SETap(2);
+            SEPlayer.instance.SEOneShot(2);
         }
         if(Input.GetKeyDown(KeyCode.U))
         {
-            SEPlayer.instance.SETap(3);
+            SEPlayer.instance.SEOneShot(3);
         }
 
 

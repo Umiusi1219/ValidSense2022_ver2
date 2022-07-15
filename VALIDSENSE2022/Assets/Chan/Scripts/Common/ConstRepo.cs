@@ -7,11 +7,10 @@ public static class ConstRepo
 
     public enum NotesType
     { 
-        None = 0,
-        Normal,
+        Normal = 0,
+        Slide,
         Hold,
         Link,
-        Slide,
 
 
         /*
