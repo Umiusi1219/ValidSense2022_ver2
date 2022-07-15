@@ -41,19 +41,19 @@ public class SceneManagers : MonoBehaviour
         switch(scene)
         {
             case GameScene.Title:
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("Title");
                 break;
             case GameScene.CharaSelect:
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("");
                 break;
             case GameScene.MusicSelect:
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene("MusicSelect");
                 break;
             case GameScene.Playing:
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene("MainScene");
                 break;
             case GameScene.Result:
-                SceneManager.LoadScene(3);
+                SceneManager.LoadScene("ResultScene");
                 break;
             default:
                 break;
