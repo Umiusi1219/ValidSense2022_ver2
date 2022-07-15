@@ -28,8 +28,9 @@ public class MusicSelectData : MonoBehaviour
         name.text = songdata.name;
         artistName.text = songdata.artist;
         bPM.text = "BPM:" + songdata.bpm;
-        easyLevel.text = difflist.natural.level + "";
-        normalLevel.text = difflist.highSense.level +"";
-        hardLevel.text = difflist.sixthSense.level +"";
+        easyLevel.text = difflist.natural.level.ToString();
+        normalLevel.text = difflist.highSense.level.ToString();
+        hardLevel.text = difflist.sixthSense.level.ToString();
+        
     }
 }

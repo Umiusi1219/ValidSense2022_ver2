@@ -1,7 +1,7 @@
 
 public static class ConstRepo 
 {
-    // ‘å‚«‚¢ˆÓ–¡‚Ì•Ï”‚ð“ü‚ê‚é
+    // ï¿½å‚«ï¿½ï¿½ï¿½Ó–ï¿½ï¿½Ì•Ïï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     public const long poorTiming = -105;
 
@@ -15,14 +15,15 @@ public static class ConstRepo
 
 
         /*
-         * ƒm[ƒc‚Í‚P‚Å‚¢‚¢  ›
-         * ƒŒ[ƒ“‚ª‚S‚Â  ›
-         * âž‘Ì‚ÅƒvƒŒƒC
+         * ï¿½mï¿½[ï¿½cï¿½Í‚Pï¿½Å‚ï¿½ï¿½ï¿½  ï¿½ï¿½
+         * ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½ï¿½  ï¿½ï¿½
+         * âž‘Ì‚Åƒvï¿½ï¿½ï¿½C
          * Live2D
          * 
-         * ƒrƒ‹ƒho—ˆ‚½‚ç—Ç‚«
+         * ï¿½rï¿½ï¿½ï¿½hï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½
          */
     }
+
 
 
 }
