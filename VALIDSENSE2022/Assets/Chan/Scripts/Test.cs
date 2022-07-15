@@ -20,7 +20,7 @@ public class Test : MonoBehaviour
         {
             sceneManager.SendMessage("SetScene", GameScene.MusicSelect);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             sceneManager.SendMessage("SetScene", GameScene.Playing);
         }

@@ -1,9 +1,10 @@
 {
     "songdata": {
-        "name": "Test2",
+        "name": "Retro Quest",
         "songnum": 2,
-        "bpm": 200,
-        "offset": 1000
+        "artist": "オオタジュンヤ",
+        "bpm": 120,
+        "offset": 7820
     },
     "difflist": 
         {
@@ -14,14 +15,14 @@
             }
         ,
             "highSense": {
-                "level" : 6,
+                "level" : 0,
                 "notelist": [
 
                 ]
             }
         ,
             "sixthSense": {
-                "level" : 9,
+                "level" : 0,
                 "notelist": [
 
                 ]

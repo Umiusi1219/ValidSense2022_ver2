@@ -1,28 +1,29 @@
 {
     "songdata": {
-        "name": "Test3",
+        "name": "Coming Soon",
         "songnum": 3,
-        "bpm": 200,
-        "offset": 1000
+        "artist": "Coming Soon",
+        "bpm": 999,
+        "offset": 7820
     },
     "difflist": 
         {
             "natural": {
-                "level" : 5,
+                "level" : 0,
                 "notelist": [
 
                 ]
             }
         ,
             "highSense": {
-                "level" : -9,
+                "level" : 0,
                 "notelist": [
                     
                 ]
             }
         ,
             "sixthSense": {
-                "level" : 4,
+                "level" : 0,
                 "notelist": [
 
                 ]
