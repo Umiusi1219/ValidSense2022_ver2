@@ -7,48 +7,48 @@ public class NotesJudge : MonoBehaviour
 {
 
     /// <summary>
-    /// ViewNoteManager‚ÉQÆ‚·‚é—p
+    /// ViewNoteManagerã«å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     ViewNotesManager viewNotesManager;
 
     /// <summary>
-    /// ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚ğ•\¦‚Ì‚·‚éƒIƒuƒWƒFƒNƒg
+    /// ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã‚’è¡¨ç¤ºã®ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     /// </summary>
     [SerializeField]
     SkillChargeRate skillChargeText;
 
 
     /// <summary>
-    /// ƒRƒ“ƒ{”‚ğ•\‹L‚µ‚Ä‚éƒIƒuƒWƒFƒNƒg‚ÉQÆ‚·‚é—p
+    /// ã‚³ãƒ³ãƒœæ•°ã‚’è¡¨è¨˜ã—ã¦ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     ComboScript ComboScript;
 
 
     /// <summary>
-    /// Line‚ğŠÇ—‚µ‚Ä‚éƒ}ƒl[ƒWƒƒ[‚ÉQÆ‚·‚é—p
+    /// Lineã‚’ç®¡ç†ã—ã¦ã‚‹ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã«å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     LinesManager linesManager;
 
 
     /// <summary>
-    /// playerInput‚ÉQÆ‚·‚é—p
+    /// playerInputã«å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     PlayerInput playerInput;
 
 
     /// <summary>
-    /// ƒŒ[ƒ“’Dæ‚Ég—p‚·‚éApoor”‹L‰¯—p
+    /// ãƒ¬ãƒ¼ãƒ³å¥ªå–ã«ä½¿ç”¨ã™ã‚‹ã€pooræ•°è¨˜æ†¶ç”¨
     /// </summary>
     [SerializeField]
     private int _poorCount;
 
 
     /// <summary>
-    /// ƒŒ[ƒ“’Dæ‚·‚éƒ^ƒCƒ~ƒ“ƒO
+    /// ãƒ¬ãƒ¼ãƒ³å¥ªå–ã™ã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°
     /// </summary>
     [SerializeField]
     private int _lineStealTiming;
@@ -56,34 +56,34 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬—p‚ÌƒGƒtƒFƒNƒgƒŠƒXƒg
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆç”¨ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆãƒªã‚¹ãƒˆ
     /// </summary>
     [SerializeField]
     List<RawImage> effectList;
 
 
     /// <summary>
-    /// ¶¬‚·‚éƒGƒtƒFƒNƒg‚Ìˆê•Û‘¶æ
+    /// ç”Ÿæˆã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®ä¸€æ™‚ä¿å­˜å…ˆ
     /// </summary>
     [SerializeField]
     RawImage[] effect;
 
     /// <summary>
-    /// ¶¬‚·‚éƒGƒtƒFƒNƒg‚Ìe
+    /// ç”Ÿæˆã™ã‚‹ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã®è¦ª
     /// </summary>
     [SerializeField]
     Canvas effectParent;
 
 
     /// <summary>
-    /// ƒGƒtƒFƒNƒg¶¬‚ÌAPosw’è—p
+    /// ã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”Ÿæˆæ™‚ã®ã€PosæŒ‡å®šç”¨
     /// </summary>
     [SerializeField]
     private RectTransform[] instancePos;
 
 
     /// <summary>
-    /// NoteJudge‚Ìí—Ş
+    /// NoteJudgeã®ç¨®é¡
     /// </summary>
     enum JudgeType
     {
@@ -101,7 +101,7 @@ public class NotesJudge : MonoBehaviour
     */
 
 
-    ////Poor”»’è‚Ìmp4¶¬—p
+    ////Pooråˆ¤å®šã®mp4ç”Ÿæˆç”¨
     //float x = -19.5f;
     //float y = -260;
     //float z = 300;
@@ -112,54 +112,54 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// Briliant‚Ì”»’è—p‚Ì’l
+    /// Briliantã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long briliantJudge = 20;
     /// <summary>
-    /// Great‚Ì”»’è—p‚Ì’l
+    /// Greatã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long greatJudge = 40;
     /// <summary>
-    /// Good‚Ì”»’è—p‚Ì’l
+    /// Goodã®åˆ¤å®šç”¨ã®å€¤
     /// </summary>
     private long goodJudge = 100;
 
 
     /// <summary>
-    /// ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW‚Ì’l‘‰Á—p
+    /// ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ã®å€¤å¢—åŠ ç”¨
     /// </summary>
     [SerializeField]
     int[] addSkillValue;
 
 
     /// <summary>
-    /// ƒXƒLƒ‹‚Å”»’è‚ği‚éˆ×‚Ì’l(Š„‚èZ)
+    /// ã‚¹ã‚­ãƒ«ã§åˆ¤å®šã‚’çµã‚‹ç‚ºã®å€¤(å‰²ã‚Šç®—)
     /// </summary>
     [SerializeField]
     public long judgeLeverage;
 
 
     /// <summary>
-    /// ƒXƒRƒA—pUIQÆ—p
+    /// ã‚¹ã‚³ã‚¢ç”¨UIå‚ç…§ç”¨
     /// </summary>
     [SerializeField]
     private ScoreScript scoreValue;
 
 
     /// <summary>
-    /// Briliant‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Briliantã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _briliantScore;
 
     /// <summary>
-    /// Great‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Greatã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _greatScore;
 
     /// <summary>
-    /// Good‚Ì”»’èA‰ÁZ‚³‚ê‚éƒXƒRƒA‚Ì’l
+    /// Goodã®åˆ¤å®šæ™‚ã€åŠ ç®—ã•ã‚Œã‚‹ã‚¹ã‚³ã‚¢ã®å€¤
     /// </summary>
     [SerializeField]
     private int _goodScore;
@@ -167,114 +167,114 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// “n‚³‚ê‚½ŠÔ‚ğ‚à‚Æ‚ÉA¡‚Ìó‹µ‚Å“KØ‚È”»’è‚ğŒvZ‚·‚é
+    /// æ¸¡ã•ã‚ŒãŸæ™‚é–“ã‚’ã‚‚ã¨ã«ã€ä»Šã®çŠ¶æ³ã§é©åˆ‡ãªåˆ¤å®šã‚’è¨ˆç®—ã™ã‚‹
     /// </summary>
-    /// <param name="time">”»’è‚·‚éƒm[ƒc‚ÌŠÔ</param>
-    /// <param name="line">”»’è‚·‚éƒm[ƒc‚ªŠ‘®‚µ‚Ä‚¢‚éƒŒ[ƒ“</param>
+    /// <param name="time">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ã®æ™‚é–“</param>
+    /// <param name="line">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ãŒæ‰€å±ã—ã¦ã„ã‚‹ãƒ¬ãƒ¼ãƒ³</param>
     public void NotesJudgement(long time, int line)
     {
 
-        // Briliant‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Briliantã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         if (time <= briliantJudge / judgeLeverage)
         {
-            //BriliantƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Briliantã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Briliant]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
 
-            //ƒXƒRƒA‘”‚ÉABriliant‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Briliantã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _briliantScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Briliant)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Briliant)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
 
-        // Great‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Greatã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         else if (time <= greatJudge / judgeLeverage)
         {
-            //GreatƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Greatã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
 
-            //ƒXƒRƒA‘”‚ÉAGraet‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Graetã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _greatScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Great)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Great)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
 
-        // Good‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç
+        // Goodã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰
         else if (time <= goodJudge / judgeLeverage)
         {
-            //GoodƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Goodã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            //ƒXƒRƒA‘”‚ÉAGood‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Goodã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _goodScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Good)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Good)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
 
-        //poor”»’è
+        //pooråˆ¤å®š
         else
         {
-            //poorƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //poorã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Poor]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            // poor”»’è‚µ‚½‚Ì‚Å‰ÁZ
+            // pooråˆ¤å®šã—ãŸã®ã§åŠ ç®—
             _poorCount++;
 
-            //ƒRƒ“ƒ{”‚ÌƒŠƒZƒbƒg
+            //ã‚³ãƒ³ãƒœæ•°ã®ãƒªã‚»ãƒƒãƒˆ
             ComboScript.ComboReset();
         }
 
 
-        // ƒXƒRƒAUI‚ÌXV
+        // ã‚¹ã‚³ã‚¢UIã®æ›´æ–°
         scoreValue.ScoreUpdate();
 
 
-        // ”»’è‚ğæ“¾‚µ‚½Notes‚ÌƒtƒF[ƒhƒAƒEƒg
+        // åˆ¤å®šã‚’å–å¾—ã—ãŸNotesã®ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
         viewNotesManager.NowNotesFadeOut(line);
 
 
-        //@poor‚ÌƒJƒEƒ“ƒg‚ªˆê’èˆÈã‚É‚È‚Á‚½‚çƒŒ[ƒ“’Dæ‚³‚ê‚é
+        //ã€€poorã®ã‚«ã‚¦ãƒ³ãƒˆãŒä¸€å®šä»¥ä¸Šã«ãªã£ãŸã‚‰ãƒ¬ãƒ¼ãƒ³å¥ªå–ã•ã‚Œã‚‹
         if(_poorCount >= _lineStealTiming)
         {
             linesManager.LineIsStolen_1p();
@@ -288,119 +288,119 @@ public class NotesJudge : MonoBehaviour
 
 
     /// <summary>
-    /// “n‚³‚ê‚½ŠÔ‚ğ‚à‚Æ‚ÉA“Åƒm[ƒc‚É‘Î‚µ‚Ä“KØ‚È”»’è‚ğŒvZ‚·‚é
+    /// æ¸¡ã•ã‚ŒãŸæ™‚é–“ã‚’ã‚‚ã¨ã«ã€æ¯’ãƒãƒ¼ãƒ„ã«å¯¾ã—ã¦é©åˆ‡ãªåˆ¤å®šã‚’è¨ˆç®—ã™ã‚‹
     /// </summary>
-    /// <param name="time">”»’è‚·‚éƒm[ƒc‚ÌŠÔ</param>
-    /// <param name="line">”»’è‚·‚éƒm[ƒc‚ªŠ‘®‚µ‚Ä‚¢‚éƒŒ[ƒ“</param>
+    /// <param name="time">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ã®æ™‚é–“</param>
+    /// <param name="line">åˆ¤å®šã™ã‚‹ãƒãƒ¼ãƒ„ãŒæ‰€å±ã—ã¦ã„ã‚‹ãƒ¬ãƒ¼ãƒ³</param>
     public void PoisonNotesJudgement(long time, int line)
     {
 
-        // Briliant‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç(poison‚È‚½‚ß“à•”ˆ—‚ÍApoor)
+        // Briliantã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰(poisonãªãŸã‚å†…éƒ¨å‡¦ç†ã¯ã€poor)
         if (time <= briliantJudge / judgeLeverage)
         {
-            //poorƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //poorã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Poor]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            // poor”»’è‚µ‚½‚Ì‚Å‰ÁZ
+            // pooråˆ¤å®šã—ãŸã®ã§åŠ ç®—
             _poorCount++;
 
-            //ƒRƒ“ƒ{”‚ÌƒŠƒZƒbƒg
+            //ã‚³ãƒ³ãƒœæ•°ã®ãƒªã‚»ãƒƒãƒˆ
             ComboScript.ComboReset();
         }
 
-        // Graet‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç(poison‚È‚½‚ß“à•”ˆ—‚ÍAGood)
+        // Graetã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰(poisonãªãŸã‚å†…éƒ¨å‡¦ç†ã¯ã€Good)
         else if (time <= greatJudge / judgeLeverage)
         {
-            //GoodƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Goodã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            //ƒXƒRƒA‘”‚ÉAGood‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Goodã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _goodScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Good)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Good)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
 
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
-        // Good‚Ì”»’èŠÔ / ƒXƒLƒ‹‚É‚æ‚é”{—¦ˆÈ‰º‚È‚ç(poison‚È‚½‚ß“à•”ˆ—‚ÍAGreat)
+        // Goodã®åˆ¤å®šæ™‚é–“ / ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹å€ç‡ä»¥ä¸‹ãªã‚‰(poisonãªãŸã‚å†…éƒ¨å‡¦ç†ã¯ã€Great)
         else if (time <= goodJudge / judgeLeverage)
         {
-            //GreatƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Greatã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            //ƒXƒRƒA‘”‚ÉAGraet‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Graetã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _greatScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Great)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Great)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
 
-        //poor”»’è(poison‚È‚½‚ß“à•”ˆ—‚ÍABriliant)
+        //pooråˆ¤å®š(poisonãªãŸã‚å†…éƒ¨å‡¦ç†ã¯ã€Briliant)
         else
         {
-            //BriliantƒGƒtƒFƒNƒg‚ğˆêŠi”[ƒIƒuƒWƒFƒNƒg‚É¶¬
+            //Briliantã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚æ ¼ç´ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã«ç”Ÿæˆ
             effect[line] = Instantiate(effectList[(int)JudgeType.Briliant]);
 
-            //¶¬‚µ‚½ƒIƒuƒWƒFƒNƒg‚Ìe‚ğİ’è
+            //ç”Ÿæˆã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è¦ªã‚’è¨­å®š
             effect[line].transform.parent = effectParent.transform;
 
-            // ƒGƒtƒFƒNƒg‚ğˆø”‚Ìline‚É‘Î‰‚·‚éêŠ‚ÉˆÚ“®
+            // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’å¼•æ•°ã®lineã«å¯¾å¿œã™ã‚‹å ´æ‰€ã«ç§»å‹•
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            //ƒXƒRƒA‘”‚ÉABriliant‚Ì’l‚ğ‚½‚·
+            //ã‚¹ã‚³ã‚¢ç·æ•°ã«ã€Briliantã®å€¤ã‚’ãŸã™
             scoreValue.scoreValue += _briliantScore;
 
-            //ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì‘‰Á(Briliant)
+            //ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å¢—åŠ (Briliant)
             skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
 
 
-            //ƒRƒ“ƒ{”‚Ì‰ÁZ
+            //ã‚³ãƒ³ãƒœæ•°ã®åŠ ç®—
             ComboScript.AddComboValue();
         }
 
 
-        // ƒXƒRƒAUI‚ÌXV
+        // ã‚¹ã‚³ã‚¢UIã®æ›´æ–°
         scoreValue.ScoreUpdate();
 
 
-        // ”»’è‚ğæ“¾‚µ‚½Notes‚ÌƒtƒF[ƒhƒAƒEƒg
+        // åˆ¤å®šã‚’å–å¾—ã—ãŸNotesã®ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
         viewNotesManager.NowNotesFadeOut(line);
 
 
 
-        //@poor‚ÌƒJƒEƒ“ƒg‚ªˆê’èˆÈã‚É‚È‚Á‚½‚çƒŒ[ƒ“’Dæ‚³‚ê‚é
+        //ã€€poorã®ã‚«ã‚¦ãƒ³ãƒˆãŒä¸€å®šä»¥ä¸Šã«ãªã£ãŸã‚‰ãƒ¬ãƒ¼ãƒ³å¥ªå–ã•ã‚Œã‚‹
         if (_poorCount >= _lineStealTiming)
         {
             linesManager.LineIsStolen_1p();
 
-            //ƒJƒEƒ“ƒg‚Ì‰Šú‰»
+            //ã‚«ã‚¦ãƒ³ãƒˆã®åˆæœŸåŒ–
             _poorCount = 0;
         }
     }

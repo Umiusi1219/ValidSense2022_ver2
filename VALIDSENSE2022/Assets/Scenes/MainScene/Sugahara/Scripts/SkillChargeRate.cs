@@ -5,33 +5,33 @@ using UnityEngine.UI;
 
 public class SkillChargeRate : MonoBehaviour
 {
-    // ©g‚ÌText‚ğŠÇ—‚·‚éƒIƒuƒWƒFƒNƒg
+    // è‡ªèº«ã®Textã‚’ç®¡ç†ã™ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
     Text skillChargeText;
 
     [SerializeField]
-    // ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì’l
+    // ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å€¤
     public int skillValue;
 
-    // ƒXƒLƒ‹‚Ìƒ`ƒƒ[ƒW—¦‚Ì’l‚ÌÅ‘å’l
+    // ã‚¹ã‚­ãƒ«ã®ãƒãƒ£ãƒ¼ã‚¸ç‡ã®å€¤ã®æœ€å¤§å€¤
     [SerializeField]
     private int _skillValueMax;
 
 
     /// <summary>
-    /// ƒLƒƒƒ‰‚ğ‚¢‚¶‚Á‚Ä‚éq‚ÉQÆ—p
+    /// ã‚­ãƒ£ãƒ©ã‚’ã„ã˜ã£ã¦ã‚‹å­ã«å‚ç…§ç”¨
     /// </summary>
     [SerializeField]
     TestChara testChara;
 
 
     /// <summary>
-    /// F•ÏXg—p‚·‚éƒJƒ‰[ƒR[ƒh‚ÌA”z—ñ
+    /// è‰²å¤‰æ›´æ™‚ä½¿ç”¨ã™ã‚‹ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã®ã€é…åˆ—
     /// </summary>
     public string[] charaColorCode;
 
 
     /// <summary>
-    ///stringŒ^‚ÌƒJƒ‰[ƒR[ƒh‚ğColor•ÏŠ·‚µ‚½‚Ìó‚¯æ‚èæ
+    ///stringå‹ã®ã‚«ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰ã‚’Colorå¤‰æ›ã—ãŸæ™‚ã®å—ã‘å–ã‚Šå…ˆ
     /// </summary>
     Color colorCode;
 
@@ -39,47 +39,47 @@ public class SkillChargeRate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ©•ª‚ÌText‚ğ‘}“ü
+        // è‡ªåˆ†ã®Textã‚’æŒ¿å…¥
         skillChargeText = GetComponent<Text>();
 
         skillChargeTextUpdate();
 
-        // ColorŒ^‚Ö‚Ì•ÏŠ·¬Œ÷‚·‚é‚Æcolor‚ÉColorŒ^‚ÌÔF‚ª‘ã“ü‚³‚ê‚éjoutƒL[ƒ[ƒh‚ÅQÆ“n‚µ‚É‚·‚é
+        // Colorå‹ã¸ã®å¤‰æ›æˆåŠŸã™ã‚‹ã¨colorã«Colorå‹ã®èµ¤è‰²ãŒä»£å…¥ã•ã‚Œã‚‹ï¼‰outã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã§å‚ç…§æ¸¡ã—ã«ã™ã‚‹
         if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P],
             out colorCode))
         {
-            // ƒLƒƒƒ‰‚É‚ ‚Á‚½F‚É•ÏX
+            // ã‚­ãƒ£ãƒ©ã«ã‚ã£ãŸè‰²ã«å¤‰æ›´
             skillChargeText.color = colorCode;
         }
     }
 
 
     /// <summary>
-    /// skillValue‚Éˆø”‚ğ‘«‚·ŠÖ”
+    /// skillValueã«å¼•æ•°ã‚’è¶³ã™é–¢æ•°
     /// </summary>
-    /// <param name="addValue">skillValue‚É‘«‚·’l</param>
+    /// <param name="addValue">skillValueã«è¶³ã™å€¤</param>
     public void AddSkillValue(int addValue)
     {
-        // skillValue + addValue ‚ªMax‚ğ‰z‚¦‚È‚¯‚ê‚ÎA‚»‚Ì‚Ü‚Ü‘«‚µ‚ÄA’´‚¦‚é‚Ì‚Å‚ ‚ê‚Î
-        // skillValue ‚ÉMax‚Ì’l‚ğ“ü‚ê‚é
+        // skillValue + addValue ãŒMaxã‚’è¶Šãˆãªã‘ã‚Œã°ã€ãã®ã¾ã¾è¶³ã—ã¦ã€è¶…ãˆã‚‹ã®ã§ã‚ã‚Œã°
+        // skillValue ã«Maxã®å€¤ã‚’å…¥ã‚Œã‚‹
         if (skillValue + addValue > _skillValueMax) 
         {
             skillValue = _skillValueMax;
         }
         else
         {
-            //ˆø”•ª‘«‚·
+            //å¼•æ•°åˆ†è¶³ã™
             skillValue += addValue;
 
         }
 
-        //•\¦‚ÌXV
+        //è¡¨ç¤ºã®æ›´æ–°
         skillChargeTextUpdate();
     }
 
 
     /// <summary>
-    /// ƒ`ƒƒ[ƒW—¦‚Ì•\‹LXV
+    /// ãƒãƒ£ãƒ¼ã‚¸ç‡ã®è¡¨è¨˜æ›´æ–°
     /// </summary>
     void skillChargeTextUpdate()
     {
@@ -87,11 +87,11 @@ public class SkillChargeRate : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒXƒLƒ‹‚ğg—p‚µ‚½‚Ìˆ—
+    /// ã‚¹ã‚­ãƒ«ã‚’ä½¿ç”¨ã—ãŸæ™‚ã®å‡¦ç†
     /// </summary>
     public void UseSkill_Text()
     {
-        //ƒXƒLƒ‹g—p‚ÌÁ”ï—Ê•ªˆø‚­
+        //ã‚¹ã‚­ãƒ«ä½¿ç”¨æ™‚ã®æ¶ˆè²»é‡åˆ†å¼•ã
         skillValue -= 100;
 
         skillChargeTextUpdate();

@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ComboScript : MonoBehaviour
 {
     /// <summary>
-    /// ƒRƒ“ƒ{”•\‹L—p
+    /// ã‚³ãƒ³ãƒœæ•°è¡¨è¨˜ç”¨
     /// </summary>
     Text text;
 
     /// <summary>
-    /// ƒRƒ“ƒ{”
+    /// ã‚³ãƒ³ãƒœæ•°
     /// </summary>
     public int comboValue;
 
@@ -25,7 +25,7 @@ public class ComboScript : MonoBehaviour
 
 
     /// <summary>
-    /// ƒRƒ“ƒ{”‚ğ‰ÁZ
+    /// ã‚³ãƒ³ãƒœæ•°ã‚’åŠ ç®—
     /// </summary>
     public void AddComboValue()
     {
@@ -35,7 +35,7 @@ public class ComboScript : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒRƒ“ƒ{”‚ğƒŠƒZƒbƒg
+    /// ã‚³ãƒ³ãƒœæ•°ã‚’ãƒªã‚»ãƒƒãƒˆ
     /// </summary>
     public void ComboReset()
     {
@@ -44,7 +44,7 @@ public class ComboScript : MonoBehaviour
         _ComboValueUpdate();
     }
 
-    //ƒRƒ“ƒ{”‚Ì•\‹L—p
+    //ã‚³ãƒ³ãƒœæ•°ã®è¡¨è¨˜ç”¨
     private void _ComboValueUpdate()
     {
         text.text = comboValue.ToString();
