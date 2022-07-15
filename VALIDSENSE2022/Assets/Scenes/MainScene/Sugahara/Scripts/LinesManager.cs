@@ -10,11 +10,39 @@ public class LinesManager : MonoBehaviour
     [SerializeField]
     TestChara testChara;
 
+
+    /// <summary>
+    /// ノーツの見た目などを管理してる子に参照する用
+    /// </summary>
+    [SerializeField]
+    ViewNotesManager viewNotesManager;
+
+
+    /// <summary>
+    /// 1pのスコアの数値を参照する用
+    /// </summary>
+    [SerializeField]
+    ScoreScript scoreScript_1p;
+
+    /// <summary>
+    /// 2pのスコアの数値を参照する用
+    /// </summary>
+    [SerializeField]
+    ScoreScript scoreScript_2p;
+
+
     /// <summary>
     /// Line参照用
     /// </summary>
     [SerializeField]
     List<GameObject> lines;
+
+
+    /// <summary>
+    /// レーン奪取時に加算されるスコアの値
+    /// </summary>
+    [SerializeField]
+    private int[] _lineStealScore;
 
 
     /// <summary>
@@ -34,7 +62,7 @@ public class LinesManager : MonoBehaviour
     /// </summary>
     [Range(1, 6)]
     [SerializeField]
-    private int _1pHaveLines;
+    public int haveLines_1p;
 
 
     /// <summary>
@@ -46,55 +74,99 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
-    /// 所持ラインの一番相手側を相手の色に変更する
+    /// 1pHaveLineのゲッター
     /// </summary>
-    /// <param name="opponentChara">対戦相手のキャラ番号</param>
-    void LineIsStolen_1p(int opponentCharaNum)
+    /// <returns></returns>
+    public int Get_1pHaveLines()
+    {
+        return haveLines_1p;
+    }
+
+
+    /// <summary>
+    /// 1p所持ラインの一番2p側を相手の色に変更する
+    /// </summary>
+    public void LineIsStolen_1p()
     {
         //配列参照を防ぐ
-        if(_1pHaveLines > 0 )
+        if(haveLines_1p > 0 )
         {
             // Color型への変換成功するとcolorにColor型の赤色が代入される）outキーワードで参照渡しにする
-            if (ColorUtility.TryParseHtmlString(charaColorCode[opponentCharaNum],
+            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count2P],
                 out colorCode))
             {
                 // 透明度の設定
                 colorCode.a = _lineAlpha;
 
-                // 所持ラインの一番相手側を相手の色に変更する
-                lines[_1pHaveLines].GetComponent<SpriteRenderer>().color = colorCode;
+                // 所持ラインの一番2p側を相手の色に変更する
+                lines[haveLines_1p].GetComponent<SpriteRenderer>().color = colorCode;
 
-                // 所持ラインを減算
-                _1pHaveLines--;
+                // 1p所持ラインを減算
+                haveLines_1p--;
             }
+
+
+            //1pのラインを奪取されたので２Pのスコアを加算
+            //1pの所持ラインが3以下なら元々2pのラインなので加算直が少ないほうを適応
+            if(haveLines_1p <= 3)
+            {
+                scoreScript_2p.scoreValue += _lineStealScore[0];
+            }
+            else
+            {
+                scoreScript_2p.scoreValue += _lineStealScore[1];
+            }
+            //スコア表記の更新
+            scoreScript_2p.ScoreUpdate();
+
+
+            //奪われたラインに流れてるノーツの色を2pの色に変更
+            viewNotesManager.NowActNotesColorChange(haveLines_1p +1, 2);
         }
     }
 
 
     /// <summary>
-    /// 相手の所持ラインの一番自分側を自分の色に変更する
+    /// 2pの所持ラインの一番1p側を自分の色に変更する
     /// </summary>
-    /// <param name="opponentChara">自分のキャラ番号</param>
-    void LineIsStolen_2p(int myCharaNum)
+    public void LineIsStolen_2p()
     {
         //配列参照を防ぐ
-        if (_1pHaveLines < 6)
+        if (haveLines_1p < 6)
         {
             // Color型への変換成功すると（colorにColor型の赤色が代入される）outキーワードで参照渡しにする
-            if (ColorUtility.TryParseHtmlString(charaColorCode[myCharaNum],
+            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P],
                 out colorCode))
             {
 
-                // 所持ラインを加算
-                _1pHaveLines++;
+                // 1p所持ラインを加算
+                haveLines_1p++;
 
                 // 透明度の設定
                 colorCode.a = _lineAlpha;
 
-                // 相手の所持ラインの一番1p側を1pの色に変更する
-                lines[_1pHaveLines].GetComponent<SpriteRenderer>().color = colorCode;
+                // 2pの所持ラインの一番1p側を1pの色に変更する
+                lines[haveLines_1p].GetComponent<SpriteRenderer>().color = colorCode;
 
             }
+
+            //2pのラインを奪取されたので1pのスコアを加算
+            //1pの所持ラインが3以下なら元々2pのラインなので加算直が少ないほうを適応
+            if (haveLines_1p >= 4)
+            {
+                scoreScript_1p.scoreValue += _lineStealScore[0];
+            }
+            else
+            {
+                scoreScript_1p.scoreValue += _lineStealScore[1];
+            }
+
+            //スコア表記の更新
+            scoreScript_1p.ScoreUpdate();
+
+
+            //奪われたラインに流れてるノーツの色を1pの色に変更
+            viewNotesManager.NowActNotesColorChange(haveLines_1p - 1, 1);
         }
     }
 
@@ -168,7 +240,7 @@ public class LinesManager : MonoBehaviour
         {
             Debug.Log("1Pがラインとられた");
 
-            LineIsStolen_1p(testChara.count2P);
+            LineIsStolen_1p();
         }
 
 
@@ -176,7 +248,7 @@ public class LinesManager : MonoBehaviour
         {
             Debug.Log("2Pがラインとられた");
 
-            LineIsStolen_2p(testChara.count1P);
+            LineIsStolen_2p();
         }
 
 
@@ -192,7 +264,7 @@ public class LinesManager : MonoBehaviour
             Debug.Log("ラインをリセット");
             SetLineColor_1p2p();
 
-            _1pHaveLines = 3;
+            haveLines_1p = 3;
         }
     }
 }

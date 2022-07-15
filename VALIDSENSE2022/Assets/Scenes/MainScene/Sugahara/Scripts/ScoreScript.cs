@@ -17,6 +17,8 @@ public class ScoreScript : MonoBehaviour
     private Text _scoreText;
 
 
+
+
     private void Start()
     {
         // scoreText に自身を入れる
@@ -24,6 +26,7 @@ public class ScoreScript : MonoBehaviour
 
         // scoreの表示の初期化
         ScoreUpdate();
+
     }
 
 

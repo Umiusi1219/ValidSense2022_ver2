@@ -13,28 +13,73 @@ public class NotesJudge : MonoBehaviour
     ViewNotesManager viewNotesManager;
 
     /// <summary>
+    /// スキルのチャージ率を表示のするオブジェクト
+    /// </summary>
+    [SerializeField]
+    SkillChargeRate skillChargeText;
+
+
+    /// <summary>
+    /// コンボ数を表記してるオブジェクトに参照する用
+    /// </summary>
+    [SerializeField]
+    ComboScript ComboScript;
+
+
+    /// <summary>
+    /// Lineを管理してるマネージャーに参照する用
+    /// </summary>
+    [SerializeField]
+    LinesManager linesManager;
+
+
+    /// <summary>
+    /// playerInputに参照する用
+    /// </summary>
+    [SerializeField]
+    PlayerInput playerInput;
+
+
+    /// <summary>
+    /// レーン奪取に使用する、poor数記憶用
+    /// </summary>
+    [SerializeField]
+    private int _poorCount;
+
+
+    /// <summary>
+    /// レーン奪取するタイミング
+    /// </summary>
+    [SerializeField]
+    private int _lineStealTiming;
+
+
+
+    /// <summary>
     /// エフェクト生成用のエフェクトリスト
     /// </summary>
     [SerializeField]
-    List<GameObject> effectList;
+    List<RawImage> effectList;
+
 
     /// <summary>
-    /// エフェクト生成時の、xPos指定用
+    /// 生成するエフェクトの一時保存先
     /// </summary>
     [SerializeField]
-    private float[] instancePosXs;
+    RawImage[] effect;
 
     /// <summary>
-    /// エフェクト生成時の、xPos指定用
+    /// 生成するエフェクトの親
     /// </summary>
     [SerializeField]
-    private float instancePosY;
+    Canvas effectParent;
+
 
     /// <summary>
-    /// エフェクト生成時の、xPos指定用
+    /// エフェクト生成時の、Pos指定用
     /// </summary>
     [SerializeField]
-    private float instancePosZ;
+    private RectTransform[] instancePos;
 
 
     /// <summary>
@@ -61,8 +106,8 @@ public class NotesJudge : MonoBehaviour
     //float y = -260;
     //float z = 300;
     //float w = -20;
-    [SerializeField]
-    Transform instanceTransform;
+    //[SerializeField]
+    //Transform instanceTransform;
 
 
 
@@ -78,6 +123,14 @@ public class NotesJudge : MonoBehaviour
     /// Goodの判定用の値
     /// </summary>
     private long goodJudge = 100;
+
+
+    /// <summary>
+    /// スキルのチャージの値増加用
+    /// </summary>
+    [SerializeField]
+    int[] addSkillValue;
+
 
     /// <summary>
     /// スキルで判定を絞る為の値(割り算)
@@ -112,22 +165,6 @@ public class NotesJudge : MonoBehaviour
     private int _goodScore;
 
 
-    //public static NotesJudge instance;
-
-    //private void Awake()
-    //{
-    //     if(instance = null)
-    //     {
-    //        instance = this;
-    //     }
-    //}
-
-
-    private void Start()
-    {
-
-    }
-
 
     /// <summary>
     /// 渡された時間をもとに、今の状況で適切な判定を計算する
@@ -136,60 +173,96 @@ public class NotesJudge : MonoBehaviour
     /// <param name="line">判定するノーツが所属しているレーン</param>
     public void NotesJudgement(long time, int line)
     {
+
         // Briliantの判定時間 / スキルによる倍率以下なら
         if (time <= briliantJudge / judgeLeverage)
         {
-            //Debug.Log(JudgeType.Briliant);
-            //Debug.Log("JudgeTime" + MusicData.Timer);
+            //Briliantエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Briliant]);
 
-            // Briliantのエフェクトを引数のlineに生成
-            Instantiate(effectList[(int)JudgeType.Briliant],
-                new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
 
 
             //スコア総数に、Briliantの値をたす
             scoreValue.scoreValue += _briliantScore;
+
+            //スキルのチャージ率の増加(Briliant)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
         }
 
-        // Graetの判定時間 / スキルによる倍率以下なら
+        // Greatの判定時間 / スキルによる倍率以下なら
         else if (time <= greatJudge / judgeLeverage)
         {
-            //Debug.Log(JudgeType.Great);
-            //Debug.Log("JudgeTime" + MusicData.Timer);
+            //Greatエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
 
-            // Graetのエフェクトを引数のlineに生成
-            Instantiate(effectList[(int)JudgeType.Great],
-                new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
 
 
             //スコア総数に、Graetの値をたす
             scoreValue.scoreValue += _greatScore;
+
+            //スキルのチャージ率の増加(Great)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
         }
 
         // Goodの判定時間 / スキルによる倍率以下なら
         else if (time <= goodJudge / judgeLeverage)
         {
-            //Debug.Log(JudgeType.Good);
-            //Debug.Log("JudgeTime" + MusicData.Timer);
+            //Goodエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
 
-            // Goodのエフェクトを引数のlineに生成
-            Instantiate(effectList[(int)JudgeType.Good],
-                new Vector3(instancePosXs[line], instancePosY, instancePosZ), new Quaternion(0, 0, 0, 0));
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
 
 
             //スコア総数に、Goodの値をたす
             scoreValue.scoreValue += _goodScore;
+
+            //スキルのチャージ率の増加(Good)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
         }
+
         //poor判定
         else
         {
-            //Debug.Log(JudgeType.Poor);
-            //Debug.Log("JudgeTime" + MusicData.Timer);
+            //poorエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Poor]);
 
-            // Poorのエフェクトを引数のlineに生成
-            Instantiate(effectList[(int)JudgeType.Poor],
-                new Vector3(instancePosXs[line], instancePosY, instancePosZ), 
-                instanceTransform.rotation);
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
+
+            // poor判定したので加算
+            _poorCount++;
+
+            //コンボ数のリセット
+            ComboScript.ComboReset();
         }
 
 
@@ -199,5 +272,136 @@ public class NotesJudge : MonoBehaviour
 
         // 判定を取得したNotesのフェードアウト
         viewNotesManager.NowNotesFadeOut(line);
+
+
+        //　poorのカウントが一定以上になったらレーン奪取される
+        if(_poorCount >= _lineStealTiming)
+        {
+            linesManager.LineIsStolen_1p();
+
+            _poorCount = 0;
+        }
+    }
+
+
+
+
+
+    /// <summary>
+    /// 渡された時間をもとに、毒ノーツに対して適切な判定を計算する
+    /// </summary>
+    /// <param name="time">判定するノーツの時間</param>
+    /// <param name="line">判定するノーツが所属しているレーン</param>
+    public void PoisonNotesJudgement(long time, int line)
+    {
+
+        // Briliantの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、poor)
+        if (time <= briliantJudge / judgeLeverage)
+        {
+            //poorエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Poor]);
+
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
+
+            // poor判定したので加算
+            _poorCount++;
+
+            //コンボ数のリセット
+            ComboScript.ComboReset();
+        }
+
+        // Graetの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、Good)
+        else if (time <= greatJudge / judgeLeverage)
+        {
+            //Goodエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
+
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
+
+            //スコア総数に、Goodの値をたす
+            scoreValue.scoreValue += _goodScore;
+
+            //スキルのチャージ率の増加(Good)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
+
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
+        }
+        // Goodの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、Great)
+        else if (time <= goodJudge / judgeLeverage)
+        {
+            //Greatエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
+
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
+
+            //スコア総数に、Graetの値をたす
+            scoreValue.scoreValue += _greatScore;
+
+            //スキルのチャージ率の増加(Great)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
+        }
+
+        //poor判定(poisonなため内部処理は、Briliant)
+        else
+        {
+            //Briliantエフェクトを一時格納オブジェクトに生成
+            effect[line] = Instantiate(effectList[(int)JudgeType.Briliant]);
+
+            //生成したオブジェクトの親を設定
+            effect[line].transform.parent = effectParent.transform;
+
+            // エフェクトを引数のlineに対応する場所に移動
+            effect[line].rectTransform.position = instancePos[line].position;
+
+
+            //スコア総数に、Briliantの値をたす
+            scoreValue.scoreValue += _briliantScore;
+
+            //スキルのチャージ率の増加(Briliant)
+            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
+
+
+            //コンボ数の加算
+            ComboScript.AddComboValue();
+        }
+
+
+        // スコアUIの更新
+        scoreValue.ScoreUpdate();
+
+
+        // 判定を取得したNotesのフェードアウト
+        viewNotesManager.NowNotesFadeOut(line);
+
+
+
+        //　poorのカウントが一定以上になったらレーン奪取される
+        if (_poorCount >= _lineStealTiming)
+        {
+            linesManager.LineIsStolen_1p();
+
+            //カウントの初期化
+            _poorCount = 0;
+        }
     }
 }
