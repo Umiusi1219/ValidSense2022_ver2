@@ -13,7 +13,7 @@ public class TestChara : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if(count1P == 2)
+            if(count1P == 3)
             {
                 count1P = 0;
                 return;
@@ -24,7 +24,7 @@ public class TestChara : MonoBehaviour
         {
             if(count1P == 0)
             {
-                count1P = 2;
+                count1P = 3;
                 return;
             }
             count1P--;
@@ -36,17 +36,26 @@ public class TestChara : MonoBehaviour
                 chara1P[0].SetActive(true);
                 chara1P[1].SetActive(false);
                 chara1P[2].SetActive(false);
+                chara1P[3].SetActive(false);
                 break;
 
             case 1:
                 chara1P[0].SetActive(false);
                 chara1P[1].SetActive(true);
                 chara1P[2].SetActive(false);
+                chara1P[3].SetActive(false);
                 break;
             case 2:
                 chara1P[0].SetActive(false);
                 chara1P[1].SetActive(false);
                 chara1P[2].SetActive(true);
+                chara1P[3].SetActive(false);
+                break;
+            case 3:
+                chara1P[0].SetActive(false);
+                chara1P[1].SetActive(false);
+                chara1P[2].SetActive(false);
+                chara1P[3].SetActive(true);
                 break;
             default:
                 break;
@@ -56,7 +65,7 @@ public class TestChara : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.C))
         {
-            if(count2P == 2)
+            if(count2P == 3)
             {
                 count2P = 0;
                 return;
@@ -67,7 +76,7 @@ public class TestChara : MonoBehaviour
         {
             if(count2P == 0)
             {
-                count2P = 2;
+                count2P = 3;
                 return;
             }
             count2P--;
@@ -78,17 +87,26 @@ public class TestChara : MonoBehaviour
                 chara2P[0].SetActive(true);
                 chara2P[1].SetActive(false);
                 chara2P[2].SetActive(false);
+                chara2P[3].SetActive(false);
                 break;
 
             case 1:
                 chara2P[0].SetActive(false);
                 chara2P[1].SetActive(true);
                 chara2P[2].SetActive(false);
+                chara2P[3].SetActive(false);
                 break;
             case 2:
                 chara2P[0].SetActive(false);
                 chara2P[1].SetActive(false);
                 chara2P[2].SetActive(true);
+                chara2P[3].SetActive(false);
+                break;
+            case 3:
+                chara2P[0].SetActive(false);
+                chara2P[1].SetActive(false);
+                chara2P[2].SetActive(false);
+                chara2P[3].SetActive(true);
                 break;
             default:
                 break;
