@@ -31,5 +31,6 @@ public class MusicSelectData : MonoBehaviour
         easyLevel.text = difflist.natural.level.ToString();
         normalLevel.text = difflist.highSense.level.ToString();
         hardLevel.text = difflist.sixthSense.level.ToString();
+        
     }
 }

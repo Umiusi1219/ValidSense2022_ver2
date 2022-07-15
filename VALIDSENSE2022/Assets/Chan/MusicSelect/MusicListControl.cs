@@ -13,6 +13,8 @@ public class MusicListControl : MonoBehaviour
     private int musicListNum;
     private int nowMusicNum = 1;
     private bool isScrolling = false;
+    private float scrollingSpeed = 0.5f;
+    private float scrollTime = 0;
     [SerializeField]private float scrollSpeed = 0.05f;
     private GameObject jsonReader;
     void Start()
@@ -163,4 +165,35 @@ public class MusicListControl : MonoBehaviour
         }
     }
 
+    private IEnumerator ScrollUpDelta()
+    {
+        if(isScrolling) { yield break; }
+
+        isScrolling = true;
+        
+        for(int i = musicListNum - 1; i >= 0; i--)
+        {
+            musicListPosDatas[i] = musicList[i].transform.position;
+            musicListRotationDatas[i] = musicList[i].transform.rotation;
+        }
+        float t = 0f;
+        t += Time.deltaTime;
+            for(int i = 0; i < musicListNum ; i++)
+            {
+                if(i == (musicListNum - 1))
+                {
+                    musicList[i].transform.position = Vector3.Lerp(musicListPosDatas[i], musicListPosDatas[0], t);
+                    musicList[i].transform.rotation = Quaternion.Lerp(musicListRotationDatas[i], musicListRotationDatas[0], t);
+                    
+                }else
+                {
+                    musicList[i].transform.position = Vector3.Lerp(musicListPosDatas[i], musicListPosDatas[i + 1], t);
+                    musicList[i].transform.rotation = Quaternion.Lerp(musicListRotationDatas[i], musicListRotationDatas[i + 1], t);
+                }
+            }
+        
+        ScrollUpNumChange();
+        jsonReader.SendMessage("ChangeJson",nowMusicNum);
+        isScrolling = false;
+    }
 }

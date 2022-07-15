@@ -35,6 +35,7 @@ public class MusicPlayer : MonoBehaviour
     {
         PlayTime = SongPlayback.GetTime();
         MusicData.Timer = PlayTime;
+        MusicEndCheck();
     }
     public void MusicPlay(int num)
     {
@@ -44,6 +45,13 @@ public class MusicPlayer : MonoBehaviour
         }
         SongPlayer.SetCue(SongExAcb,SongcueInfoList[num].name); 
         SongPlayback = SongPlayer.Start();
+    }
+    public void MusicEndCheck()
+    {
+        if(SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
+        {
+            GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result);
+        }
     }
 
 }
