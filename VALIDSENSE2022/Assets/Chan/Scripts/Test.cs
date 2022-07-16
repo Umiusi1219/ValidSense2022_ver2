@@ -29,4 +29,26 @@ public class Test : MonoBehaviour
             sceneManager.SendMessage("SetScene", GameScene.Result);
         }
     }
+
+    public void ToMusicSelectScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.MusicSelect);
+    }
+
+    public void ToMainScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.Playing);
+    }
+
+    public void ToResultScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.Result);
+    }
+
+    public void ToTitleScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.Title);
+    }
 }
+
+

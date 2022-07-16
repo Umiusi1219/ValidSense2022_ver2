@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ResultScene/ResultScene.unity
     guid: 3991f58ee0319b64e818efa73807c8eb
+  - enabled: 1
+    path: Assets/Test_Kim/Title.unity
+    guid: 96e1ba427a1fe34439583ec006b9bed1
+  - enabled: 1
+    path: Assets/Test_Kim/LevelScene.unity
+    guid: 2cddc248b131d1a4ea42d657e8971c15
   m_configObjects: {}

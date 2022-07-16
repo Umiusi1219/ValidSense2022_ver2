@@ -71,15 +71,17 @@ public class JsonReader : MonoBehaviour
 
     public SongList _songList;
 
+
     public static JsonReader instance = null;
+
+
+
+
+
     void Awake() 
     {
-        /*for(int i = 0; i<transform.childCount; i++)
-        {
-            _songList = JsonUtility.FromJson<SongList>(textJSON[i].text);
-        }*/
-        //textJSON = Resources.Load("BeatmapData/02") as TextAsset;
-        if(instance == null)
+
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -88,12 +90,25 @@ public class JsonReader : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+
+
+        /*for(int i = 0; i<transform.childCount; i++)
+        {
+            _songList = JsonUtility.FromJson<SongList>(textJSON[i].text);
+        }*/
+        //textJSON = Resources.Load("BeatmapData/02") as TextAsset;
         _songList = JsonUtility.FromJson<SongList>(textJSON.text);
     }
     void Update() 
     {
         
     }
+
+
+    
+
+
     public void ChangeJson(int num)
     {
         textJSON = Resources.Load($"BeatmapData/0{num}") as TextAsset;

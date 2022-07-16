@@ -5,6 +5,10 @@ using System;
 
 public class MusicListControl : MonoBehaviour
 {
+    [SerializeField]
+    GameObject sceneManager;
+
+
     private Vector3[] musicListPosDatas;
     private Quaternion[] musicListRotationDatas;
 
@@ -30,6 +34,9 @@ public class MusicListControl : MonoBehaviour
         {
             musicList[i] = transform.GetChild(i).gameObject;
         }
+
+
+        sceneManager = GameObject.Find("SceneManager");
     }
 
     void Update()
@@ -41,16 +48,21 @@ public class MusicListControl : MonoBehaviour
             musicListRotationDatas[i] = musicList[i].transform.rotation;
         }*/
 
-        if(Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             StartCoroutine(ScrollUp());
         }
 
-        else if(Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             StartCoroutine(ScrollDown());
         }
 
+
+        if (Input.GetKeyDown(KeyCode.Q) && nowMusicNum == 1)
+        {
+            sceneManager.GetComponent<Test>().ToMainScene();
+        }
     }
 
     private IEnumerator ScrollDown()
