@@ -11,6 +11,7 @@ public class ResultPlayerInput : MonoBehaviour
     [SerializeField]
     private float autoToTitleTime;
 
+    bool canToTitle;
 
     void Start()
     {
@@ -22,7 +23,7 @@ public class ResultPlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown)
+        if(Input.anyKeyDown && canToTitle)
         {
             sceneManager.GetComponent<Test>().ToTitleScene();
         }
@@ -30,6 +31,10 @@ public class ResultPlayerInput : MonoBehaviour
 
     IEnumerator AutoToTitleScene()
     {
+        yield return new WaitForSeconds(autoToTitleTime / 8);
+
+        canToTitle = true;
+
         yield return new WaitForSeconds(autoToTitleTime);
 
         sceneManager.GetComponent<Test>().ToTitleScene();

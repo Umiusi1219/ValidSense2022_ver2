@@ -43,7 +43,7 @@ public class PlayerInput : MonoBehaviour
     /// スキルのUIスクリプトを参照する用
     /// </summary>
     [SerializeField]
-    SkillChargeRate skillChargeRate;
+    List <SkillChargeRate> skillChargeRate;
 
 
     /// <summary>
@@ -71,115 +71,68 @@ public class PlayerInput : MonoBehaviour
     /// スキルの発動時にキー入力してからどれくらい時間が経過してるか記憶用(右からの入力)
     /// </summary>
     [SerializeField]
-    private float[] _inputWaitTime_R;
+    private float[] _inputWaitTime_R_1P;
 
     /// <summary>
     /// スキルの発動時にキー入力してからどれくらい時間が経過してるか記憶用(左からの入力)
     /// </summary>
     [SerializeField]
-    private float[] _inputWaitTime_L;
+    private float[] _inputWaitTime_L_1P;
+
+
+    /// <summary>
+    /// スキルの発動時にキー入力してからどれくらい時間が経過してるか記憶用(右からの入力)
+    /// </summary>
+    [SerializeField]
+    private float[] _inputWaitTime_R_2P;
+
+    /// <summary>
+    /// スキルの発動時にキー入力してからどれくらい時間が経過してるか記憶用(左からの入力)
+    /// </summary>
+    [SerializeField]
+    private float[] _inputWaitTime_L_2P;
 
 
     void Update()
     {
-//        //判定バーデバック用
-//        if (MusicData.Timer >= notesDataList.notesList_0[lineNotesNum[0]].time)
-//        {
-//            Debug.Log("Timer" + MusicData.Timer);
-//            Debug.Log("Judge" + notesDataList.notesList_0[lineNotesNum[0]].time);
+        //        //判定バーデバック用
+        //        if (MusicData.Timer >= notesDataList.notesList_0[lineNotesNum[0]].time)
+        //        {
+        //            Debug.Log("Timer" + MusicData.Timer);
+        //            Debug.Log("Judge" + notesDataList.notesList_0[lineNotesNum[0]].time);
 
-//            Debug.Log("差" + (MusicData.Timer - notesDataList.notesList_0[lineNotesNum[0]].time));
+        //            Debug.Log("差" + (MusicData.Timer - notesDataList.notesList_0[lineNotesNum[0]].time));
 
-//#if UNITY_EDITOR
-//            UnityEditor.EditorApplication.isPaused = true;
-//#endif
-//        }
+        //#if UNITY_EDITOR
+        //            UnityEditor.EditorApplication.isPaused = true;
+        //#endif
+        //        }
 
 
-
+        // 1p 入力----------------------------------------------------------------------------------
         // 配列の総数を超えて配列参照しないようにする制御
         if (notesDataList.listNumMax[0] > lineNotesNum[0])
         {
             // Qキーを押したとき
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                // criwearの時間 - 判定バー到達予定時間 < judgeTimeなら実行
-                if (notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer < judgeTime)
-                {
-                    // ノーツがポイズンノーツかそうじゃないかで、判定を変える
-                    if (notesDataList.notesList_0[lineNotesNum[0]].isPoison)
-                    {
-                        // 判定用関数で、ポイズンノーツの判定をする
-                        notesJudge.PoisonNotesJudgement(
-                            // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
-                            (long)Mathf.Abs(notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
-                    }
-                    else
-                    {
-                        // 判定用関数で、ノーマルノーツの判定をする
-                        notesJudge.NotesJudgement(
-                            // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
-                            (long)Mathf.Abs(notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
-                    }
-
-
-                    //干渉するノーツを次にする
-                    lineNotesNum[0]++;
-
-                }
+                // 引数のラインのノーツチェック
+                NotesListsCheck(0,0);
             }
             // poor判定の自動化
-            // 判定バー到達予定時間 - criwearの時間 < poorTimingなら実行
-            if (notesDataList.listNumMax[0] > lineNotesNum[0]
-                && notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer < (long)ConstRepo.poorTiming)
-            {
-
-                // ノーツがポイズンノーツかそうじゃないかで、判定を変える
-                if (notesDataList.notesList_0[lineNotesNum[0]].isPoison)
-                {
-                    // 判定用関数で、毒ノーツの判定をする
-                    notesJudge.PoisonNotesJudgement(
-                        // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
-                        (long)Mathf.Abs(notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
-                }
-                else
-                {
-                    // 判定用関数で、ノーマルノーツの判定をする
-                    notesJudge.NotesJudgement(
-                        // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
-                        (long)Mathf.Abs(notesDataList.notesList_0[lineNotesNum[0]].time - MusicData.Timer), 0);
-                }
-
-
-                //干渉するノーツを次にする
-                lineNotesNum[0]++;
-            }
+            NotesListsPoorCheck(0, 0);
         }
 
         // 上のラインが違う番-------------------------------------------------------------------------
         if (notesDataList.listNumMax[1] > lineNotesNum[1])
         {
             // wに対応するラインが奪われてなかったらWキーで判定
-            if(linesManager.Get_1pHaveLines() >= 1)
+            if (linesManager.Get_1pHaveLines() >= 1)
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
-                    if (notesDataList.notesList_1[lineNotesNum[1]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_1[lineNotesNum[1]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                            (long)(Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time) - MusicData.Timer), 1);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                            (long)(Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time) - MusicData.Timer), 1);
-                        }
-
-
-                        lineNotesNum[1]++;
-                    }
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(1, 0);
                 }
             }
             // wに対応するラインが奪われていたらSキーで判定
@@ -187,42 +140,13 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S))
                 {
-                    if (notesDataList.notesList_1[lineNotesNum[1]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_1[lineNotesNum[1]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                            (long)(Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time) - MusicData.Timer), 1);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                            (long)(Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time) - MusicData.Timer), 1);
-                        }
-
-                        lineNotesNum[1]++;
-                    }
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(1, 0);
                 }
             }
 
             // poor判定の自動化
-            if (notesDataList.listNumMax[1] > lineNotesNum[1]
-                && notesDataList.notesList_1[lineNotesNum[1]].time - MusicData.Timer < (long)ConstRepo.poorTiming)
-            {
-                if (notesDataList.notesList_1[lineNotesNum[1]].isPoison)
-                {
-                    notesJudge.PoisonNotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time - MusicData.Timer), 1);
-                }
-                else
-                {
-                    notesJudge.NotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_1[lineNotesNum[1]].time - MusicData.Timer), 1);
-                }
-
-
-                lineNotesNum[1]++;
-            }
+            NotesListsPoorCheck(1, 0);
         }
 
         // 上のラインが違う番--------------------------------------------------------------------------
@@ -233,23 +157,8 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-
-                    if (notesDataList.notesList_2[lineNotesNum[2]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_2[lineNotesNum[2]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time) - MusicData.Timer), 2);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time) - MusicData.Timer), 2);
-                        }
-
-
-                        lineNotesNum[2]++;
-                    }
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(2, 0);
                 }
             }
             // Eに対応するラインが奪われていたらDキーで判定
@@ -258,40 +167,12 @@ public class PlayerInput : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.D))
                 {
 
-                    if (notesDataList.notesList_2[lineNotesNum[2]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_2[lineNotesNum[2]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time) - MusicData.Timer), 2);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time) - MusicData.Timer), 2);
-                        }
-
-                        lineNotesNum[2]++;
-                    }
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(2, 0);
                 }
             }
             // poor判定の自動化
-            if (notesDataList.listNumMax[2] > lineNotesNum[2]
-                && notesDataList.notesList_2[lineNotesNum[2]].time - MusicData.Timer < (long)ConstRepo.poorTiming)
-            {
-                if (notesDataList.notesList_2[lineNotesNum[2]].isPoison)
-                {
-                    notesJudge.PoisonNotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time - MusicData.Timer), 2);
-                }
-                else
-                {
-                    notesJudge.NotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_2[lineNotesNum[2]].time - MusicData.Timer), 2);
-                }
-
-                lineNotesNum[2]++;
-            }
+            NotesListsPoorCheck(2, 0);
         }
 
         // 上のラインが違う番-------------------------------------------------------------------
@@ -302,22 +183,8 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-
-                    if (notesDataList.notesList_3[lineNotesNum[3]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_3[lineNotesNum[3]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time) - MusicData.Timer), 3);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time) - MusicData.Timer), 3);
-                        }
-
-                        lineNotesNum[3]++;
-                    }
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(3, 0);
 
                 }
             }
@@ -326,66 +193,222 @@ public class PlayerInput : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.F))
                 {
-
-                    if (notesDataList.notesList_3[lineNotesNum[3]].time - MusicData.Timer < judgeTime)
-                    {
-                        if (notesDataList.notesList_3[lineNotesNum[3]].isPoison)
-                        {
-                            notesJudge.PoisonNotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time) - MusicData.Timer), 3);
-                        }
-                        else
-                        {
-                            notesJudge.NotesJudgement(
-                                (long)(Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time) - MusicData.Timer), 3);
-                        }
-
-                        lineNotesNum[3]++;
-                    }
-
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(3, 0);
                 }
             }
 
 
             // poor判定の自動化
-            if (notesDataList.listNumMax[3] > lineNotesNum[3]
-                && notesDataList.notesList_3[lineNotesNum[3]].time - MusicData.Timer < (long)ConstRepo.poorTiming)
-            {
-                if (notesDataList.notesList_3[lineNotesNum[3]].isPoison)
-                {
-                    notesJudge.PoisonNotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time - MusicData.Timer), 3);
-                }
-                else
-                {
-                    notesJudge.NotesJudgement(
-                        (long)Mathf.Abs(notesDataList.notesList_3[lineNotesNum[3]].time - MusicData.Timer), 3);
-                }
+            NotesListsPoorCheck(3, 0);
+        }//-----------------------------------------------------------------------------------------
 
-                lineNotesNum[3]++;
+
+
+        // 2p 入力----------------------------------------------------------------------------------
+        // 配列の総数を超えて配列参照しないようにする制御
+        if (notesDataList.listNumMax[7] > lineNotesNum[7])
+        {
+            // Pキーを押したとき
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                // 引数のラインのノーツチェック
+                NotesListsCheck(7, 1);
             }
+            // poor判定の自動化
+            NotesListsPoorCheck(7, 1);
         }
 
-
-
-
-
-        // スキルの発動処理---------------------------------------------------------------------------
-        if(skillChargeRate.skillValue >= 100 && skillManager.IsCanUseSkill())
+        // 上のラインが違う番-------------------------------------------------------------------------
+        if (notesDataList.listNumMax[6] > lineNotesNum[6])
         {
-            if(Input.GetKeyDown(KeyCode.S))
+            // oに対応するラインが奪われてなかったらoキーで判定
+            if (linesManager.Get_1pHaveLines() <= 6)
+            {
+                if (Input.GetKeyDown(KeyCode.O))
+                {
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(6, 1);
+                }
+            }
+            // oに対応するラインが奪われていたらLキーで判定
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.L))
+                {
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(6, 1);
+                }
+            }
+
+            // poor判定の自動化
+            NotesListsPoorCheck(6, 1);
+        }
+
+        // 上のラインが違う番--------------------------------------------------------------------------
+        if (notesDataList.listNumMax[2] > lineNotesNum[2])
+        {
+            // Iに対応するラインが奪われてなかったらIキーで判定
+            if (linesManager.Get_1pHaveLines() <= 5)
+            {
+                if (Input.GetKeyDown(KeyCode.I))
+                {
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(5, 1);
+                }
+            }
+            // Iに対応するラインが奪われていたらKキーで判定
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(5, 1);
+                }
+            }
+            // poor判定の自動化
+            NotesListsPoorCheck(5, 1);
+        }
+
+        // 上のラインが違う番-------------------------------------------------------------------
+        if (notesDataList.listNumMax[4] > lineNotesNum[4])
+        {
+            // Uに対応するラインが奪われてなかったらUキーで判定
+            if (linesManager.Get_1pHaveLines() <= 4)
+            {
+                if (Input.GetKeyDown(KeyCode.U))
+                {
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(4, 1);
+
+                }
+            }
+            // Rに対応するラインが奪われていたらFキーで判定
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.J))
+                {
+                    // 引数のラインのノーツチェック
+                    NotesListsCheck(4, 1);
+                }
+            }
+
+
+            // poor判定の自動化
+            NotesListsPoorCheck(4, 1);
+        }//-----------------------------------------------------------------------------------------
+
+
+
+
+
+        // 1Pスキルの発動処理---------------------------------------------------------------------------
+        if (skillChargeRate[0].skillValue >= 100 && skillManager.IsCanUseSkill())
+        {
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 StartCoroutine(L_SkillUseInput_Key_D());
             }
 
-            if(Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 StartCoroutine(R_SkillUseInput_Key_D());
+            }
+        }
+
+
+        // 2Pスキルの発動処理---------------------------------------------------------------------------
+        if (skillChargeRate[1].skillValue >= 100 && skillManager.IsCanUseSkill())
+        
+        {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                StartCoroutine(L_SkillUseInput_Key_K());
+            }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                StartCoroutine(R_SkillUseInput_Key_K());
             }
         }
         //----------------------------------------------------------------------------------------------
 
     }
+
+
+    /// <summary>
+    /// poor判定かチェック用
+    /// </summary>
+    /// <param name="line">どのラインのノーツを判定するか指定用</param>
+    void NotesListsPoorCheck(int line, int usePlayer)
+    {
+        // 判定バー到達予定時間 - criwearの時間 < poorTimingなら実行
+        if (notesDataList.listNumMax[line] > lineNotesNum[line]
+                && notesDataList.notesLists[line].notesList[lineNotesNum[line]].time
+                - MusicData.Timer < (long)ConstRepo.poorTiming)
+        {
+
+            // ノーツがポイズンノーツかそうじゃないかで、判定を変える
+            if (notesDataList.notesLists[line].notesList[lineNotesNum[line]].isPoison)
+            {
+                // 判定用関数で、毒ノーツの判定をする
+                notesJudge.PoisonNotesJudgement(
+                    // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
+                    (long)Mathf.Abs(notesDataList.notesLists[line].
+                    notesList[lineNotesNum[line]].time - MusicData.Timer), line, usePlayer);
+            }
+            else
+            {
+                // 判定用関数で、ノーマルノーツの判定をする
+                notesJudge.NotesJudgement(
+                    // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
+                    (long)Mathf.Abs(notesDataList.notesLists[line].
+                    notesList[lineNotesNum[line]].time - MusicData.Timer), line, usePlayer);
+            }
+
+
+            //干渉するノーツを次にする
+            lineNotesNum[line]++;
+        }
+    }
+
+
+    /// <summary>
+    /// ノーツの判定チェック、判定してもよい場所なら、判定
+    /// </summary>
+    /// <param name="line">どのラインのノーツを判定するか指定用</param>
+    void NotesListsCheck(int line , int usePlayer)
+    {
+        // criwearの時間 - 判定バー到達予定時間 < judgeTimeなら実行
+        if (notesDataList.notesLists[line].notesList[lineNotesNum[line]].time - MusicData.Timer < judgeTime)
+        {
+            // ノーツがポイズンノーツかそうじゃないかで、判定を変える
+            if (notesDataList.notesLists[line].notesList[lineNotesNum[line]].isPoison)
+            {
+                // 判定用関数で、ポイズンノーツの判定をする
+                notesJudge.PoisonNotesJudgement(
+                    // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
+                    (long)Mathf.Abs(notesDataList.notesLists[line].
+                    notesList[lineNotesNum[line]].time - MusicData.Timer), line, usePlayer);
+            }
+            else
+            {
+                // 判定用関数で、ノーマルノーツの判定をする
+                notesJudge.NotesJudgement(
+                    // criwearの時間 - 判定バー到達予定時間 を絶対値化して引数に設定
+                    (long)Mathf.Abs(notesDataList.notesLists[line].
+                    notesList[lineNotesNum[line]].time - MusicData.Timer), line, usePlayer);
+            }
+
+
+            //干渉するノーツを次にする
+            lineNotesNum[line]++;
+        }
+    }
+
+
+
 
 
     /// <summary>
@@ -399,24 +422,25 @@ public class PlayerInput : MonoBehaviour
 
 
         // 値の初期化
-        _inputWaitTime_L[0] = 0;
+        _inputWaitTime_L_1P[0] = 0;
 
 
-        while (_inputStandbyTime >= _inputWaitTime_L[0])
+        while (_inputStandbyTime >= _inputWaitTime_L_1P[0])
         {
             yield return null;
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                StartCoroutine( L_SkillUseInput_Key_F());
-                _inputWaitTime_L[0] = _inputStandbyTime;
+                StartCoroutine(L_SkillUseInput_Key_F());
+                _inputWaitTime_L_1P[0] = _inputStandbyTime;
             }
-            else if (Input.anyKeyDown)
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
+                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.F))
             {
-                _inputWaitTime_L[0] = _inputStandbyTime;
+                _inputWaitTime_L_1P[0] = _inputStandbyTime;
             }
 
-            _inputWaitTime_L[0] += Time.deltaTime;
+            _inputWaitTime_L_1P[0] += Time.deltaTime;
         }
     }
 
@@ -428,26 +452,27 @@ public class PlayerInput : MonoBehaviour
         yield return new WaitForSeconds(_inputInvalidTime);
 
         // 値の初期化
-        _inputWaitTime_L[1] = 0;
+        _inputWaitTime_L_1P[1] = 0;
 
 
-        while (_inputStandbyTime >= _inputWaitTime_L[1])
+        while (_inputStandbyTime >= _inputWaitTime_L_1P[1])
         {
             yield return null;
 
             if (Input.GetKeyDown(KeyCode.F))
             {
                 // スキルの使用
-                skillChargeRate.UseSkill_Text();
-                skillManager.UseSkill_Logic();
+                skillChargeRate[0].UseSkill_Text();
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
 
-                _inputWaitTime_L[1] = _inputStandbyTime;
+                _inputWaitTime_L_1P[1] = _inputStandbyTime;
             }
-            else if (Input.anyKeyDown)
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
+                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
             {
-                _inputWaitTime_L[1] = _inputStandbyTime;
+                _inputWaitTime_L_1P[1] = _inputStandbyTime;
             }
-            _inputWaitTime_L[1] += Time.deltaTime;
+            _inputWaitTime_L_1P[1] += Time.deltaTime;
         }
     }
 
@@ -463,24 +488,25 @@ public class PlayerInput : MonoBehaviour
         yield return new WaitForSeconds(_inputInvalidTime);
 
         // 値の初期化
-        _inputWaitTime_R[0] = 0;
+        _inputWaitTime_R_1P[0] = 0;
 
 
-        while (_inputStandbyTime >= _inputWaitTime_R[0])
+        while (_inputStandbyTime >= _inputWaitTime_R_1P[0])
         {
             yield return null;
 
             if (Input.GetKeyDown(KeyCode.D))
             {
                 StartCoroutine(R_SkillUseInput_Key_S());
-                _inputWaitTime_R[0] = _inputStandbyTime;
+                _inputWaitTime_R_1P[0] = _inputStandbyTime;
             }
-            else if (Input.anyKeyDown)
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
+                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.S))
             {
-                _inputWaitTime_R[0] = _inputStandbyTime;
+                _inputWaitTime_R_1P[0] = _inputStandbyTime;
             }
 
-            _inputWaitTime_R[0] += Time.deltaTime;
+            _inputWaitTime_R_1P[0] += Time.deltaTime;
         }
     }
     IEnumerator R_SkillUseInput_Key_S()
@@ -489,26 +515,193 @@ public class PlayerInput : MonoBehaviour
         yield return new WaitForSeconds(_inputInvalidTime);
 
         // 値の初期化
-        _inputWaitTime_R[1] = 0;
+        _inputWaitTime_R_1P[1] = 0;
 
 
-        while (_inputStandbyTime >= _inputWaitTime_R[1])
+        while (_inputStandbyTime >= _inputWaitTime_R_1P[1])
         {
             yield return null;
 
             if (Input.GetKeyDown(KeyCode.S))
             {
                 // スキルの使用
-                skillChargeRate.UseSkill_Text();
-                skillManager.UseSkill_Logic();
+                skillChargeRate[0].UseSkill_Text();
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
 
-                _inputWaitTime_R[1] = _inputStandbyTime;
+                _inputWaitTime_R_1P[1] = _inputStandbyTime;
             }
-            else if (Input.anyKeyDown)
+            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
+                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.D))
             {
-                _inputWaitTime_R[1] = _inputStandbyTime;
+                _inputWaitTime_R_1P[1] = _inputStandbyTime;
             }
-            _inputWaitTime_R[1] += Time.deltaTime;
+            _inputWaitTime_R_1P[1] += Time.deltaTime;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //2p-----------------------------------------------------------------------------------------------------------
+    /// <summary>
+    /// 左からのスキル入力の発動関数
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator L_SkillUseInput_Key_K()
+    {
+        // 同時押しでの誤作動をしないようにする時間
+        yield return new WaitForSeconds(_inputInvalidTime);
+
+
+        // 値の初期化
+        _inputWaitTime_L_2P[0] = 0;
+
+
+        while (_inputStandbyTime >= _inputWaitTime_L_2P[0])
+        {
+            yield return null;
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                StartCoroutine(L_SkillUseInput_Key_L());
+                _inputWaitTime_L_2P[0] = _inputStandbyTime;
+            }
+            else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I)
+                 || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
+                {
+                _inputWaitTime_L_2P[0] = _inputStandbyTime;
+            }
+
+            _inputWaitTime_L_2P[0] += Time.deltaTime;
+        }
+    }
+
+
+
+    IEnumerator L_SkillUseInput_Key_L()
+    {
+        // 同時押しでの誤作動をしないようにする時間
+        yield return new WaitForSeconds(_inputInvalidTime);
+
+        // 値の初期化
+        _inputWaitTime_L_2P[1] = 0;
+
+
+        while (_inputStandbyTime >= _inputWaitTime_L_2P[1])
+        {
+            yield return null;
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                // スキルの使用
+                skillChargeRate[1].UseSkill_Text();
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
+
+                _inputWaitTime_L_2P[1] = _inputStandbyTime;
+            }
+            else if (Input.GetKeyDown(KeyCode.P)|| Input.GetKeyDown(KeyCode.O)|| Input.GetKeyDown(KeyCode.I)
+                 || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.J)||Input.GetKeyDown(KeyCode.K))
+            {
+                _inputWaitTime_L_2P[1] = _inputStandbyTime;
+            }
+            _inputWaitTime_L_2P[1] += Time.deltaTime;
+        }
+    }
+
+
+
+    /// <summary>
+    /// 右からのスキル入力の発動関数
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator R_SkillUseInput_Key_K()
+    {
+        // 同時押しでの誤作動をしないようにする時間
+        yield return new WaitForSeconds(_inputInvalidTime);
+
+        // 値の初期化
+        _inputWaitTime_R_2P[0] = 0;
+
+
+        while (_inputStandbyTime >= _inputWaitTime_R_2P[0])
+        {
+            yield return null;
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                StartCoroutine(R_SkillUseInput_Key_J());
+                _inputWaitTime_R_2P[0] = _inputStandbyTime;
+            }
+            else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I)
+            || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L))
+            {
+                _inputWaitTime_R_2P[0] = _inputStandbyTime;
+            }
+
+            _inputWaitTime_R_2P[0] += Time.deltaTime;
+        }
+    }
+    IEnumerator R_SkillUseInput_Key_J()
+    {
+        // 同時押しでの誤作動をしないようにする時間
+        yield return new WaitForSeconds(_inputInvalidTime);
+
+        // 値の初期化
+        _inputWaitTime_R_2P[1] = 0;
+
+
+        while (_inputStandbyTime >= _inputWaitTime_R_2P[1])
+        {
+            yield return null;
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                // スキルの使用
+                skillChargeRate[1].UseSkill_Text();
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
+
+                _inputWaitTime_R_2P[1] = _inputStandbyTime;
+            }
+            else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I)
+                || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.K))
+            {
+                _inputWaitTime_R_2P[1] = _inputStandbyTime;
+            }
+            _inputWaitTime_R_2P[1] += Time.deltaTime;
+        }
+    }
+    //-----------------------------------------------------------------------------------------------------------
 }

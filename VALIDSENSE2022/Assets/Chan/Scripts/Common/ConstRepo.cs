@@ -1,29 +1,43 @@
 
 public static class ConstRepo 
 {
-    // �傫���Ӗ��̕ϐ�������
-
+    
+    /// <summary>
+    /// poor自動判定用の変数
+    /// </summary>
     public const long poorTiming = -105;
 
+
+    /// <summary>
+    /// ノーツのタイプ（引数用に0スタート）
+    /// </summary>
     public enum NotesType
     { 
-        None = 0,
-        Normal,
+        Normal = 0,
+        Slide,
         Hold,
         Link,
-        Slide,
-
-
-        /*
-         * �m�[�c�͂P�ł���  ��
-         * ���[�����S��  ��
-         * ➑̂Ńv���C
-         * Live2D
-         * 
-         * �r���h�o������ǂ�
-         */
     }
 
 
+    /// <summary>
+    /// ノーツのタイプ（引数用に0スタート）
+    /// </summary>
+    public enum Chara
+    {
+        Sight = 0,
+        Tactile,
+        Smell_Taste,
+        Hear,
+    }
 
+
+    /// <summary>
+    /// プレイヤー（引数用に0スタート）
+    /// </summary>
+    public enum Player
+    {
+        P1 = 0,
+        P2,
+    }
 }

@@ -10,6 +10,8 @@ public class ScoreScript : MonoBehaviour
     /// </summary>
     public int scoreValue;
 
+    [SerializeField]
+    private int _usePlayer;
 
     /// <summary>
     /// 自身のテキスト干渉用
@@ -17,6 +19,8 @@ public class ScoreScript : MonoBehaviour
     private Text _scoreText;
 
 
+    [SerializeField]
+    GameObject sceneManager;
 
 
     private void Start()
@@ -27,11 +31,17 @@ public class ScoreScript : MonoBehaviour
         // scoreの表示の初期化
         ScoreUpdate();
 
+        sceneManager = GameObject.Find("SceneManager");
     }
 
 
     public void ScoreUpdate()
     {
         _scoreText.text = scoreValue.ToString();
+    }
+
+    public void SetScore()
+    {
+        sceneManager.GetComponent<PlayerManagerScript>().score[_usePlayer] = scoreValue;
     }
 }

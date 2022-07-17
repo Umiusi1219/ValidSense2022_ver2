@@ -16,14 +16,14 @@ public class NotesJudge : MonoBehaviour
     /// スキルのチャージ率を表示のするオブジェクト
     /// </summary>
     [SerializeField]
-    SkillChargeRate skillChargeText;
+    List <SkillChargeRate> skillChargeText;
 
 
     /// <summary>
     /// コンボ数を表記してるオブジェクトに参照する用
     /// </summary>
     [SerializeField]
-    ComboScript ComboScript;
+    List <ComboScript> ComboScript;
 
 
     /// <summary>
@@ -44,7 +44,7 @@ public class NotesJudge : MonoBehaviour
     /// レーン奪取に使用する、poor数記憶用
     /// </summary>
     [SerializeField]
-    private int _poorCount;
+    private int[] _poorCount;
 
 
     /// <summary>
@@ -92,25 +92,12 @@ public class NotesJudge : MonoBehaviour
         Good,
         Poor,
     }
-
     /*
     Briliant +- 20ms
     Great +- 40ms
     Good +- 100ms
     Poor
     */
-
-
-    ////Poor判定のmp4生成用
-    //float x = -19.5f;
-    //float y = -260;
-    //float z = 300;
-    //float w = -20;
-    //[SerializeField]
-    //Transform instanceTransform;
-
-
-
     /// <summary>
     /// Briliantの判定用の値
     /// </summary>
@@ -136,14 +123,14 @@ public class NotesJudge : MonoBehaviour
     /// スキルで判定を絞る為の値(割り算)
     /// </summary>
     [SerializeField]
-    public long judgeLeverage;
+    public long[] judgeLeverage;
 
 
     /// <summary>
     /// スコア用UI参照用
     /// </summary>
     [SerializeField]
-    private ScoreScript scoreValue;
+    private List  <ScoreScript> scoreValue;
 
 
     /// <summary>
@@ -171,11 +158,11 @@ public class NotesJudge : MonoBehaviour
     /// </summary>
     /// <param name="time">判定するノーツの時間</param>
     /// <param name="line">判定するノーツが所属しているレーン</param>
-    public void NotesJudgement(long time, int line)
+    public void NotesJudgement(long time, int line ,int usePlayer)
     {
 
         // Briliantの判定時間 / スキルによる倍率以下なら
-        if (time <= briliantJudge / judgeLeverage)
+        if (time <= briliantJudge / judgeLeverage[usePlayer])
         {
             //Briliantエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Briliant]);
@@ -189,17 +176,17 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Briliantの値をたす
-            scoreValue.scoreValue += _briliantScore;
+            scoreValue[usePlayer].scoreValue += _briliantScore;
 
             //スキルのチャージ率の増加(Briliant)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
 
         // Greatの判定時間 / スキルによる倍率以下なら
-        else if (time <= greatJudge / judgeLeverage)
+        else if (time <= greatJudge / judgeLeverage[usePlayer])
         {
             //Greatエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
@@ -213,17 +200,17 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Graetの値をたす
-            scoreValue.scoreValue += _greatScore;
+            scoreValue[usePlayer].scoreValue += _greatScore;
 
             //スキルのチャージ率の増加(Great)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
 
         // Goodの判定時間 / スキルによる倍率以下なら
-        else if (time <= goodJudge / judgeLeverage)
+        else if (time <= goodJudge / judgeLeverage[usePlayer])
         {
             //Goodエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
@@ -236,13 +223,13 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Goodの値をたす
-            scoreValue.scoreValue += _goodScore;
+            scoreValue[usePlayer].scoreValue += _goodScore;
 
             //スキルのチャージ率の増加(Good)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Good]);
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
 
         //poor判定
@@ -259,15 +246,15 @@ public class NotesJudge : MonoBehaviour
 
 
             // poor判定したので加算
-            _poorCount++;
+            _poorCount[usePlayer]++;
 
             //コンボ数のリセット
-            ComboScript.ComboReset();
+            ComboScript[usePlayer].ComboReset();
         }
 
 
         // スコアUIの更新
-        scoreValue.ScoreUpdate();
+        scoreValue[usePlayer].ScoreUpdate();
 
 
         // 判定を取得したNotesのフェードアウト
@@ -275,11 +262,19 @@ public class NotesJudge : MonoBehaviour
 
 
         //　poorのカウントが一定以上になったらレーン奪取される
-        if(_poorCount >= _lineStealTiming)
+        if (_poorCount[usePlayer] >= _lineStealTiming)
         {
-            linesManager.LineIsStolen_1p();
+            if(usePlayer == 0)
+            {
+                linesManager.LineIsStolen_1p();
+            }
+            else
+            {
+                linesManager.LineIsStolen_2p();
+            }
+            
 
-            _poorCount = 0;
+            _poorCount[usePlayer] = 0;
         }
     }
 
@@ -292,11 +287,11 @@ public class NotesJudge : MonoBehaviour
     /// </summary>
     /// <param name="time">判定するノーツの時間</param>
     /// <param name="line">判定するノーツが所属しているレーン</param>
-    public void PoisonNotesJudgement(long time, int line)
+    public void PoisonNotesJudgement(long time, int line , int usePlayer)
     {
 
         // Briliantの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、poor)
-        if (time <= briliantJudge / judgeLeverage)
+        if (time <= briliantJudge / judgeLeverage[usePlayer])
         {
             //poorエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Poor]);
@@ -309,14 +304,14 @@ public class NotesJudge : MonoBehaviour
 
 
             // poor判定したので加算
-            _poorCount++;
+            _poorCount[usePlayer]++;
 
             //コンボ数のリセット
-            ComboScript.ComboReset();
+            ComboScript[usePlayer].ComboReset();
         }
 
         // Graetの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、Good)
-        else if (time <= greatJudge / judgeLeverage)
+        else if (time <= greatJudge / judgeLeverage[usePlayer])
         {
             //Goodエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Good]);
@@ -329,17 +324,17 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Goodの値をたす
-            scoreValue.scoreValue += _goodScore;
+            scoreValue[usePlayer].scoreValue += _goodScore;
 
             //スキルのチャージ率の増加(Good)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Good]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Good]);
 
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
         // Goodの判定時間 / スキルによる倍率以下なら(poisonなため内部処理は、Great)
-        else if (time <= goodJudge / judgeLeverage)
+        else if (time <= goodJudge / judgeLeverage[usePlayer])
         {
             //Greatエフェクトを一時格納オブジェクトに生成
             effect[line] = Instantiate(effectList[(int)JudgeType.Great]);
@@ -352,13 +347,13 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Graetの値をたす
-            scoreValue.scoreValue += _greatScore;
+            scoreValue[usePlayer].scoreValue += _greatScore;
 
             //スキルのチャージ率の増加(Great)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Great]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
 
         //poor判定(poisonなため内部処理は、Briliant)
@@ -375,19 +370,19 @@ public class NotesJudge : MonoBehaviour
 
 
             //スコア総数に、Briliantの値をたす
-            scoreValue.scoreValue += _briliantScore;
+            scoreValue[usePlayer].scoreValue += _briliantScore;
 
             //スキルのチャージ率の増加(Briliant)
-            skillChargeText.AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
+            skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
 
 
             //コンボ数の加算
-            ComboScript.AddComboValue();
+            ComboScript[usePlayer].AddComboValue();
         }
 
 
         // スコアUIの更新
-        scoreValue.ScoreUpdate();
+        scoreValue[usePlayer].ScoreUpdate();
 
 
         // 判定を取得したNotesのフェードアウト
@@ -396,12 +391,19 @@ public class NotesJudge : MonoBehaviour
 
 
         //　poorのカウントが一定以上になったらレーン奪取される
-        if (_poorCount >= _lineStealTiming)
+        if (_poorCount[usePlayer] >= _lineStealTiming)
         {
-            linesManager.LineIsStolen_1p();
+            if (usePlayer == 0)
+            {
+                linesManager.LineIsStolen_1p();
+            }
+            else
+            {
+                linesManager.LineIsStolen_2p();
+            }
 
             //カウントの初期化
-            _poorCount = 0;
+            _poorCount[usePlayer] = 0;
         }
     }
 }

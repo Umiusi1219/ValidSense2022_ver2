@@ -9,7 +9,8 @@ public enum GameScene
     CharaSelect,
     MusicSelect,
     Playing,
-    Result
+    Result_1P,
+    Result_2P,
 }
 
 public class SceneManagers : MonoBehaviour
@@ -44,7 +45,7 @@ public class SceneManagers : MonoBehaviour
                 SceneManager.LoadScene("Title");
                 break;
             case GameScene.CharaSelect:
-                SceneManager.LoadScene("");
+                SceneManager.LoadScene("CharaSelect");
                 break;
             case GameScene.MusicSelect:
                 SceneManager.LoadScene("MusicSelect");
@@ -52,7 +53,10 @@ public class SceneManagers : MonoBehaviour
             case GameScene.Playing:
                 SceneManager.LoadScene("MainScene");
                 break;
-            case GameScene.Result:
+            case GameScene.Result_1P:
+                SceneManager.LoadScene("ResultScene");
+                break;
+            case GameScene.Result_2P:
                 SceneManager.LoadScene("ResultScene");
                 break;
             default:

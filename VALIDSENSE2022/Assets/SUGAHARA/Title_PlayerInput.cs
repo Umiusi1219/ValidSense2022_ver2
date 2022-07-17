@@ -19,7 +19,7 @@ public class Title_PlayerInput : MonoBehaviour
     {
         if(Input.anyKeyDown)
         {
-            sceneManagerTest.GetComponent<Test>().ToMusicSelectScene();
+            sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
         }
     }
 }

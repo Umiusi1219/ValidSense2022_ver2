@@ -12,6 +12,9 @@ public class SkillChargeRate : MonoBehaviour
     // スキルのチャージ率の値
     public int skillValue;
 
+    [SerializeField]
+    int usePlayer;
+
     // スキルのチャージ率の値の最大値
     [SerializeField]
     private int _skillValueMax;
@@ -45,7 +48,7 @@ public class SkillChargeRate : MonoBehaviour
         skillChargeTextUpdate();
 
         // Color型への変換成功するとcolorにColor型の赤色が代入される）outキーワードで参照渡しにする
-        if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P],
+        if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[usePlayer]],
             out colorCode))
         {
             // キャラにあった色に変更

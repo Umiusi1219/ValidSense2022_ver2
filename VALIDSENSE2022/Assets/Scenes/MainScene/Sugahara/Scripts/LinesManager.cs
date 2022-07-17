@@ -22,13 +22,7 @@ public class LinesManager : MonoBehaviour
     /// 1pのスコアの数値を参照する用
     /// </summary>
     [SerializeField]
-    ScoreScript scoreScript_1p;
-
-    /// <summary>
-    /// 2pのスコアの数値を参照する用
-    /// </summary>
-    [SerializeField]
-    ScoreScript scoreScript_2p;
+    List <ScoreScript> scoreScript;
 
 
     /// <summary>
@@ -89,10 +83,10 @@ public class LinesManager : MonoBehaviour
     public void LineIsStolen_1p()
     {
         //配列参照を防ぐ
-        if(haveLines_1p > 0 )
+        if (haveLines_1p > 0)
         {
             // Color型への変換成功するとcolorにColor型の赤色が代入される）outキーワードで参照渡しにする
-            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count2P],
+            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[1]],
                 out colorCode))
             {
                 // 透明度の設定
@@ -108,20 +102,20 @@ public class LinesManager : MonoBehaviour
 
             //1pのラインを奪取されたので２Pのスコアを加算
             //1pの所持ラインが3以下なら元々2pのラインなので加算直が少ないほうを適応
-            if(haveLines_1p <= 3)
+            if (haveLines_1p <= 3)
             {
-                scoreScript_2p.scoreValue += _lineStealScore[0];
+                scoreScript[1].scoreValue += _lineStealScore[0];
             }
             else
             {
-                scoreScript_2p.scoreValue += _lineStealScore[1];
+                scoreScript[1].scoreValue += _lineStealScore[1];
             }
             //スコア表記の更新
-            scoreScript_2p.ScoreUpdate();
+            scoreScript[1].ScoreUpdate();
 
 
             //奪われたラインに流れてるノーツの色を2pの色に変更
-            viewNotesManager.NowActNotesColorChange(haveLines_1p +1, 2);
+            viewNotesManager.ActiveViewNotesColourChange(haveLines_1p + 1, 1);
         }
     }
 
@@ -135,7 +129,7 @@ public class LinesManager : MonoBehaviour
         if (haveLines_1p < 6)
         {
             // Color型への変換成功すると（colorにColor型の赤色が代入される）outキーワードで参照渡しにする
-            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P],
+            if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[0]],
                 out colorCode))
             {
 
@@ -154,19 +148,20 @@ public class LinesManager : MonoBehaviour
             //1pの所持ラインが3以下なら元々2pのラインなので加算直が少ないほうを適応
             if (haveLines_1p >= 4)
             {
-                scoreScript_1p.scoreValue += _lineStealScore[0];
+                scoreScript[0].scoreValue += _lineStealScore[0];
             }
             else
             {
-                scoreScript_1p.scoreValue += _lineStealScore[1];
+                scoreScript[0].scoreValue += _lineStealScore[1];
             }
 
             //スコア表記の更新
-            scoreScript_1p.ScoreUpdate();
+            scoreScript[0].ScoreUpdate();
 
 
             //奪われたラインに流れてるノーツの色を1pの色に変更
-            viewNotesManager.NowActNotesColorChange(haveLines_1p - 1, 1);
+            viewNotesManager.ActiveViewNotesColourChange(haveLines_1p, 0);
+
         }
     }
 
@@ -198,12 +193,12 @@ public class LinesManager : MonoBehaviour
     void SetLineColor_1p2p()
     {
         //レーン数分繰り返す
-        for(int i = 0; i < lines.Count; i++)
+        for (int i = 0; i < lines.Count; i++)
         {
-            if(i <4)
+            if (i < 4)
             {
                 //1PのカラーコードをcolorCodeに入れる
-                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count1P], out colorCode);
+                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[0]], out colorCode);
 
                 // 透明度の設定
                 colorCode.a = _lineAlpha;
@@ -215,7 +210,7 @@ public class LinesManager : MonoBehaviour
             else
             {
                 //2PのカラーコードをcolorCodeに入れる
-                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count2P], out colorCode);
+                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[1]], out colorCode);
 
                 // 透明度の設定
                 colorCode.a = _lineAlpha;
@@ -236,35 +231,35 @@ public class LinesManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            Debug.Log("1Pがラインとられた");
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    Debug.Log("1Pがラインとられた");
 
-            LineIsStolen_1p();
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Debug.Log("2Pがラインとられた");
-
-            LineIsStolen_2p();
-        }
+        //    LineIsStolen_1p();
+        //}
 
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Debug.Log("全ラインを灰色化");
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
+        //    Debug.Log("2Pがラインとられた");
 
-            OllLineColorChange();
-        }
+        //    LineIsStolen_2p();
+        //}
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("ラインをリセット");
-            SetLineColor_1p2p();
 
-            haveLines_1p = 3;
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    Debug.Log("全ラインを灰色化");
+
+        //    OllLineColorChange();
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Debug.Log("ラインをリセット");
+        //    SetLineColor_1p2p();
+
+        //    haveLines_1p = 3;
+        //}
     }
 }

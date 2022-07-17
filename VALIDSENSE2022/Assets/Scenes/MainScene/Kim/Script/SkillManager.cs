@@ -80,6 +80,9 @@ public class SkillManager : MonoBehaviour
     [SerializeField]
     private float tactileSkillTime;
 
+    /// <summary>
+    /// スキル発動可能かどうか
+    /// </summary>
     [SerializeField]
     private bool canTactileSkill;
 
@@ -140,34 +143,81 @@ public class SkillManager : MonoBehaviour
         bpm = musicDataObj.GetComponent<JsonReader>()._songList.songdata.bpm;
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            StartCoroutine(SightSkill(0));
+            Debug.Log("サイトスキル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            StartCoroutine(TactileSkill(0));
+            Debug.Log("タクタイル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            StartCoroutine(SmaillTasteSkill(0));
+            Debug.Log("スメル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            StartCoroutine(HearSkill(0));
+            Debug.Log("ヒア発動");
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            StartCoroutine(SightSkill(1));
+            Debug.Log("サイトスキル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            StartCoroutine(TactileSkill(1));
+            Debug.Log("タクタイル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            StartCoroutine(SmaillTasteSkill(1));
+            Debug.Log("スメル発動");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            StartCoroutine(HearSkill(1));
+            Debug.Log("ヒア発動");
+        }
+    }
+
+
 
     /// <summary>
     /// 現在のキャラにあったスキルの発動
     /// </summary>
-    public void UseSkill_Logic()
+    public void UseSkill_Logic(int usePlayer)
     {
-        switch (testChara.count1P)
+        switch (testChara.count[usePlayer])
         {
-            case 0:
-                StartCoroutine(SightSkill(0));
+            case (int)ConstRepo.Chara.Sight:
+                StartCoroutine(SightSkill(usePlayer));
                 Debug.Log("サイトスキル発動");
                 break;
 
-            case 1:
-                StartCoroutine(HearSkill(0));
-                Debug.Log("ヒアスキル発動");
-                break;
-
-            case 2:
-                StartCoroutine(TactileSkill());
+            case (int)ConstRepo.Chara.Tactile:
+                StartCoroutine(TactileSkill(usePlayer));
                 Debug.Log("タクタイルスキル発動");
                 break;
 
-            case 3:
-                StartCoroutine(SmaillTasteSkill());
+            case (int)ConstRepo.Chara.Smell_Taste:
+                StartCoroutine(SmaillTasteSkill(usePlayer));
                 Debug.Log("スメルスキル発動");
                 break;
-        } 
+
+            case (int)ConstRepo.Chara.Hear:
+                StartCoroutine(HearSkill(usePlayer));
+                Debug.Log("ヒアスキル発動");
+                break;
+        }
     }
 
 
@@ -176,17 +226,17 @@ public class SkillManager : MonoBehaviour
     /// </summary>
     public bool IsCanUseSkill()
     {
-        switch (testChara.count1P)
+        switch (testChara.count[0])
         {
             case 0:
                 return canSightSkill;
 
             case 1:
-                return canHearSkill;
-            case 2:
                 return canTactileSkill;
+            case 2:
+                return  canSmaillTasteSkill;
             case 3:
-                return canSmaillTasteSkill;
+                return canHearSkill;
 
             default:
                 return false;
@@ -209,7 +259,7 @@ public class SkillManager : MonoBehaviour
         while (sightSkillUI[usePlayerNum].transform.position.y
             >= 0 + 1080 / 60 / sightSkillSpeed)
         {
-            sightSkillUI[usePlayerNum].transform.position -= 
+            sightSkillUI[usePlayerNum].transform.position -=
                 new Vector3(0, 1080 / 60 / sightSkillSpeed, 0);
 
             // 1フレームまつ
@@ -217,7 +267,7 @@ public class SkillManager : MonoBehaviour
         }
 
         //　ｙのずれ防止
-        sightSkillUI[usePlayerNum].transform.position = 
+        sightSkillUI[usePlayerNum].transform.position =
             new Vector3(sightSkillUI[usePlayerNum].transform.position.x,
             0, sightSkillUI[usePlayerNum].transform.position.z);
 
@@ -247,36 +297,45 @@ public class SkillManager : MonoBehaviour
     }
 
 
-    IEnumerator TactileSkill()
+    IEnumerator TactileSkill(int usePlayer)
     {
+        if (usePlayer == 0)
+        {
+            usePlayer = 1;
+        }
+        else
+        {
+            usePlayer = 0;
+        }
+
         //　スキル使用不可にする
         canTactileSkill = false;
 
         //　減速と加速をswitchで分ける
-        switch(Random.Range(0,2))
+        switch (Random.Range(0, 2))
         {
             // 加速をbpmが200以上と未満で２つに分ける
             case 0:
                 if (bpm <= 200)
                 {
-                    viewNotesManager.NotesSpeedLeverage = tactile_accel[0];
+                    viewNotesManager.NotesSpeedLeverage[usePlayer] = tactile_accel[0];
                 }
                 else
                 {
-                    viewNotesManager.NotesSpeedLeverage = tactile_accel[1];
+                    viewNotesManager.NotesSpeedLeverage[usePlayer] = tactile_accel[1];
                 }
-                    break;
-                // 減速
-                case 1:
-                viewNotesManager.NotesSpeedLeverage = tactile_deceleration;
                 break;
-                
+            // 減速
+            case 1:
+                viewNotesManager.NotesSpeedLeverage[usePlayer] = tactile_deceleration;
+                break;
+
         }
         // タクタイルのスキル時間だけ待つ
         yield return new WaitForSeconds(tactileSkillTime);
 
         // スキル用変数を初期値に変更
-        viewNotesManager.NotesSpeedLeverage = 1;
+        viewNotesManager.NotesSpeedLeverage[usePlayer] = 1;
 
         // スキルが終わってcooltimeがかかる
         yield return new WaitForSeconds(skillCoolTime);
@@ -290,26 +349,38 @@ public class SkillManager : MonoBehaviour
     /// スメル＆テイストのスキル
     /// </summary>
     /// <returns></returns>
-    IEnumerator SmaillTasteSkill() 
+    IEnumerator SmaillTasteSkill(int usePlayer)
     {
+        if (usePlayer == 0)
+        {
+            usePlayer = 1;
+        }
+        else
+        {
+            usePlayer = 0;
+        }
+
         //　スキル使用不可にする
         canSmaillTasteSkill = false;
 
 
         // 総ノーツ ÷ 毒ノーツに変える数を割り出し用の値分繰り返す
-        for (int i = 0; i < notesDataList.musicNotesDate.Count / smaillSkillDivValue;) 
+        for (int i = 0; i < notesDataList.musicNotesDate[usePlayer].notesList. Count / smaillSkillDivValue;)
         {
-            Debug.Log(notesDataList.musicNotesDate.Count / smaillSkillDivValue);
+            Debug.Log(notesDataList.musicNotesDate[usePlayer].notesList.Count / smaillSkillDivValue);
 
 
             // 総ノーツ数が、現在の譜面進行度 + 干渉した数より大きければ
-            if (notesDataList.musicNotesDate.Count > notesDataList.nowNoteDataNum + notesCheckedCount)
+            if (notesDataList.musicNotesDate[usePlayer].notesList.Count > notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount)
             {
-                if (notesDataList.musicNotesDate[notesDataList.nowNoteDataNum + notesCheckedCount].type == 0  
-                    || notesDataList.musicNotesDate[notesDataList.nowNoteDataNum + notesCheckedCount].type == 1)
+                if (notesDataList.musicNotesDate[usePlayer].notesList
+                    [notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount].type == 0)
+                    //|| notesDataList.musicNotesDate[usePlayer].notesList
+                    //[notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount].type == 1)
                 {
                     // 現在の譜面進行度 + 干渉した数を足した所のノーツを毒ノーツ判定にする
-                    notesDataList.musicNotesDate[notesDataList.nowNoteDataNum + notesCheckedCount].isPoison = true;
+                    notesDataList.musicNotesDate[usePlayer].notesList
+                        [notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount].isPoison = true;
 
                     i++;
                 }
@@ -318,7 +389,7 @@ public class SkillManager : MonoBehaviour
             }
 
             // 総ノーツに数が、現在の譜面進行度 + 干渉した数以下なら
-            if (notesDataList.musicNotesDate.Count <= notesDataList.nowNoteDataNum + notesCheckedCount)
+            if (notesDataList.musicNotesDate[usePlayer].notesList.Count <= notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount)
             {
                 i++;
             }
@@ -326,21 +397,22 @@ public class SkillManager : MonoBehaviour
 
 
         // 総ノーツに数が、現在の譜面進行度 + 干渉した数より大きければ
-        if (notesDataList.musicNotesDate.Count > notesDataList.nowNoteDataNum + notesCheckedCount)
+        if (notesDataList.musicNotesDate[usePlayer].notesList.Count > notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount)
         {
             // 最後に干渉したノーツの判定時間までまつ
-            yield return new WaitForSeconds((notesDataList.musicNotesDate[notesDataList.nowNoteDataNum + notesCheckedCount]
+            yield return new WaitForSeconds((notesDataList.musicNotesDate[usePlayer].notesList
+                [notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount]
                 .time - MusicData.Timer) / 1000);
 
         }
 
 
         // 総ノーツに数が、現在の譜面進行度 + 干渉した数以下なら
-        if (notesDataList.musicNotesDate.Count <= notesDataList.nowNoteDataNum + notesCheckedCount)
+        if (notesDataList.musicNotesDate[usePlayer].notesList.Count <= notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount)
         {
             // 譜面最後のノーツ判定時間までまつ
-            yield return new WaitForSeconds((notesDataList.musicNotesDate[notesDataList.musicNotesDate.Count - 1]
-                .time - MusicData.Timer) / 1000);
+            yield return new WaitForSeconds((notesDataList.musicNotesDate[usePlayer].notesList
+                [notesDataList.musicNotesDate[usePlayer].notesList.Count - 1].time - MusicData.Timer) / 1000);
 
             Debug.Log("譜面外");
         }
@@ -360,16 +432,25 @@ public class SkillManager : MonoBehaviour
     /// <returns></returns>
     IEnumerator HearSkill(int usePlayerNum)
     {
+        if(usePlayerNum == 0)
+        {
+            usePlayerNum = 1;
+        }
+        else
+        {
+            usePlayerNum = 0;
+        }
+
         //　スキル使用不可にする
         canHearSkill = false;
 
         // 判定の値を変更する
-        notesJudge.judgeLeverage = hearSkillValue;
+        notesJudge.judgeLeverage[usePlayerNum] = hearSkillValue;
 
 
         //判定バーを移動させる
         barLine[usePlayerNum].transform.localScale
-            -= new Vector3(0,barDecreaseValue,0);
+            -= new Vector3(0, barDecreaseValue, 0);
 
 
 
@@ -377,7 +458,7 @@ public class SkillManager : MonoBehaviour
         yield return new WaitForSeconds(hearSkillTime);
 
         // ヒアのスキルが終わったら判定を初期化
-        notesJudge.judgeLeverage = 1;
+        notesJudge.judgeLeverage[usePlayerNum] = 1;
 
 
         //判定バーを元の場所に戻す

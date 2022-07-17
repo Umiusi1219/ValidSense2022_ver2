@@ -12,6 +12,9 @@ public class MusicPlayer : MonoBehaviour
     public long PlayTime;
     public static int SongNum = 0;
 
+    [SerializeField]
+    List<ScoreScript> score;
+
     private void Awake() 
     {
         if(instance == null)
@@ -50,7 +53,17 @@ public class MusicPlayer : MonoBehaviour
     {
         if(SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
         {
-            GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result);
+            score[0].SetScore();
+            score[1].SetScore();
+
+            if (score[0].scoreValue >= score[1].scoreValue)
+            {
+                GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_1P);
+            }
+            else
+            {
+                GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_2P);
+            }
         }
     }
 

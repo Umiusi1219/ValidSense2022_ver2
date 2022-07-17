@@ -13,6 +13,8 @@ public class JsonReader : MonoBehaviour
 
     public TextAsset textJSON;
 
+    //public TextAsset textJSON_2p;
+
     [System.Serializable]
     public class SongData
     {
@@ -71,6 +73,8 @@ public class JsonReader : MonoBehaviour
 
     public SongList _songList;
 
+    public SongList _songList_2P;
+
 
     public static JsonReader instance = null;
 
@@ -99,6 +103,8 @@ public class JsonReader : MonoBehaviour
         }*/
         //textJSON = Resources.Load("BeatmapData/02") as TextAsset;
         _songList = JsonUtility.FromJson<SongList>(textJSON.text);
+
+        _songList_2P = JsonUtility.FromJson<SongList>(textJSON.text);
     }
     void Update() 
     {

@@ -12,23 +12,28 @@ public class Test : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            sceneManager.SendMessage("SetScene", GameScene.Title);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            sceneManager.SendMessage("SetScene", GameScene.MusicSelect);
-        }
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            sceneManager.SendMessage("SetScene", GameScene.Playing);
-        }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            sceneManager.SendMessage("SetScene", GameScene.Result);
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha0))
+        //{
+        //    sceneManager.SendMessage("SetScene", GameScene.Title);
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    sceneManager.SendMessage("SetScene", GameScene.MusicSelect);
+        //}
+        //if(Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    sceneManager.SendMessage("SetScene", GameScene.Playing);
+        //}
+        //if(Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    sceneManager.SendMessage("SetScene", GameScene.Result);
+        //}
     }
+    public void ToCharaSelectScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.CharaSelect);
+    }
+
 
     public void ToMusicSelectScene()
     {
@@ -40,9 +45,14 @@ public class Test : MonoBehaviour
         sceneManager.SendMessage("SetScene", GameScene.Playing);
     }
 
-    public void ToResultScene()
+    public void ToResult_1P_Scene()
     {
-        sceneManager.SendMessage("SetScene", GameScene.Result);
+        sceneManager.SendMessage("SetScene", GameScene.Result_1P);
+    }
+
+    public void ToResult_2P_Scene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.Result_2P);
     }
 
     public void ToTitleScene()
