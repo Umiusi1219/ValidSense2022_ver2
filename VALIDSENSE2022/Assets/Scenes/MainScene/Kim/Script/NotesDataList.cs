@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class NotesDataList : MonoBehaviour
 {
@@ -12,139 +10,76 @@ public class NotesDataList : MonoBehaviour
     [SerializeField]
     private JsonReader _jsonReader;
 
+
     /// <summary>
-    /// musicNoteDataの進行度記憶
+    /// 読み込む用の譜面データ（JsonReader）
     /// </summary>
-    public int nowNoteDataNum;
+    [SerializeField]
+    private JsonReader _jsonReader_2p;
+
 
     /// <summary>
     /// 各レーンのノーツ総数
     /// </summary>
-    public int[] listNumMax = {0,0,0,0};
-    
-    /// <summary>
-    /// レーン＿０のノーツデータリスト
-    /// </summary>
-    public  List<JsonReader.NoteList> notesList_0 = new List<JsonReader.NoteList>();
-    /// <summary>
-    /// レーン＿1のノーツデータリスト
-    /// </summary>
-    public List<JsonReader.NoteList> notesList_1 = new List<JsonReader.NoteList>();
-    /// <summary>
-    /// レーン＿2のノーツデータリスト
-    /// </summary>
-    public List<JsonReader.NoteList> notesList_2 = new List<JsonReader.NoteList>();
-    /// <summary>
-    /// レーン＿３のノーツデータリスト
-    /// </summary>
-    public List<JsonReader.NoteList> notesList_3 = new List<JsonReader.NoteList>();
+    public int[] listNumMax;
 
     /// <summary>
-    /// レーンごとに分かれていない譜面データ
+    /// ノーツデータのリストのリスト
+    /// </summary>
+    public List<NotesDataClass> notesLists;
+
+
+    /// <summary>
+    /// レーンごとに分かれていない1Pの譜面データ
     /// </summary>
     [SerializeField]
-    public List<JsonReader.NoteList> musicNotesDate;
+    public List<NotesDataClass> musicNotesDate;
 
-
-
-
-
-    //public List<JsonReader.NoteList> testnotesList_0;
-
-    //public  List<JsonReader.NoteList> testnotesList_1;
-
-    //public  List<JsonReader.NoteList> testnotesList_2;
-
-    //public  List<JsonReader.NoteList> testnotesList_3;
+    /// <summary>
+    /// musicNoteDataの進行度記憶
+    /// </summary>
+    public int[] nowNoteDataNum;
 
 
     void Start()
     {
 
-        // 譜面データの読み込み
+        // 1p 譜面データの読み込み
         foreach (JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
         {
-            //ノーツのデータを各レーンに振り分け 
-            //ノーツのデータをListに追加（直列）
-            switch (item.line)
-            {
-                case 0:
-                    listNumMax[0]++;
-                    notesList_0.Add(item);
-
-                    musicNotesDate.Add(notesList_0[notesList_0.Count -1 ]);
-                    break;
-
-                case 1:
-                    listNumMax[1]++;
-                    notesList_1.Add(item);
-
-                    musicNotesDate.Add(notesList_1[notesList_1.Count - 1]);
-                    break;
-
-                case 2:
-                    listNumMax[2]++;
-                    notesList_2.Add(item);
-
-                    musicNotesDate.Add(notesList_2[notesList_2.Count - 1]);
-                    break;
-
-                case 3:
-                    listNumMax[3]++;
-                    notesList_3.Add(item);
-
-                    musicNotesDate.Add(notesList_3[notesList_3.Count - 1]);
-                    break;
-
-                default:
-                    Debug.LogError("配列外参照");
-                    break;
-            }
-            
+            addNotesData_1P(item.line, item);
         }
 
-        //Test
-        //// 作られたノーツのListの読み込み
-        //foreach (JsonReader.NoteList item in _jsonReader._songList.difflist.natural.notelist)
-        //{
-        //    //ノーツのデータを各レーンに振り分け
-        //    switch (item.line)
-        //    {
-        //        case 0:
-        //            listNumMax[0]++;
-        //            testnotesList_0.Add(item);
+        // 2p 譜面データの読み込み
+        foreach (JsonReader.NoteList item in _jsonReader_2p._songList_2P.difflist.natural.notelist)
+        {
+            addNotesData_2P( 7 - item.line, item); ;
+        }
+    }
 
-        //            musicNotesDate.Add(testnotesList_0[testnotesList_0.Count - 1]);
-        //            break;
+    /// <summary>
+    /// ノーツのデータを各レーンに振り分け ノーツのデータをListに追加（直列）
+    /// </summary>
+    /// <param name="Line"></param>
+    void addNotesData_1P(int Line , JsonReader.NoteList item)
+    {
+        listNumMax[Line]++;
+        notesLists[Line].notesList.Add(item);
 
-        //        case 1:
-        //            listNumMax[1]++;
-        //            testnotesList_1.Add(item);
+        musicNotesDate[0].notesList.Add
+            (notesLists[Line].notesList[notesLists[Line].notesList.Count - 1]);
+    }
 
-        //            musicNotesDate.Add(testnotesList_1[testnotesList_1.Count - 1]);
-        //            break;
+    /// <summary>
+    /// ノーツのデータを各レーンに振り分け ノーツのデータをListに追加（直列）
+    /// </summary>
+    /// <param name="Line"></param>
+    void addNotesData_2P(int Line, JsonReader.NoteList item)
+    {
+        listNumMax[Line]++;
+        notesLists[Line].notesList.Add(item);
 
-        //        case 2:
-        //            listNumMax[2]++;
-        //            testnotesList_2.Add(item);
-
-        //            musicNotesDate.Add(testnotesList_2[testnotesList_2.Count - 1]);
-        //            break;
-
-        //        case 3:
-        //            listNumMax[3]++;
-        //            testnotesList_3.Add(item);
-
-        //            musicNotesDate.Add(testnotesList_3[testnotesList_3.Count - 1]);
-        //            break;
-
-        //        default:
-        //            Debug.LogError("配列外参照");
-        //            break;
-        //    }
-
-        //}
-
-
+        musicNotesDate[1].notesList.Add
+            (notesLists[Line].notesList[notesLists[Line].notesList.Count - 1]);
     }
 }

@@ -17,7 +17,7 @@ public class MusicSelectData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        jsonReader = GameObject.Find("Json").GetComponent<JsonReader>();
     }
 
     // Update is called once per frame

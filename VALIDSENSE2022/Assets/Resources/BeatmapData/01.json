@@ -14,13 +14,13 @@
             }
         ,
             "highSense": {
-                "level" : 9,
+                "level" : 0,
                 "notelist": [
                 ]
             }
         ,
             "sixthSense": {
-                "level" : 70,
+                "level" : 0,
                 "notelist": [
                 ]
             }

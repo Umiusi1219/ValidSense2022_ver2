@@ -7,29 +7,44 @@ public class TestChara : MonoBehaviour
     [SerializeField]
     public GameObject[] chara1P, chara2P;
     // private から pubricに変更 初めの値を 1 から 0 に変更 by菅原　7/1
-    public int count1P = 0, count2P = 0;
+    public int[] count;
     // Update is called once per frame
+
+    [SerializeField]
+    GameObject sceneManager;
+
+    private void Awake()
+    {
+        sceneManager = GameObject.Find("SceneManager");
+
+        count[0] = sceneManager.GetComponent<PlayerManagerScript>()
+            .playerCharaNum[(int)ConstRepo.Player.P1];
+
+        count[1] = sceneManager.GetComponent<PlayerManagerScript>()
+            .playerCharaNum[(int)ConstRepo.Player.P2];
+    }
+
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            if(count1P == 3)
+            if (count[0] == 3)
             {
-                count1P = 0;
+                count[0] = 0;
                 return;
             }
-            count1P++;
+            count[0]++;
         }
         else if(Input.GetKeyDown(KeyCode.X))
         {
-            if(count1P == 0)
+            if(count[0] == 0)
             {
-                count1P = 3;
+                count[0] = 3;
                 return;
             }
-            count1P--;
+            count[0]--;
         }
-        switch (count1P)
+        switch (count[0])
         {
             // caseの始まりの値を 0からに変更 by菅原　7/1
             case 0:
@@ -65,23 +80,23 @@ public class TestChara : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.C))
         {
-            if(count2P == 3)
+            if(count[1] == 3)
             {
-                count2P = 0;
+                count[1] = 0;
                 return;
             }
-            count2P++;
+            count[1]++;
         }
         else if(Input.GetKeyDown(KeyCode.V))
         {
-            if(count2P == 0)
+            if(count[1] == 0)
             {
-                count2P = 3;
+                count[1] = 3;
                 return;
             }
-            count2P--;
+            count[1]--;
         }
-        switch (count2P)
+        switch (count[1])
         {
             case 0:
                 chara2P[0].SetActive(true);
