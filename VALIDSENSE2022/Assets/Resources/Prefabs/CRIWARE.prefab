@@ -74,6 +74,10 @@ MonoBehaviour:
     acbFile: BGMData/SECue.acb
     awbFile: 
     loaderStatus: 0
+  - name: PreviewCue
+    acbFile: BGMData/PreviewCue.acb
+    awbFile: 
+    loaderStatus: 0
   dspBusSetting: 
   dontDestroyOnLoad: 1
   dontRemoveExistsCueSheet: 1
