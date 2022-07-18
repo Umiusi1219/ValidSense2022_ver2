@@ -95,18 +95,18 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        //        //判定バーデバック用
-        //        if (MusicData.Timer >= notesDataList.notesList_0[lineNotesNum[0]].time)
-        //        {
-        //            Debug.Log("Timer" + MusicData.Timer);
-        //            Debug.Log("Judge" + notesDataList.notesList_0[lineNotesNum[0]].time);
+//        //判定バーデバック用(判定バー到達予定時間に任意エラーにて強制停止)
+//        if (MusicData.Timer >= notesDataList.notesLists[0].notesList[lineNotesNum[0]].time)
+//        {
+//            Debug.Log("Timer" + MusicData.Timer);
+//            Debug.Log("Judge" + notesDataList.notesLists[0].notesList[lineNotesNum[0]].time);
 
-        //            Debug.Log("差" + (MusicData.Timer - notesDataList.notesList_0[lineNotesNum[0]].time));
+//            Debug.Log("差" + (MusicData.Timer - notesDataList.notesLists[0].notesList[lineNotesNum[0]].time));
 
-        //#if UNITY_EDITOR
-        //            UnityEditor.EditorApplication.isPaused = true;
-        //#endif
-        //        }
+//#if UNITY_EDITOR
+//            UnityEditor.EditorApplication.isPaused = true;
+//#endif
+//        }
 
 
         // 1p 入力----------------------------------------------------------------------------------

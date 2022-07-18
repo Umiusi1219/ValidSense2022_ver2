@@ -54,10 +54,10 @@ public class SceneManagers : MonoBehaviour
                 SceneManager.LoadScene("MainScene");
                 break;
             case GameScene.Result_1P:
-                SceneManager.LoadScene("ResultScene");
+                SceneManager.LoadScene("ResultScene_1P");
                 break;
             case GameScene.Result_2P:
-                SceneManager.LoadScene("ResultScene");
+                SceneManager.LoadScene("ResultScene_2P");
                 break;
             default:
                 break;

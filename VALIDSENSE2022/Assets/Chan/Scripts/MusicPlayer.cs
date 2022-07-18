@@ -53,8 +53,8 @@ public class MusicPlayer : MonoBehaviour
     {
         if(SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
         {
-            score[0].SetScore();
-            score[1].SetScore();
+            score[0].SetScores();
+            score[1].SetScores();
 
             if (score[0].scoreValue >= score[1].scoreValue)
             {

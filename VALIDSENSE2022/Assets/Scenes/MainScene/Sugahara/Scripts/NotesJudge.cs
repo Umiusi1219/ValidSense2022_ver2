@@ -178,6 +178,9 @@ public class NotesJudge : MonoBehaviour
             //スコア総数に、Briliantの値をたす
             scoreValue[usePlayer].scoreValue += _briliantScore;
 
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
+
             //スキルのチャージ率の増加(Briliant)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
 
@@ -202,6 +205,9 @@ public class NotesJudge : MonoBehaviour
             //スコア総数に、Graetの値をたす
             scoreValue[usePlayer].scoreValue += _greatScore;
 
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
+
             //スキルのチャージ率の増加(Great)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
@@ -224,6 +230,9 @@ public class NotesJudge : MonoBehaviour
 
             //スコア総数に、Goodの値をたす
             scoreValue[usePlayer].scoreValue += _goodScore;
+
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
 
             //スキルのチャージ率の増加(Good)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Good]);
@@ -267,12 +276,17 @@ public class NotesJudge : MonoBehaviour
             if(usePlayer == 0)
             {
                 linesManager.LineIsStolen_1p();
+
+                //奪ったレーンカウントを加算
+                scoreValue[1].stolenLaneCount++;
             }
             else
             {
                 linesManager.LineIsStolen_2p();
+
+                //奪ったレーンカウントを加算
+                scoreValue[0].stolenLaneCount++;
             }
-            
 
             _poorCount[usePlayer] = 0;
         }
@@ -326,6 +340,9 @@ public class NotesJudge : MonoBehaviour
             //スコア総数に、Goodの値をたす
             scoreValue[usePlayer].scoreValue += _goodScore;
 
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
+
             //スキルのチャージ率の増加(Good)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Good]);
 
@@ -349,6 +366,9 @@ public class NotesJudge : MonoBehaviour
             //スコア総数に、Graetの値をたす
             scoreValue[usePlayer].scoreValue += _greatScore;
 
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
+
             //スキルのチャージ率の増加(Great)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Great]);
 
@@ -371,6 +391,9 @@ public class NotesJudge : MonoBehaviour
 
             //スコア総数に、Briliantの値をたす
             scoreValue[usePlayer].scoreValue += _briliantScore;
+
+            //総打数記憶用変数に加算
+            scoreValue[usePlayer].totalHitsNum++;
 
             //スキルのチャージ率の増加(Briliant)
             skillChargeText[usePlayer].AddSkillValue(addSkillValue[(int)JudgeType.Briliant]);
@@ -396,11 +419,18 @@ public class NotesJudge : MonoBehaviour
             if (usePlayer == 0)
             {
                 linesManager.LineIsStolen_1p();
+
+                //奪ったレーンカウントを加算
+                scoreValue[1].stolenLaneCount++;
             }
             else
             {
                 linesManager.LineIsStolen_2p();
+
+                //奪ったレーンカウントを加算
+                scoreValue[0].stolenLaneCount++;
             }
+
 
             //カウントの初期化
             _poorCount[usePlayer] = 0;
