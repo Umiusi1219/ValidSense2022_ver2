@@ -93,20 +93,143 @@ public class PlayerInput : MonoBehaviour
     private float[] _inputWaitTime_L_2P;
 
 
+
+
     void Update()
     {
-//        //判定バーデバック用(判定バー到達予定時間に任意エラーにて強制停止)
-//        if (MusicData.Timer >= notesDataList.notesLists[0].notesList[lineNotesNum[0]].time)
-//        {
-//            Debug.Log("Timer" + MusicData.Timer);
-//            Debug.Log("Judge" + notesDataList.notesLists[0].notesList[lineNotesNum[0]].time);
+        //        //判定バーデバック用(判定バー到達予定時間に任意エラーにて強制停止)
+        //        if (MusicData.Timer >= notesDataList.notesLists[0].notesList[lineNotesNum[0]].time)
+        //        {
+        //            Debug.Log("Timer" + MusicData.Timer);
+        //            Debug.Log("Judge" + notesDataList.notesLists[0].notesList[lineNotesNum[0]].time);
 
-//            Debug.Log("差" + (MusicData.Timer - notesDataList.notesLists[0].notesList[lineNotesNum[0]].time));
+        //            Debug.Log("差" + (MusicData.Timer - notesDataList.notesLists[0].notesList[lineNotesNum[0]].time));
 
-//#if UNITY_EDITOR
-//            UnityEditor.EditorApplication.isPaused = true;
-//#endif
-//        }
+        //#if UNITY_EDITOR
+        //            UnityEditor.EditorApplication.isPaused = true;
+        //#endif
+        //        }
+
+
+        // 1P SE---------------------------------------------------------------------------------------------
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+
+        }
+
+
+        // wに対応するラインが奪われてなかったらWキーで判定
+        if (linesManager.Get_1pHaveLines() >= 1)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+
+            }
+        }
+        // wに対応するラインが奪われていたらSキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+
+            }
+        }
+
+        // Eに対応するラインが奪われてなかったらEキーで判定
+        if (linesManager.Get_1pHaveLines() >= 2)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+            }
+        }
+        // Eに対応するラインが奪われていたらDキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+
+            }
+        }
+
+        // Rに対応するラインが奪われてなかったらRキーで判定
+        if (linesManager.Get_1pHaveLines() >= 3)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+
+            }
+        }
+        // Rに対応するラインが奪われていたらFキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+
+            }
+        }
+        // -------------------------------------------------------------------------------------------------
+
+
+        // 2P SE---------------------------------------------------------------------------------------------
+
+        // Pキーを押したとき
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+        }
+
+        // oに対応するラインが奪われてなかったらoキーで判定
+        if (linesManager.Get_1pHaveLines() <= 6)
+        {
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+
+            }
+        }
+        // oに対応するラインが奪われていたらLキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+
+            }
+        }
+
+        // Iに対応するラインが奪われてなかったらIキーで判定
+        if (linesManager.Get_1pHaveLines() <= 5)
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+             
+            }
+        }
+        // Iに対応するラインが奪われていたらKキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+
+            }
+        }
+
+        // Uに対応するラインが奪われてなかったらUキーで判定
+        if (linesManager.Get_1pHaveLines() <= 4)
+        {
+            if (Input.GetKeyDown(KeyCode.U))
+            {
+
+            }
+        }
+        // Rに対応するラインが奪われていたらFキーで判定
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+
+            }
+        }
+        //--------------------------------------------------------------------------------------------------
 
 
         // 1p 入力----------------------------------------------------------------------------------
