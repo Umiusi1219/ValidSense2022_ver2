@@ -114,7 +114,8 @@ public class PlayerInput : MonoBehaviour
         // 1P SE---------------------------------------------------------------------------------------------
         if(Input.GetKeyDown(KeyCode.Q))
         {
-
+            // タンバリン
+            SEPlayer.instance.SEOneShot(0);
         }
 
 
@@ -123,7 +124,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.W))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // wに対応するラインが奪われていたらSキーで判定
@@ -131,7 +133,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
 
@@ -140,7 +143,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // Eに対応するラインが奪われていたらDキーで判定
@@ -148,7 +152,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.D))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
 
@@ -157,7 +162,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // Rに対応するラインが奪われていたらFキーで判定
@@ -165,7 +171,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // -------------------------------------------------------------------------------------------------
@@ -176,7 +183,8 @@ public class PlayerInput : MonoBehaviour
         // Pキーを押したとき
         if (Input.GetKeyDown(KeyCode.P))
         {
-
+            // タンバリン
+            SEPlayer.instance.SEOneShot(0);
         }
 
         // oに対応するラインが奪われてなかったらoキーで判定
@@ -184,7 +192,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.O))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // oに対応するラインが奪われていたらLキーで判定
@@ -192,7 +201,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.L))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
 
@@ -201,7 +211,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
-             
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // Iに対応するラインが奪われていたらKキーで判定
@@ -209,7 +220,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.K))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
 
@@ -218,7 +230,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         // Rに対応するラインが奪われていたらFキーで判定
@@ -226,7 +239,8 @@ public class PlayerInput : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.J))
             {
-
+                // タンバリン
+                SEPlayer.instance.SEOneShot(0);
             }
         }
         //--------------------------------------------------------------------------------------------------
