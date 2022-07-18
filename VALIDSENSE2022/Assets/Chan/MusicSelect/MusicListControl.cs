@@ -25,6 +25,7 @@ public class MusicListControl : MonoBehaviour
     {
         //Debug.Log(transform.childCount);
         jsonReader = GameObject.Find("Json");
+        sceneManager = GameObject.Find("SceneManager");
         musicListNum = transform.childCount;
         musicListPosDatas = new Vector3[musicListNum];
         musicListRotationDatas = new Quaternion[musicListNum];
@@ -34,25 +35,14 @@ public class MusicListControl : MonoBehaviour
         {
             musicList[i] = transform.GetChild(i).gameObject;
         }
-
-
-        sceneManager = GameObject.Find("SceneManager");
     }
 
     void Update()
     {
-
-        /*for(int i = 0; i < musicListNum; i++)
-        {
-            musicListPosDatas[i] = musicList[i].transform.position;
-            musicListRotationDatas[i] = musicList[i].transform.rotation;
-        }*/
-
         if (Input.GetKeyDown(KeyCode.W))
         {
             StartCoroutine(ScrollUp());
         }
-
         else if (Input.GetKeyDown(KeyCode.S))
         {
             StartCoroutine(ScrollDown());
@@ -61,15 +51,19 @@ public class MusicListControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q) && nowMusicNum == 1)
         {
-            sceneManager.GetComponent<Test>().ToMainScene();
+            //MusicPreviewPlayer.instance.StopPlayer();
+            SEPlayer.instance.SEOneShot(7);
+            Invoke("ToMainScene",3);
         }
     }
 
+    //Scrolling Downward
     private IEnumerator ScrollDown()
     {
         if(isScrolling) { yield break; }
 
         isScrolling = true;
+        SEPlayer.instance.SEOneShot(5);
         for(int i = 0; i < musicListNum; i++)
         {
             musicListPosDatas[i] = musicList[i].transform.position;
@@ -94,13 +88,23 @@ public class MusicListControl : MonoBehaviour
         }
         ScrollDownNumChange();
         jsonReader.SendMessage("ChangeJson",nowMusicNum);
+        if(nowMusicNum != 1)
+        {
+            MusicPreviewPlayer.instance.StopPlayer();
+        }
+        else
+        {
+            MusicPreviewPlayer.instance.MusicPlay(0);
+        }
         isScrolling = false;
     }
+    //Scrolling Upward
     private IEnumerator ScrollUp()
     {
         if(isScrolling) { yield break; }
 
         isScrolling = true;
+        SEPlayer.instance.SEOneShot(5);
         for(int i = musicListNum - 1; i >= 0; i--)
         {
             musicListPosDatas[i] = musicList[i].transform.position;
@@ -125,9 +129,18 @@ public class MusicListControl : MonoBehaviour
         }
         ScrollUpNumChange();
         jsonReader.SendMessage("ChangeJson",nowMusicNum);
+        if(nowMusicNum != 1)
+        {
+            MusicPreviewPlayer.instance.StopPlayer();
+        }
+        else
+        {
+            MusicPreviewPlayer.instance.MusicPlay(0);
+        }
         isScrolling = false;
     }
 
+    
     private void ScrollUpNumChange()
     {
         if(nowMusicNum > 1)
@@ -182,5 +195,12 @@ public class MusicListControl : MonoBehaviour
         ScrollUpNumChange();
         jsonReader.SendMessage("ChangeJson",nowMusicNum);
         isScrolling = false;
+    }
+
+    //Move to MainScene
+    private void ToMainScene()
+    {
+        sceneManager.GetComponent<Test>().ToMainScene();
+        MusicPreviewPlayer.instance.StopPlayer();
     }
 }
