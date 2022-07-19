@@ -39,6 +39,9 @@ public class PlayerManagerScript : MonoBehaviour
     /// <summary>
     /// 勝利キャラクター記憶用
     /// </summary>
-    public static int winCharaNum;
-
+    public int winCharaNum;
+    /// <summary>
+    /// リザルト画面のカウント用
+    /// </summary>
+    public int resultCount;
 }

@@ -21,6 +21,10 @@ public class MusicListControl : MonoBehaviour
     private float scrollTime = 0;
     [SerializeField]private float scrollSpeed = 0.02f;
     private GameObject jsonReader;
+
+
+    private bool canSelectMusic = true;
+
     void Start()
     {
         //Debug.Log(transform.childCount);
@@ -39,21 +43,26 @@ public class MusicListControl : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if(canSelectMusic)
         {
-            StartCoroutine(ScrollUp());
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            StartCoroutine(ScrollDown());
-        }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                StartCoroutine(ScrollUp());
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                StartCoroutine(ScrollDown());
+            }
 
 
-        if (Input.GetKeyDown(KeyCode.Q) && nowMusicNum == 1)
-        {
-            //MusicPreviewPlayer.instance.StopPlayer();
-            SEPlayer.instance.SEOneShot(7);
-            Invoke("ToMainScene",3);
+            if (Input.GetKeyDown(KeyCode.Q) && nowMusicNum == 1)
+            {
+                canSelectMusic = false;
+
+                //MusicPreviewPlayer.instance.StopPlayer();
+                SEPlayer.instance.SEOneShot(7);
+                Invoke("ToMainScene", 3);
+            }
         }
     }
 

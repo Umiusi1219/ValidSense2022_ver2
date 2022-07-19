@@ -76,6 +76,17 @@ public class CharaSelectManager : MonoBehaviour
 
     void Update()
     {
+        // 試遊会用のタイトルシーンに戻る処理
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            sceneManager.GetComponent<Test>().ToTitleScene();
+        }
+
+
+
+
+
+
         // キャラ決定してなかったら、1pのカーソル移動
         if (canMoveCursor[(int)ConstRepo.Player.P1])
         {
