@@ -55,6 +55,13 @@ public class Test : MonoBehaviour
         sceneManager.SendMessage("SetScene", GameScene.Result_2P);
     }
 
+    public void ToLicenseScene()
+    {
+        sceneManager.SendMessage("SetScene", GameScene.LicenseScene);
+    }
+
+
+
     public void ToTitleScene()
     {
         sceneManager.SendMessage("SetScene", GameScene.Title);

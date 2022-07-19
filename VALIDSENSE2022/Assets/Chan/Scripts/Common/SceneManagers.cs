@@ -11,6 +11,7 @@ public enum GameScene
     Playing,
     Result_1P,
     Result_2P,
+    LicenseScene,
 }
 
 public class SceneManagers : MonoBehaviour
@@ -58,6 +59,9 @@ public class SceneManagers : MonoBehaviour
                 break;
             case GameScene.Result_2P:
                 SceneManager.LoadScene("ResultScene_2P");
+                break;
+            case GameScene.LicenseScene:
+                SceneManager.LoadScene("LicenseScene");
                 break;
             default:
                 break;

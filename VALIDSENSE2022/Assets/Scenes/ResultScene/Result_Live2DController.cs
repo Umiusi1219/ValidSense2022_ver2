@@ -21,7 +21,12 @@ public class Result_Live2DController : MonoBehaviour
 
 
         ShowLive2D(sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum[usePlayer]);
+
+
+
     }
+
+
 
     void ShowLive2D(int charaNum)
     {
@@ -30,6 +35,8 @@ public class Result_Live2DController : MonoBehaviour
             if(i == charaNum)
             {
                 live2D[i].SetActive(true);
+
+
             }
             else
             {
@@ -37,6 +44,21 @@ public class Result_Live2DController : MonoBehaviour
             }
             
             i++;
+        }
+
+        StartCoroutine(WinPlayerAnim());
+    }
+
+    IEnumerator WinPlayerAnim()
+    {
+        yield return new WaitForSeconds(1);
+
+        if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0)
+        {
+
+            live2D[sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum[usePlayer]]
+                .GetComponent<Live2D_AnimController>().Anim_Win();
+
         }
     }
 }

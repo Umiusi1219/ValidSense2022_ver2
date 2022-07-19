@@ -46,4 +46,12 @@ public class CharaSelect_CahraClass : MonoBehaviour
             i++;
         }
     }
+
+    public void SelectChara_AimChoice(int charaNum)
+    {
+        Debug.Log(charaNum + charaLive2D[charaNum].name);
+
+        
+        charaLive2D[charaNum].GetComponent<Live2D_AnimController>().Anim_Choice();
+    }
 }

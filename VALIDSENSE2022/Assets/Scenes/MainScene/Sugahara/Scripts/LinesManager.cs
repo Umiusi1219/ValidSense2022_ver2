@@ -5,10 +5,16 @@ using UnityEngine;
 public class LinesManager : MonoBehaviour
 {
     /// <summary>
-    /// キャラをいじってる子に参照用
+    /// キャラをいじってるObjに参照用
     /// </summary>
     [SerializeField]
     TestChara testChara;
+
+    /// <summary>
+    /// live2DをいじってるObjに参照する用
+    /// </summary>
+    [SerializeField]
+    GameObject live2D_Canvas;
 
 
     /// <summary>
@@ -54,7 +60,7 @@ public class LinesManager : MonoBehaviour
     /// <summary>
     /// 現在所持しているラインの本数(配列用に0から計算)
     /// </summary>
-    [Range(1, 6)]
+    [Range(0, 6)]
     [SerializeField]
     public int haveLines_1p;
 
@@ -65,6 +71,75 @@ public class LinesManager : MonoBehaviour
     [Range(0f, 1.0f)]
     [SerializeField]
     private float _lineAlpha;
+
+    /// <summary>
+    /// ジャッチ演出で使う、ジャッチ開始までの時間
+    /// </summary>
+    [SerializeField]
+    private float judgeStandbyTime;
+
+
+    /// <summary>
+    /// ジャッチ演出で使う、レーンの色を何秒おきに変えるか設定用
+    /// </summary>
+    [SerializeField]
+    private float judgeColourChangeStandbyTime;
+
+
+    /// <summary>
+    /// 勝った方のプレイヤー番号
+    /// </summary>
+    private int winPlayerNum;
+
+
+    private void Start()
+    {
+        // 1p2pのキャラに合わせてLineの色を変える
+        SetLineColor_1p2p();
+
+
+        //StartCoroutine(LineJudgmentPerformance());
+    }
+
+
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("1Pがラインとられた");
+
+            LineIsStolen_1p();
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            Debug.Log("2Pがラインとられた");
+
+            LineIsStolen_2p();
+        }
+
+
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    Debug.Log("全ラインを灰色化");
+
+        //    OllLineColorChange();
+        //}
+
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Debug.Log("ラインをリセット");
+        //    SetLineColor_1p2p();
+
+        //    haveLines_1p = 3;
+        //}
+    }
+
+
+
 
 
     /// <summary>
@@ -77,6 +152,7 @@ public class LinesManager : MonoBehaviour
     }
 
 
+
     /// <summary>
     /// 1p所持ラインの一番2p側を相手の色に変更する
     /// </summary>
@@ -85,6 +161,10 @@ public class LinesManager : MonoBehaviour
         //配列参照を防ぐ
         if (haveLines_1p > 0)
         {
+            // レーン奪取SE
+            SEPlayer.instance.SEOneShot(8);
+
+
             // Color型への変換成功するとcolorにColor型の赤色が代入される）outキーワードで参照渡しにする
             if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[1]],
                 out colorCode))
@@ -116,6 +196,12 @@ public class LinesManager : MonoBehaviour
 
             //奪われたラインに流れてるノーツの色を2pの色に変更
             viewNotesManager.ActiveViewNotesColourChange(haveLines_1p + 1, 1);
+
+
+
+            testChara.Chara_Anim_Att(1);
+
+            testChara.Chara_Anim_Hit(0);
         }
     }
 
@@ -128,6 +214,11 @@ public class LinesManager : MonoBehaviour
         //配列参照を防ぐ
         if (haveLines_1p < 6)
         {
+            // レーン奪取SE
+            SEPlayer.instance.SEOneShot(8);
+
+
+
             // Color型への変換成功すると（colorにColor型の赤色が代入される）outキーワードで参照渡しにする
             if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[0]],
                 out colorCode))
@@ -162,29 +253,38 @@ public class LinesManager : MonoBehaviour
             //奪われたラインに流れてるノーツの色を1pの色に変更
             viewNotesManager.ActiveViewNotesColourChange(haveLines_1p, 0);
 
+
+
+            testChara.Chara_Anim_Att(0);
+
+            testChara.Chara_Anim_Hit(1);
         }
     }
 
+
     /// <summary>
-    /// 全ラインを灰色化する
+    /// 全ラインをカラーコード配列の任意の色に変える
     /// </summary>
-    void OllLineColorChange()
+    /// <param name="colourNum">カラーコード指定用（0～4）</param>
+    void OllLineColorChange(int colourNum)
     {
         // 全ラインに参照
         foreach (GameObject line in lines)
         {
-            //灰色に指定
-            if (ColorUtility.TryParseHtmlString(charaColorCode[4],
+            //カラーコードを指定
+            if (ColorUtility.TryParseHtmlString(charaColorCode[colourNum],
                 out colorCode))
             {
                 // 透明度の設定
                 colorCode.a = _lineAlpha;
 
-                // 所持ラインを灰色に変更する
+                // 所持ラインを指定の色に変更する
                 line.GetComponent<SpriteRenderer>().color = colorCode;
             }
         }
     }
+
+
 
 
     /// <summary>
@@ -222,44 +322,83 @@ public class LinesManager : MonoBehaviour
     }
 
 
-    private void Start()
+    public IEnumerator LineJudgmentPerformance()
     {
-        // 1p2pのキャラに合わせてLineの色を変える
-        SetLineColor_1p2p();
-    }
+        if (scoreScript[0].scoreValue >= scoreScript[1].scoreValue)
+        {
+            winPlayerNum = 0;
+        }
+        else
+        {
+            winPlayerNum = 1;
+        }
+            yield return new WaitForSeconds(1f);
+
+        // 全ラインを灰色にする
+        OllLineColorChange(4);
 
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    Debug.Log("1Pがラインとられた");
+        yield return new WaitForSeconds(1.2f);
+        
 
-        //    LineIsStolen_1p();
-        //}
+        StartCoroutine( 
+            live2D_Canvas.GetComponent<MainLive2DCanvas>().Live2DJudgmentPerformance(winPlayerNum));
 
 
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-        //    Debug.Log("2Pがラインとられた");
+        yield return new WaitForSeconds((judgeStandbyTime/4)*3 );
 
-        //    LineIsStolen_2p();
-        //}
+        testChara.Chara_Anim_Win(winPlayerNum);
 
 
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    Debug.Log("全ラインを灰色化");
+        yield return new WaitForSeconds(judgeStandbyTime/4);
 
-        //    OllLineColorChange();
-        //}
 
-        //if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    Debug.Log("ラインをリセット");
-        //    SetLineColor_1p2p();
 
-        //    haveLines_1p = 3;
-        //}
+
+        if (winPlayerNum == 0)
+        {
+            for (int i = 0; i < 8;)
+            {
+                // レーン奪取SE
+                SEPlayer.instance.SEOneShot(8);
+
+
+                //1PのカラーコードをcolorCodeに入れる
+                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[0]], out colorCode);
+
+                // 透明度の設定
+                colorCode.a = _lineAlpha;
+
+                // ラインの色を変更する
+                lines[i].GetComponent<SpriteRenderer>().color = colorCode;
+
+                i++;
+
+                yield return new WaitForSeconds(judgeColourChangeStandbyTime);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 8;)
+            {
+                // レーン奪取SE
+                SEPlayer.instance.SEOneShot(8);
+
+
+                //2PのカラーコードをcolorCodeに入れる
+                ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[1]], out colorCode);
+
+                // 透明度の設定
+                colorCode.a = _lineAlpha;
+
+                // ラインの色を変更する
+                lines[7 - i].GetComponent<SpriteRenderer>().color = colorCode;
+
+                i++;
+
+                yield return new WaitForSeconds(judgeColourChangeStandbyTime);
+            }
+        }
+
     }
 }

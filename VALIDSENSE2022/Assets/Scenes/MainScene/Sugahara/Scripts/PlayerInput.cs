@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField]
+    TestChara charaObj;
+
+
     /// <summary>
     /// 判定バー到達のどれくらい前から判定可するかの値
     /// </summary>
@@ -188,7 +192,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         // oに対応するラインが奪われてなかったらoキーで判定
-        if (linesManager.Get_1pHaveLines() <= 6)
+        if (linesManager.Get_1pHaveLines() <= 5)
         {
             if (Input.GetKeyDown(KeyCode.O))
             {
@@ -207,7 +211,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Iに対応するラインが奪われてなかったらIキーで判定
-        if (linesManager.Get_1pHaveLines() <= 5)
+        if (linesManager.Get_1pHaveLines() <= 4)
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
@@ -226,7 +230,7 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Uに対応するラインが奪われてなかったらUキーで判定
-        if (linesManager.Get_1pHaveLines() <= 4)
+        if (linesManager.Get_1pHaveLines() <= 3)
         {
             if (Input.GetKeyDown(KeyCode.U))
             {
@@ -598,6 +602,13 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
+                // スキルSE
+                SEPlayer.instance.SEOneShot(9);
+
+                // スキルアニメーション
+                charaObj.Chara_Anim_Att((int)ConstRepo.Player.P1);
+                charaObj.Chara_Anim_Hit((int)ConstRepo.Player.P2);
+
                 // スキルの使用
                 skillChargeRate[0].UseSkill_Text();
                 skillManager.UseSkill_Logic((int)ConstRepo.Player.P1);
@@ -661,6 +672,13 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.S))
             {
+                // スキルSE
+                SEPlayer.instance.SEOneShot(9);
+
+                // スキルアニメーション
+                charaObj.Chara_Anim_Att((int)ConstRepo.Player.P1);
+                charaObj.Chara_Anim_Hit((int)ConstRepo.Player.P2);
+
                 // スキルの使用
                 skillChargeRate[0].UseSkill_Text();
                 skillManager.UseSkill_Logic((int)ConstRepo.Player.P1);
@@ -763,6 +781,13 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.L))
             {
+                // スキルSE
+                SEPlayer.instance.SEOneShot(9);
+
+                // スキルアニメーション
+                charaObj.Chara_Anim_Att((int)ConstRepo.Player.P2);
+                charaObj.Chara_Anim_Hit((int)ConstRepo.Player.P1);
+
                 // スキルの使用
                 skillChargeRate[1].UseSkill_Text();
                 skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
@@ -826,6 +851,13 @@ public class PlayerInput : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.J))
             {
+                // スキルSE
+                SEPlayer.instance.SEOneShot(9);
+
+                // スキルアニメーション
+                charaObj.Chara_Anim_Att((int)ConstRepo.Player.P2);
+                charaObj.Chara_Anim_Hit((int)ConstRepo.Player.P1);
+
                 // スキルの使用
                 skillChargeRate[1].UseSkill_Text();
                 skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);

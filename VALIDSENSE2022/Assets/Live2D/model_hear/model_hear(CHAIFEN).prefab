@@ -4057,6 +4057,7 @@ GameObject:
   - component: {fileID: 9114290951478364680}
   - component: {fileID: 1570659463095792020}
   - component: {fileID: 6716336035258799406}
+  - component: {fileID: 2418935750837750784}
   m_Layer: 0
   m_Name: model_hear(CHAIFEN)
   m_TagString: Untagged
@@ -4152,7 +4153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 0}
+  _maskTexture: {fileID: 11400000, guid: 16bf142754640ab4487bb625c30931fd, type: 2}
 --- !u!114 &4202390542440114341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4214,7 +4215,7 @@ Animator:
   m_GameObject: {fileID: 1512094992526114150}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: be6cb852b5efb4338a257fb73b4b6168, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4237,6 +4238,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubismFadeMotionList: {fileID: 0}
+--- !u!114 &2418935750837750784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512094992526114150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1515427493077797953
 GameObject:
   m_ObjectHideFlags: 0

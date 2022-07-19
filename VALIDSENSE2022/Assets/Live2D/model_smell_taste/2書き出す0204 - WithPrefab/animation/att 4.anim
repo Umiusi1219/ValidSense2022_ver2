@@ -23539,10 +23539,3 @@ AnimationClip:
     floatParameter: 0
     intParameter: -73646
     messageOptions: 1
-  - time: 2
-    functionName: OnAnimationEnd
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 2
-    messageOptions: 0

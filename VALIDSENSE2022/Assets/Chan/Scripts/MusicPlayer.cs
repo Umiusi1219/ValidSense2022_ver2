@@ -15,6 +15,11 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField]
     List<ScoreScript> score;
 
+    [SerializeField]
+    LinesManager linesManager;
+
+    private bool isOnshot = true;
+
     private void Awake() 
     {
         if(instance == null)
@@ -51,19 +56,35 @@ public class MusicPlayer : MonoBehaviour
     }
     public void MusicEndCheck()
     {
-        if(SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
+        if (SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
         {
-            score[0].SetScores();
-            score[1].SetScores();
+            if (isOnshot)
+            {
+                isOnshot = false;
 
-            if (score[0].scoreValue >= score[1].scoreValue)
-            {
-                GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_1P);
+                score[0].SetScores();
+                score[1].SetScores();
+
+                StartCoroutine(linesManager.LineJudgmentPerformance());
+
+                StartCoroutine(ToNextScene());
             }
-            else
-            {
-                GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_2P);
-            }
+
+        }
+    }
+
+    IEnumerator ToNextScene()
+    {
+        yield return new WaitForSeconds(10.5f);
+
+        if (score[0].scoreValue >= score[1].scoreValue)
+        {
+
+            GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_1P);
+        }
+        else
+        {
+            GameObject.Find("SceneManager").SendMessage("SetScene", GameScene.Result_2P);
         }
     }
 

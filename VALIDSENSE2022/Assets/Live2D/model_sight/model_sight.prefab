@@ -12345,6 +12345,7 @@ GameObject:
   - component: {fileID: 431440637719685517}
   - component: {fileID: 3379178882633698490}
   - component: {fileID: 2358407633695430116}
+  - component: {fileID: -444402406041051639}
   m_Layer: 0
   m_Name: model_sight
   m_TagString: Untagged
@@ -12454,7 +12455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 0}
+  _maskTexture: {fileID: 11400000, guid: 16bf142754640ab4487bb625c30931fd, type: 2}
 --- !u!114 &8161889872495189096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12516,7 +12517,7 @@ Animator:
   m_GameObject: {fileID: 3816869301824471674}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bca95f33fcc2a4e77b65ad5d81c80612, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -12539,6 +12540,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubismFadeMotionList: {fileID: 0}
+--- !u!114 &-444402406041051639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816869301824471674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3824735119971976527
 GameObject:
   m_ObjectHideFlags: 0

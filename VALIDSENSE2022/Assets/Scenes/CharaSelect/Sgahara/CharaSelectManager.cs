@@ -93,11 +93,15 @@ public class CharaSelectManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E) ||
                 Input.GetKeyDown(KeyCode.R))
             {
+                SEPlayer.instance.SEOneShot(5);
+
                 ChangeCharacter((int)ConstRepo.Player.P1, -1);
             }
             else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) ||
                 Input.GetKeyDown(KeyCode.F))
             {
+                SEPlayer.instance.SEOneShot(5);
+
                 ChangeCharacter((int)ConstRepo.Player.P1, 1);
             }
         }
@@ -108,11 +112,15 @@ public class CharaSelectManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I) ||
                 Input.GetKeyDown(KeyCode.U))
             {
+                SEPlayer.instance.SEOneShot(5);
+
                 ChangeCharacter((int)ConstRepo.Player.P2, -1);
             }
             else if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.K) ||
                 Input.GetKeyDown(KeyCode.J))
             {
+                SEPlayer.instance.SEOneShot(5);
+
                 ChangeCharacter((int)ConstRepo.Player.P2, 1);
             }
         }
@@ -122,10 +130,20 @@ public class CharaSelectManager : MonoBehaviour
         if (!canMoveCursor[(int)ConstRepo.Player.P2] &&
             cursorNum[(int)ConstRepo.Player.P1] == cursorNum[(int)ConstRepo.Player.P2])
         {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                SEPlayer.instance.SEOneShot(4);
+            }
+                
         }
         //1Pキャラの決定
         else if(Input.GetKeyDown(KeyCode.Q))
         {
+            SEPlayer.instance.SEOneShot(6);
+
+            charaClassList[(int)ConstRepo.Player.P1]
+                .SelectChara_AimChoice(cursorNum[(int)ConstRepo.Player.P1]);
+
             canMoveCursor[(int)ConstRepo.Player.P1] = false;
 
             charaIcon[cursorNum[(int)ConstRepo.Player.P1]].texture
@@ -137,10 +155,19 @@ public class CharaSelectManager : MonoBehaviour
         if (!canMoveCursor[(int)ConstRepo.Player.P1] &&
             cursorNum[(int)ConstRepo.Player.P1] == cursorNum[(int)ConstRepo.Player.P2])
         {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SEPlayer.instance.SEOneShot(4);
+            }
         }
         //2Pキャラの決定
         else if (Input.GetKeyDown(KeyCode.P))
         {
+            SEPlayer.instance.SEOneShot(6);
+
+            charaClassList[(int)ConstRepo.Player.P2]
+                .SelectChara_AimChoice(cursorNum[(int)ConstRepo.Player.P2]);
+
             canMoveCursor[(int)ConstRepo.Player.P2] = false;
 
             charaIcon[cursorNum[(int)ConstRepo.Player.P2]].texture
@@ -195,6 +222,8 @@ public class CharaSelectManager : MonoBehaviour
     IEnumerator ToMusicSelectScene()
     {
         yield return new WaitForSeconds(toNextSceneTiem);
+
+        MainBGMPlayer.instance.StopPlayer();
 
         sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum = cursorNum;
 

@@ -7583,6 +7583,7 @@ GameObject:
   - component: {fileID: 6014879781466993144}
   - component: {fileID: 4239169157820870174}
   - component: {fileID: 611735826230208952}
+  - component: {fileID: -3118728118384147079}
   m_Layer: 0
   m_Name: model_tactile
   m_TagString: Untagged
@@ -7678,7 +7679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967223d908bf07b4f90945995bdca68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maskTexture: {fileID: 0}
+  _maskTexture: {fileID: 11400000, guid: 16bf142754640ab4487bb625c30931fd, type: 2}
 --- !u!114 &2521189375697221219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7740,7 +7741,7 @@ Animator:
   m_GameObject: {fileID: 2149448415445035581}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c5a2325fdff347688c028e803a32cb1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7763,6 +7764,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CubismFadeMotionList: {fileID: 0}
+--- !u!114 &-3118728118384147079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149448415445035581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2222735516055410769
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,9 @@ public class Title_PlayerInput : MonoBehaviour
     private void Start()
     {
         sceneManagerTest = GameObject.Find("SceneManager");
-  
+
+
+        //MainBGMPlayer.instance.MusicPlay(0);
     }
 
 
@@ -29,7 +31,7 @@ public class Title_PlayerInput : MonoBehaviour
             _canGetKey = false;
 
             SEPlayer.instance.SEOneShot(6);
-
+            MainBGMPlayer.instance.StopPlayer();
             Invoke("ToNextScene", _toNextScene);
         }
     }
@@ -37,6 +39,8 @@ public class Title_PlayerInput : MonoBehaviour
 
     void ToNextScene()
     {
+        
+
         sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
     }
 }

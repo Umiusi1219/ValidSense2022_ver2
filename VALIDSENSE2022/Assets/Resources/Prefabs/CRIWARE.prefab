@@ -82,6 +82,10 @@ MonoBehaviour:
     acbFile: BGMData/ResultBGMCue.acb
     awbFile: 
     loaderStatus: 0
+  - name: tutorialCue
+    acbFile: BGMData/tutorialCue.acb
+    awbFile: 
+    loaderStatus: 0
   dspBusSetting: 
   dontDestroyOnLoad: 1
   dontRemoveExistsCueSheet: 1
