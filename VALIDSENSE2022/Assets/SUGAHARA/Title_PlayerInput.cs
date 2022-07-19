@@ -8,18 +8,35 @@ public class Title_PlayerInput : MonoBehaviour
     GameObject sceneManagerTest;
 
 
+    [SerializeField]
+    private float _toNextScene;
+
+    bool _canGetKey = true;
+
+
     private void Start()
     {
         sceneManagerTest = GameObject.Find("SceneManager");
+  
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown && !Input.GetMouseButtonDown(0))
+        if(Input.anyKeyDown && !Input.GetMouseButtonDown(0) && _canGetKey)
         {
-            sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
+            _canGetKey = false;
+
+            SEPlayer.instance.SEOneShot(6);
+
+            Invoke("ToNextScene", _toNextScene);
         }
+    }
+
+
+    void ToNextScene()
+    {
+        sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
     }
 }
