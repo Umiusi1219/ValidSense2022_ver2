@@ -26,6 +26,7 @@ public class ResultPlayerInput : MonoBehaviour
         if(Input.anyKeyDown && canToTitle)
         {
             sceneManager.GetComponent<Test>().ToTitleScene();
+            ResultBGMPlayer.instance.StopPlayer();
         }
     }
 
