@@ -6,50 +6,50 @@ using UnityEngine.UI;
 public class CharaSelectManager : MonoBehaviour
 {
     /// <summary>
-    /// ƒV[ƒ“ƒ}ƒl[ƒWƒƒ[QÆ‚·‚é—p
+    /// ã‚·ãƒ¼ãƒ³ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     GameObject sceneManager;
 
     /// <summary>
-    /// ƒLƒƒƒ‰‚ÌUI‚È‚ÇˆêŠ‡‚Å‚¢‚¶‚é—p
+    /// ã‚­ãƒ£ãƒ©ã®UIãªã©ä¸€æ‹¬ã§ã„ã˜ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     List<CharaSelect_CahraClass> charaClassList;
 
 
     /// <summary>
-    /// ƒLƒƒƒ‰‚ÌƒAƒCƒRƒ“‚ğQÆ‚·‚é—p
+    /// ã‚­ãƒ£ãƒ©ã®ã‚¢ã‚¤ã‚³ãƒ³ã‚’å‚ç…§ã™ã‚‹ç”¨
     /// </summary>
     [SerializeField]
     List<RawImage> charaIcon;
 
     /// <summary>
-    /// ƒLƒƒƒ‰‚ÌƒAƒCƒRƒ“‚ÌƒLƒƒƒ‰‘I‘ğŒã‚Ì‰æ‘œƒf[ƒ^
+    /// ã‚­ãƒ£ãƒ©ã®ã‚¢ã‚¤ã‚³ãƒ³ã®ã‚­ãƒ£ãƒ©é¸æŠå¾Œã®ç”»åƒãƒ‡ãƒ¼ã‚¿
     /// </summary>
     [SerializeField]
     List<Texture> charaIcon_Sprite;
 
     /// <summary>
-    /// ƒJ[ƒ\ƒ‹
+    /// ã‚«ãƒ¼ã‚½ãƒ«
     /// </summary>
     [SerializeField]
     List<GameObject> cursor;
 
     /// <summary>
-    /// ƒJ[ƒ\ƒ‹ˆÚ“®—p‚Ìpos
+    /// ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•ç”¨ã®pos
     /// </summary>
     [SerializeField]
     private float[] cursorPosY;
 
     /// <summary>
-    /// ƒvƒŒƒCƒ„[‚Ì“ü—Í‚É‘Î‰‚µ‚Ä‘Œ¸‚·‚é’l
+    /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®å…¥åŠ›ã«å¯¾å¿œã—ã¦å¢—æ¸›ã™ã‚‹å€¤
     /// </summary>
     [SerializeField]
     private int[] cursorNum;
 
     /// <summary>
-    /// ƒJ[ƒ\ƒ‹‚ªˆÚ“®‰Â”\‚©
+    /// ã‚«ãƒ¼ã‚½ãƒ«ãŒç§»å‹•å¯èƒ½ã‹
     /// </summary>
     [SerializeField]
     private bool[] canMoveCursor;
@@ -60,7 +60,7 @@ public class CharaSelectManager : MonoBehaviour
 
     void Start()
     {
-        //‰Šú•\¦
+        //åˆæœŸè¡¨ç¤º
         charaClassList[(int)ConstRepo.Player.P1]
             .CharaUI_1P_DisplaySwitching((int)ConstRepo.Chara.Sight);
         charaClassList[(int)ConstRepo.Player.P2]
@@ -76,7 +76,7 @@ public class CharaSelectManager : MonoBehaviour
 
     void Update()
     {
-        // ƒLƒƒƒ‰Œˆ’è‚µ‚Ä‚È‚©‚Á‚½‚çA1p‚ÌƒJ[ƒ\ƒ‹ˆÚ“®
+        // ã‚­ãƒ£ãƒ©æ±ºå®šã—ã¦ãªã‹ã£ãŸã‚‰ã€1pã®ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
         if (canMoveCursor[(int)ConstRepo.Player.P1])
         {
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E) ||
@@ -91,7 +91,7 @@ public class CharaSelectManager : MonoBehaviour
             }
         }
 
-        // ƒLƒƒƒ‰Œˆ’è‚µ‚Ä‚È‚©‚Á‚½‚çA2p‚ÌƒJ[ƒ\ƒ‹ˆÚ“®
+        // ã‚­ãƒ£ãƒ©æ±ºå®šã—ã¦ãªã‹ã£ãŸã‚‰ã€2pã®ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•
         if (canMoveCursor[(int)ConstRepo.Player.P2])
         {
             if (Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I) ||
@@ -107,12 +107,12 @@ public class CharaSelectManager : MonoBehaviour
         }
 
 
-        //2P‚ªƒLƒƒƒ‰‚ğŒˆ’è‚µ‚Ä‚¢‚ÄA‚»‚ÌãƒLƒƒƒ‰‚ª”í‚è‚µ‚Ä‚¢‚½‚çƒLƒƒƒ‰Œˆ’è•s‰Â
+        //2PãŒã‚­ãƒ£ãƒ©ã‚’æ±ºå®šã—ã¦ã„ã¦ã€ãã®ä¸Šã‚­ãƒ£ãƒ©ãŒè¢«ã‚Šã—ã¦ã„ãŸã‚‰ã‚­ãƒ£ãƒ©æ±ºå®šä¸å¯
         if (!canMoveCursor[(int)ConstRepo.Player.P2] &&
             cursorNum[(int)ConstRepo.Player.P1] == cursorNum[(int)ConstRepo.Player.P2])
         {
         }
-        //1PƒLƒƒƒ‰‚ÌŒˆ’è
+        //1Pã‚­ãƒ£ãƒ©ã®æ±ºå®š
         else if(Input.GetKeyDown(KeyCode.Q))
         {
             canMoveCursor[(int)ConstRepo.Player.P1] = false;
@@ -122,12 +122,12 @@ public class CharaSelectManager : MonoBehaviour
         }
 
 
-        //1P‚ªƒLƒƒƒ‰‚ğŒˆ’è‚µ‚Ä‚¢‚ÄA‚»‚ÌãƒLƒƒƒ‰‚ª”í‚è‚µ‚Ä‚¢‚½‚çƒLƒƒƒ‰Œˆ’è•s‰Â
+        //1PãŒã‚­ãƒ£ãƒ©ã‚’æ±ºå®šã—ã¦ã„ã¦ã€ãã®ä¸Šã‚­ãƒ£ãƒ©ãŒè¢«ã‚Šã—ã¦ã„ãŸã‚‰ã‚­ãƒ£ãƒ©æ±ºå®šä¸å¯
         if (!canMoveCursor[(int)ConstRepo.Player.P1] &&
             cursorNum[(int)ConstRepo.Player.P1] == cursorNum[(int)ConstRepo.Player.P2])
         {
         }
-        //2PƒLƒƒƒ‰‚ÌŒˆ’è
+        //2Pã‚­ãƒ£ãƒ©ã®æ±ºå®š
         else if (Input.GetKeyDown(KeyCode.P))
         {
             canMoveCursor[(int)ConstRepo.Player.P2] = false;
@@ -136,7 +136,7 @@ public class CharaSelectManager : MonoBehaviour
                 = charaIcon_Sprite[cursorNum[(int)ConstRepo.Player.P2]];
         }
 
-        //1p2p‚ªƒLƒƒƒ‰‚ğ‘I‘ğ‚µ‚½‚çMusicSelect‚É‘JˆÚ
+        //1p2pãŒã‚­ãƒ£ãƒ©ã‚’é¸æŠã—ãŸã‚‰MusicSelectã«é·ç§»
         if (!canMoveCursor[(int)ConstRepo.Player.P1] && !canMoveCursor[(int)ConstRepo.Player.P2])
         {
             StartCoroutine(ToMusicSelectScene());

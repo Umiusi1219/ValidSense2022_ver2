@@ -17,7 +17,7 @@ public class Title_PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown)
+        if(Input.anyKeyDown && !Input.GetMouseButtonDown(0))
         {
             sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
         }

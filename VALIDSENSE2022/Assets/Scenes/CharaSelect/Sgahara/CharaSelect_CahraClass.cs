@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharaSelect_CahraClass : MonoBehaviour
 {
     /// <summary>
-    /// Live2Dを格納用
+    /// Live2D繧呈ｼ邏咲畑
     /// </summary>
     [SerializeField]
     List<GameObject> charaLive2D;
@@ -21,7 +21,7 @@ public class CharaSelect_CahraClass : MonoBehaviour
 
 
     /// <summary>
-    /// 引数以外のcharaClassListの非表示にして、引数のは、表示する
+    /// 蠑墓焚莉･螟悶�ｮcharaClassList縺ｮ髱櫁｡ｨ遉ｺ縺ｫ縺励※縲∝ｼ墓焚縺ｮ縺ｯ縲∬｡ｨ遉ｺ縺吶ｋ
     /// </summary>
     /// <param name="showNum"></param>
     public void CharaUI_1P_DisplaySwitching(int showNum)

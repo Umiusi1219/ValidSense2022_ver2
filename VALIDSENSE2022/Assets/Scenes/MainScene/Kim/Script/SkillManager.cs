@@ -145,48 +145,48 @@ public class SkillManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            StartCoroutine(SightSkill(0));
-            Debug.Log("サイトスキル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            StartCoroutine(TactileSkill(0));
-            Debug.Log("タクタイル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            StartCoroutine(SmaillTasteSkill(0));
-            Debug.Log("スメル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            StartCoroutine(HearSkill(0));
-            Debug.Log("ヒア発動");
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    StartCoroutine(SightSkill(0));
+        //    Debug.Log("サイトスキル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    StartCoroutine(TactileSkill(0));
+        //    Debug.Log("タクタイル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    StartCoroutine(SmaillTasteSkill(0));
+        //    Debug.Log("スメル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha4))
+        //{
+        //    StartCoroutine(HearSkill(0));
+        //    Debug.Log("ヒア発動");
+        //}
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            StartCoroutine(SightSkill(1));
-            Debug.Log("サイトスキル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            StartCoroutine(TactileSkill(1));
-            Debug.Log("タクタイル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            StartCoroutine(SmaillTasteSkill(1));
-            Debug.Log("スメル発動");
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            StartCoroutine(HearSkill(1));
-            Debug.Log("ヒア発動");
-        }
+        //if (Input.GetKeyDown(KeyCode.Alpha0))
+        //{
+        //    StartCoroutine(SightSkill(1));
+        //    Debug.Log("サイトスキル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha9))
+        //{
+        //    StartCoroutine(TactileSkill(1));
+        //    Debug.Log("タクタイル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha8))
+        //{
+        //    StartCoroutine(SmaillTasteSkill(1));
+        //    Debug.Log("スメル発動");
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha7))
+        //{
+        //    StartCoroutine(HearSkill(1));
+        //    Debug.Log("ヒア発動");
+        //}
     }
 
 
@@ -200,22 +200,22 @@ public class SkillManager : MonoBehaviour
         {
             case (int)ConstRepo.Chara.Sight:
                 StartCoroutine(SightSkill(usePlayer));
-                Debug.Log("サイトスキル発動");
+                Debug.Log(usePlayer+"P " + "サイトスキル発動");
                 break;
 
             case (int)ConstRepo.Chara.Tactile:
                 StartCoroutine(TactileSkill(usePlayer));
-                Debug.Log("タクタイルスキル発動");
+                Debug.Log(usePlayer + "P " + "タクタイルスキル発動");
                 break;
 
             case (int)ConstRepo.Chara.Smell_Taste:
                 StartCoroutine(SmaillTasteSkill(usePlayer));
-                Debug.Log("スメルスキル発動");
+                Debug.Log(usePlayer + "P " + "スメルスキル発動");
                 break;
 
             case (int)ConstRepo.Chara.Hear:
                 StartCoroutine(HearSkill(usePlayer));
-                Debug.Log("ヒアスキル発動");
+                Debug.Log(usePlayer + "P " + "ヒアスキル発動");
                 break;
         }
     }
@@ -360,15 +360,17 @@ public class SkillManager : MonoBehaviour
             usePlayer = 0;
         }
 
+        //　干渉したノーツ数の初期化
+        notesCheckedCount = 0;
+
+
         //　スキル使用不可にする
         canSmaillTasteSkill = false;
 
-
+        Debug.Log(notesDataList.musicNotesDate[usePlayer].notesList.Count / smaillSkillDivValue);
         // 総ノーツ ÷ 毒ノーツに変える数を割り出し用の値分繰り返す
         for (int i = 0; i < notesDataList.musicNotesDate[usePlayer].notesList. Count / smaillSkillDivValue;)
         {
-            Debug.Log(notesDataList.musicNotesDate[usePlayer].notesList.Count / smaillSkillDivValue);
-
 
             // 総ノーツ数が、現在の譜面進行度 + 干渉した数より大きければ
             if (notesDataList.musicNotesDate[usePlayer].notesList.Count > notesDataList.nowNoteDataNum[usePlayer] + notesCheckedCount)

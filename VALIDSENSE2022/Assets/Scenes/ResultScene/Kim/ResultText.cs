@@ -15,16 +15,16 @@ public class ResultText : MonoBehaviour
 
 
     /*
-ƒXƒRƒA
-‹È–¼
-ì‹ÈÒ–¼
-“ïˆÕ“x
+ã‚¹ã‚³ã‚¢
+æ›²å
+ä½œæ›²è€…å
+é›£æ˜“åº¦
 
-‘‘Å”
-’D‚Á‚½ƒŒ[ƒ“
-’D‚í‚ê‚½ƒŒ[ƒ“
+ç·æ‰“æ•°
+å¥ªã£ãŸãƒ¬ãƒ¼ãƒ³
+å¥ªã‚ã‚ŒãŸãƒ¬ãƒ¼ãƒ³
 
-ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚ÄƒXƒLƒbƒv
+ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã‚¹ã‚­ãƒƒãƒ—
      */
 
 
@@ -36,16 +36,16 @@ public class ResultText : MonoBehaviour
         text = gameObject.GetComponent<Text>();
 
         text.text =
-            "ƒXƒRƒA@" + sceneManager.GetComponent<PlayerManagerScript>().score[playerNum[0]] + "\n" +
-            "‹È–¼@" + "Chartreuse Green" + "\n" +
-            "ì‹ÈÒ–¼@" + "t+pazolite" + "\n" +
-            "“ïˆÕ“x@" + "6" + "\n" +
+            "ã‚¹ã‚³ã‚¢ã€€" + sceneManager.GetComponent<PlayerManagerScript>().score[playerNum[0]] + "\n" +
+            "æ›²åã€€" + "Chartreuse Green" + "\n" +
+            "ä½œæ›²è€…åã€€" + "t+pazolite" + "\n" +
+            "é›£æ˜“åº¦ã€€" + "6" + "\n" +
             "\n" +
-            "‘‘Å”@" + sceneManager.GetComponent<PlayerManagerScript>().totalHitsNum[playerNum[0]] + "\n" +
-            "’D‚Á‚½ƒŒ[ƒ“@" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[0]] + "\n" +
-            "’D‚í‚ê‚½ƒŒ[ƒ“@" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[1]] + "\n" +
+            "ç·æ‰“æ•°ã€€" + sceneManager.GetComponent<PlayerManagerScript>().totalHitsNum[playerNum[0]] + "\n" +
+            "å¥ªã£ãŸãƒ¬ãƒ¼ãƒ³ã€€" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[0]] + "\n" +
+            "å¥ªã‚ã‚ŒãŸãƒ¬ãƒ¼ãƒ³ã€€" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[1]] + "\n" +
             "\n" +
-            "ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚ÄƒXƒLƒbƒv";
+            "ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ã‚¹ã‚­ãƒƒãƒ—";
     }
 
 }

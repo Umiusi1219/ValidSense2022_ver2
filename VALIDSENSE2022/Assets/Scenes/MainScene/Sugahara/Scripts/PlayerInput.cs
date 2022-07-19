@@ -97,22 +97,22 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        //        //判定バーデバック用(判定バー到達予定時間に任意エラーにて強制停止)
-        //        if (MusicData.Timer >= notesDataList.notesLists[0].notesList[lineNotesNum[0]].time)
-        //        {
-        //            Debug.Log("Timer" + MusicData.Timer);
-        //            Debug.Log("Judge" + notesDataList.notesLists[0].notesList[lineNotesNum[0]].time);
+//        //判定バーデバック用(判定バー到達予定時間に任意エラーにて強制停止)
+//        if (MusicData.Timer >= notesDataList.notesLists[0].notesList[lineNotesNum[0]].time)
+//        {
+//            Debug.Log("Timer" + MusicData.Timer);
+//            Debug.Log("Judge" + notesDataList.notesLists[0].notesList[lineNotesNum[0]].time);
 
-        //            Debug.Log("差" + (MusicData.Timer - notesDataList.notesLists[0].notesList[lineNotesNum[0]].time));
+//            Debug.Log("差" + (MusicData.Timer - notesDataList.notesLists[0].notesList[lineNotesNum[0]].time));
 
-        //#if UNITY_EDITOR
-        //            UnityEditor.EditorApplication.isPaused = true;
-        //#endif
-        //        }
+//#if UNITY_EDITOR
+//            UnityEditor.EditorApplication.isPaused = true;
+//#endif
+//        }
 
 
         // 1P SE---------------------------------------------------------------------------------------------
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             // タンバリン
             SEPlayer.instance.SEOneShot(0);
@@ -600,7 +600,7 @@ public class PlayerInput : MonoBehaviour
             {
                 // スキルの使用
                 skillChargeRate[0].UseSkill_Text();
-                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P1);
 
                 _inputWaitTime_L_1P[1] = _inputStandbyTime;
             }
@@ -663,7 +663,7 @@ public class PlayerInput : MonoBehaviour
             {
                 // スキルの使用
                 skillChargeRate[0].UseSkill_Text();
-                skillManager.UseSkill_Logic((int)ConstRepo.Player.P2);
+                skillManager.UseSkill_Logic((int)ConstRepo.Player.P1);
 
                 _inputWaitTime_R_1P[1] = _inputStandbyTime;
             }
