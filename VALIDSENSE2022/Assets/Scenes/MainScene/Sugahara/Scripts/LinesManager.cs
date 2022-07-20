@@ -136,6 +136,13 @@ public class LinesManager : MonoBehaviour
 
         //    haveLines_1p = 3;
         //}
+
+
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine( LineJudgmentPerformance());
+        }
     }
 
 
@@ -338,19 +345,14 @@ public class LinesManager : MonoBehaviour
         OllLineColorChange(4);
 
 
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         
 
         StartCoroutine( 
             live2D_Canvas.GetComponent<MainLive2DCanvas>().Live2DJudgmentPerformance(winPlayerNum));
 
 
-        yield return new WaitForSeconds((judgeStandbyTime/4)*3 );
-
-        testChara.Chara_Anim_Win(winPlayerNum);
-
-
-        yield return new WaitForSeconds(judgeStandbyTime/4);
+        yield return new WaitForSeconds(judgeStandbyTime);
 
 
 

@@ -13,6 +13,7 @@ public class TestChara : MonoBehaviour
     [SerializeField]
     GameObject sceneManager;
 
+
     private void Awake()
     {
         sceneManager = GameObject.Find("SceneManager");
@@ -198,7 +199,7 @@ public class TestChara : MonoBehaviour
         //        break;
         //}
 
-        if(Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             Chara_Anim_Att(0);
         }
@@ -208,7 +209,7 @@ public class TestChara : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Chara_Anim_Win (0);
+            Chara_Anim_Win(0);
         }
 
 
@@ -228,7 +229,7 @@ public class TestChara : MonoBehaviour
 
     public void Chara_Anim_Att(int usePlayer)
     {
-        if(usePlayer == 0)
+        if (usePlayer == 0)
         {
             chara1P[count[0]].GetComponent<Live2D_AnimController>().Anim_Att();
         }
@@ -253,6 +254,7 @@ public class TestChara : MonoBehaviour
 
     public void Chara_Anim_Win(int usePlayer)
     {
+
         if (usePlayer == 0)
         {
             chara1P[count[0]].GetComponent<Live2D_AnimController>().Anim_Win();
@@ -262,4 +264,19 @@ public class TestChara : MonoBehaviour
             chara2P[count[1]].GetComponent<Live2D_AnimController>().Anim_Win();
         }
     }
+
+
+    //public void CharaPosReset(int usePlayer)
+    //{
+    //    if (usePlayer == 0)
+    //    {
+    //        chara1P[count[0]].transform.position -= new Vector3(
+    //            chara1P[count[0]].transform.position.x, 0, 0);
+    //    }
+    //    else
+    //    {
+    //        chara2P[count[1]].transform.position -= new Vector3(
+    //            chara1P[count[0]].transform.position.x, 0, 0);
+    //    }
+    //}
 }

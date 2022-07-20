@@ -8,6 +8,10 @@ public class PlayerInput : MonoBehaviour
     TestChara charaObj;
 
 
+    [SerializeField]
+    MusicPlayer musicPlayer;
+
+
     /// <summary>
     /// 判定バー到達のどれくらい前から判定可するかの値
     /// </summary>
@@ -124,9 +128,9 @@ public class PlayerInput : MonoBehaviour
 
 
         // wに対応するラインが奪われてなかったらWキーで判定
-        if (linesManager.Get_1pHaveLines() >= 1)
+        if (linesManager.Get_1pHaveLines() <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -135,7 +139,7 @@ public class PlayerInput : MonoBehaviour
         // wに対応するラインが奪われていたらSキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.W))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -143,9 +147,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Eに対応するラインが奪われてなかったらEキーで判定
-        if (linesManager.Get_1pHaveLines() >= 2)
+        if (linesManager.Get_1pHaveLines() <= 1)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.D))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -154,7 +158,7 @@ public class PlayerInput : MonoBehaviour
         // Eに対応するラインが奪われていたらDキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -162,9 +166,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Rに対応するラインが奪われてなかったらRキーで判定
-        if (linesManager.Get_1pHaveLines() >= 3)
+        if (linesManager.Get_1pHaveLines() <= 2)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -173,7 +177,7 @@ public class PlayerInput : MonoBehaviour
         // Rに対応するラインが奪われていたらFキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -192,9 +196,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         // oに対応するラインが奪われてなかったらoキーで判定
-        if (linesManager.Get_1pHaveLines() <= 5)
+        if (linesManager.Get_1pHaveLines() >= 6)
         {
-            if (Input.GetKeyDown(KeyCode.O))
+            if (Input.GetKeyDown(KeyCode.L))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -203,7 +207,7 @@ public class PlayerInput : MonoBehaviour
         // oに対応するラインが奪われていたらLキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.O))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -211,9 +215,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Iに対応するラインが奪われてなかったらIキーで判定
-        if (linesManager.Get_1pHaveLines() <= 4)
+        if (linesManager.Get_1pHaveLines() >= 5)
         {
-            if (Input.GetKeyDown(KeyCode.I))
+            if (Input.GetKeyDown(KeyCode.K))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -222,7 +226,7 @@ public class PlayerInput : MonoBehaviour
         // Iに対応するラインが奪われていたらKキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetKeyDown(KeyCode.I))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -230,9 +234,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         // Uに対応するラインが奪われてなかったらUキーで判定
-        if (linesManager.Get_1pHaveLines() <= 3)
+        if (linesManager.Get_1pHaveLines() >= 4)
         {
-            if (Input.GetKeyDown(KeyCode.U))
+            if (Input.GetKeyDown(KeyCode.J))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -241,7 +245,7 @@ public class PlayerInput : MonoBehaviour
         // Rに対応するラインが奪われていたらFキーで判定
         else
         {
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.U))
             {
                 // タンバリン
                 SEPlayer.instance.SEOneShot(0);
@@ -268,9 +272,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[1] > lineNotesNum[1])
         {
             // wに対応するラインが奪われてなかったらWキーで判定
-            if (linesManager.Get_1pHaveLines() >= 1)
+            if (linesManager.Get_1pHaveLines() <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.W))
+                if (Input.GetKeyDown(KeyCode.S))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(1, 0);
@@ -279,7 +283,7 @@ public class PlayerInput : MonoBehaviour
             // wに対応するラインが奪われていたらSキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.W))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(1, 0);
@@ -294,9 +298,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[2] > lineNotesNum[2])
         {
             // Eに対応するラインが奪われてなかったらEキーで判定
-            if (linesManager.Get_1pHaveLines() >= 2)
+            if (linesManager.Get_1pHaveLines() <= 1)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.D))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(2, 0);
@@ -305,7 +309,7 @@ public class PlayerInput : MonoBehaviour
             // Eに対応するラインが奪われていたらDキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyDown(KeyCode.E))
                 {
 
                     // 引数のラインのノーツチェック
@@ -320,9 +324,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[3] > lineNotesNum[3])
         {
             // Rに対応するラインが奪われてなかったらRキーで判定
-            if (linesManager.Get_1pHaveLines() >= 3)
+            if (linesManager.Get_1pHaveLines() <= 2)
             {
-                if (Input.GetKeyDown(KeyCode.R))
+                if (Input.GetKeyDown(KeyCode.F))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(3, 0);
@@ -332,7 +336,7 @@ public class PlayerInput : MonoBehaviour
             // Rに対応するラインが奪われていたらFキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.F))
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(3, 0);
@@ -364,9 +368,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[6] > lineNotesNum[6])
         {
             // oに対応するラインが奪われてなかったらoキーで判定
-            if (linesManager.Get_1pHaveLines() <= 6)
+            if (linesManager.Get_1pHaveLines() >= 6)
             {
-                if (Input.GetKeyDown(KeyCode.O))
+                if (Input.GetKeyDown(KeyCode.L))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(6, 1);
@@ -375,7 +379,7 @@ public class PlayerInput : MonoBehaviour
             // oに対応するラインが奪われていたらLキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.L))
+                if (Input.GetKeyDown(KeyCode.O))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(6, 1);
@@ -390,9 +394,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[2] > lineNotesNum[2])
         {
             // Iに対応するラインが奪われてなかったらIキーで判定
-            if (linesManager.Get_1pHaveLines() <= 5)
+            if (linesManager.Get_1pHaveLines() >= 5)
             {
-                if (Input.GetKeyDown(KeyCode.I))
+                if (Input.GetKeyDown(KeyCode.K))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(5, 1);
@@ -401,7 +405,7 @@ public class PlayerInput : MonoBehaviour
             // Iに対応するラインが奪われていたらKキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.K))
+                if (Input.GetKeyDown(KeyCode.I))
                 {
 
                     // 引数のラインのノーツチェック
@@ -416,9 +420,9 @@ public class PlayerInput : MonoBehaviour
         if (notesDataList.listNumMax[4] > lineNotesNum[4])
         {
             // Uに対応するラインが奪われてなかったらUキーで判定
-            if (linesManager.Get_1pHaveLines() <= 4)
+            if (linesManager.Get_1pHaveLines() >= 4)
             {
-                if (Input.GetKeyDown(KeyCode.U))
+                if (Input.GetKeyDown(KeyCode.J))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(4, 1);
@@ -428,7 +432,7 @@ public class PlayerInput : MonoBehaviour
             // Rに対応するラインが奪われていたらFキーで判定
             else
             {
-                if (Input.GetKeyDown(KeyCode.J))
+                if (Input.GetKeyDown(KeyCode.U))
                 {
                     // 引数のラインのノーツチェック
                     NotesListsCheck(4, 1);
@@ -445,7 +449,8 @@ public class PlayerInput : MonoBehaviour
 
 
         // 1Pスキルの発動処理---------------------------------------------------------------------------
-        if (skillChargeRate[0].skillValue >= 100 && skillManager.IsCanUseSkill())
+        if (skillChargeRate[0].skillValue >= 100 && skillManager.IsCanUseSkill() 
+            && musicPlayer.notMusicEnd)
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -460,8 +465,8 @@ public class PlayerInput : MonoBehaviour
 
 
         // 2Pスキルの発動処理---------------------------------------------------------------------------
-        if (skillChargeRate[1].skillValue >= 100 && skillManager.IsCanUseSkill())
-        
+        if (skillChargeRate[1].skillValue >= 100 && skillManager.IsCanUseSkill()
+            && musicPlayer.notMusicEnd)
         {
             if (Input.GetKeyDown(KeyCode.J))
             {

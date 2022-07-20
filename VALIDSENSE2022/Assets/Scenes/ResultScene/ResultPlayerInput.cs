@@ -26,15 +26,37 @@ public class ResultPlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown && canToTitle)
+        if(canToTitle)
         {
-            canToTitle = false;
+            if (usePlayer == 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.R) ||
+                    Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F))
+                {
+                    canToTitle = false;
 
-            SEPlayer.instance.SEOneShot(6);
+                    SEPlayer.instance.SEOneShot(6);
 
-            Invoke("ToNextScene", 1f);
+                    Invoke("ToNextScene", 1f);
+                }
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.U) ||
+                    Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.J))
+                {
+                    canToTitle = false;
+
+                    SEPlayer.instance.SEOneShot(6);
+
+                    Invoke("ToNextScene", 1f);
+                }
+            }
+
         }
     }
+
+
 
     IEnumerator AutoToTitleScene()
     {

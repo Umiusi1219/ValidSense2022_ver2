@@ -18,7 +18,7 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField]
     LinesManager linesManager;
 
-    private bool isOnshot = true;
+    public bool notMusicEnd = true;
 
     private void Awake() 
     {
@@ -58,9 +58,9 @@ public class MusicPlayer : MonoBehaviour
     {
         if (SongPlayer.GetStatus() == CriAtomExPlayer.Status.PlayEnd)
         {
-            if (isOnshot)
+            if (notMusicEnd)
             {
-                isOnshot = false;
+                notMusicEnd = false;
 
                 score[0].SetScores();
                 score[1].SetScores();
@@ -75,7 +75,7 @@ public class MusicPlayer : MonoBehaviour
 
     IEnumerator ToNextScene()
     {
-        yield return new WaitForSeconds(10.5f);
+        yield return new WaitForSeconds(9.5f);
 
         if (score[0].scoreValue >= score[1].scoreValue)
         {
