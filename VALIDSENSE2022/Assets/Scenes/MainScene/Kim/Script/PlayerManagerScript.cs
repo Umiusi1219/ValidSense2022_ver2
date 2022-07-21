@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerManagerScript : MonoBehaviour 
 {
     /// <summary>
-    /// プレイヤー選択キャラクター記憶用
+    /// プレイヤーの勝利数記憶用
     /// </summary>
+    
     public static int[] playerWinCount = { 0, 0 };
     /// <summary>
-    /// プレイヤーの勝利数記憶用
+    /// プレイヤー選択キャラクター記憶用
     /// </summary>
     public int[] playerCharaNum = { 0, 0 };
     /// <summary>

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ResultPlayerInput : MonoBehaviour
 {
     [SerializeField]
-    GameObject sceneManager;
+    PlayerManagerScript sceneManager;
 
 
     [SerializeField]
@@ -18,9 +18,15 @@ public class ResultPlayerInput : MonoBehaviour
 
     void Start()
     {
-        sceneManager = GameObject.Find("SceneManager");
-        if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0)
-        { ResultBGMPlayer.instance.MusicPlay(1); }
+        sceneManager = GameObject.Find("SceneManager").GetComponentInParent<PlayerManagerScript>();
+
+
+        if (sceneManager.resultCount == 0)
+        {
+            ResultBGMPlayer.instance.MusicPlay(1);
+
+            sceneManager.winCharaNum = sceneManager.playerCharaNum[usePlayer];
+        }
         StartCoroutine(AutoToTitleScene());
     }
 

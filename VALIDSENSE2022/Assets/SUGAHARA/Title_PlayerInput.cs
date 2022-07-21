@@ -7,9 +7,15 @@ public class Title_PlayerInput : MonoBehaviour
     [SerializeField]
     GameObject sceneManagerTest;
 
+    [SerializeField]
+    AllCharaVoicePlayer allVoicePlayer;
+
 
     [SerializeField]
     private float _toNextScene;
+
+    [SerializeField]
+    private float voiceStandbyTime;
 
     bool _canGetKey = true;
 
@@ -20,7 +26,9 @@ public class Title_PlayerInput : MonoBehaviour
     {
         sceneManagerTest = GameObject.Find("SceneManager");
 
-        Invoke("CanNextScene", 3);
+        StartCoroutine(VoicePlay());
+
+        Invoke("CanNextScene", 3 + voiceStandbyTime);
         //MainBGMPlayer.instance.MusicPlay(0);
     }
 
@@ -51,5 +59,14 @@ public class Title_PlayerInput : MonoBehaviour
     {
         _canToNextScene = true;
 
+    }
+
+
+    IEnumerator VoicePlay ()
+    {
+        yield return  new WaitForSeconds(voiceStandbyTime);
+        //勝利キャラのウェルカムボイスを再生
+        allVoicePlayer.OnShot_CharaVoice(
+        sceneManagerTest.GetComponent<PlayerManagerScript>().winCharaNum, 6);
     }
 }

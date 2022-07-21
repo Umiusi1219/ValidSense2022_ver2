@@ -8,6 +8,9 @@ public class MusicListControl : MonoBehaviour
     [SerializeField]
     GameObject sceneManager;
 
+    [SerializeField]
+    AllCharaVoicePlayer allCharaVoice;
+
 
     private Vector3[] musicListPosDatas;
     private Quaternion[] musicListRotationDatas;
@@ -58,6 +61,10 @@ public class MusicListControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q) && nowMusicNum == 1)
             {
                 canSelectMusic = false;
+
+                // 1pのキャラの曲決定ボイス再生
+                allCharaVoice.OnShot_CharaVoice
+                    (sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum[0],3);
 
                 //MusicPreviewPlayer.instance.StopPlayer();
                 SEPlayer.instance.SEOneShot(7);

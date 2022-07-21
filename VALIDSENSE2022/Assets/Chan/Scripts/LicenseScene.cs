@@ -8,9 +8,19 @@ public class LicenseScene : MonoBehaviour
 
     bool canToNextScene = false;
 
+
+    [SerializeField]
+    AllCharaVoicePlayer allCharaVoicePlayer;
+
+    [SerializeField]
+    PlayerManagerScript playerManagerScript;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        playerManagerScript = GameObject.Find("SceneManager").GetComponent<PlayerManagerScript>();
+
         criware.SetActive(true);
         otoLogic.SetActive(false);
         QR.SetActive(false);
@@ -26,6 +36,9 @@ public class LicenseScene : MonoBehaviour
 
     void ShowQR()
     {
+        // 勝利プレイヤーキャラのアンケート協力ボイス再生
+        allCharaVoicePlayer.OnShot_CharaVoice(playerManagerScript.winCharaNum, 4);
+
         criware.SetActive(false);
         otoLogic.SetActive(false);
         QR.SetActive(true);
@@ -43,7 +56,11 @@ public class LicenseScene : MonoBehaviour
                 if (Input.GetKey(KeyCode.P) || Input.GetKey(KeyCode.O) || Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.U) ||
                     Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.J))
                 {
-                    Invoke("ChangeScene", 0.1f);
+                    canToNextScene = false;
+                    // 勝利プレイヤーのキャラの感謝ボイス再生
+                    allCharaVoicePlayer.OnShot_CharaVoice(playerManagerScript.winCharaNum, 5);
+
+                    Invoke("ChangeScene", 3f);
                 }
             }
 
@@ -53,7 +70,11 @@ public class LicenseScene : MonoBehaviour
                 if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.E) || Input.GetKey(KeyCode.R) ||
                     Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.F))
                 {
-                    Invoke("ChangeScene", 0.1f);
+                    canToNextScene = false;
+                    // 勝利プレイヤーのキャラの感謝ボイス再生
+                    allCharaVoicePlayer.OnShot_CharaVoice(playerManagerScript.winCharaNum, 5);
+
+                    Invoke("ChangeScene", 3f);
                 }
             }
 
