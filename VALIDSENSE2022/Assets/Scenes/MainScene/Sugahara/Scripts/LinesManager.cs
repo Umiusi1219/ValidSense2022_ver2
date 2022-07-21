@@ -32,6 +32,13 @@ public class LinesManager : MonoBehaviour
 
 
     /// <summary>
+    /// 1pのスコアの数値を参照する用
+    /// </summary>
+    [SerializeField]
+    List<GameObject> skillUI;
+
+
+    /// <summary>
     /// Line参照用
     /// </summary>
     [SerializeField]
@@ -344,6 +351,9 @@ public class LinesManager : MonoBehaviour
         // 全ラインを灰色にする
         OllLineColorChange(4);
 
+        //スキルUIを消す
+        skillUI[0].SetActive(false);
+        skillUI[1].SetActive(false);
 
         yield return new WaitForSeconds(1f);
         
