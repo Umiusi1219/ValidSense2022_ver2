@@ -7584,6 +7584,7 @@ GameObject:
   - component: {fileID: 4239169157820870174}
   - component: {fileID: 611735826230208952}
   - component: {fileID: -3118728118384147079}
+  - component: {fileID: -3701682805079168977}
   m_Layer: 0
   m_Name: model_tactile
   m_TagString: Untagged
@@ -7776,6 +7777,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3701682805079168977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2149448415445035581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352c3f4ebd8b6804d94422960843b8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaName: Tactile
 --- !u!1 &2222735516055410769
 GameObject:
   m_ObjectHideFlags: 0

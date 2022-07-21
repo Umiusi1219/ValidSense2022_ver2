@@ -57,7 +57,10 @@ public class Result_Live2DController : MonoBehaviour
         {
 
             live2D[sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum[usePlayer]]
-                .GetComponent<Live2D_AnimController>().Anim_Choice ();
+                .GetComponent<Live2D_AnimController>().Anim_Choice();
+
+            live2D[sceneManager.GetComponent<PlayerManagerScript>().playerCharaNum[usePlayer]]
+                .GetComponent<CharaVoicePlayer>().VoiceOneShot(1);
 
         }
     }

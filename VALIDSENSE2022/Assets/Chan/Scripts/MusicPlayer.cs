@@ -19,6 +19,7 @@ public class MusicPlayer : MonoBehaviour
     LinesManager linesManager;
 
     public bool notMusicEnd = true;
+    
 
     private void Awake() 
     {

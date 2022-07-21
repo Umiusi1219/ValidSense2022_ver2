@@ -13,6 +13,9 @@ public class ResultText : MonoBehaviour
 
     private Text text;
 
+    [SerializeField]
+    private string[] CharaNameAndCV;
+
 
     /*
 スコア
@@ -31,19 +34,24 @@ public class ResultText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        var playerManagar = sceneManager.GetComponent<PlayerManagerScript>();
+
+
         sceneManager = GameObject.Find("SceneManager");
 
         text = gameObject.GetComponent<Text>();
 
         text.text =
-            "スコア　" + sceneManager.GetComponent<PlayerManagerScript>().score[playerNum[0]] + "\n" +
+            CharaNameAndCV[playerManagar.playerCharaNum[playerNum[0]]] + "\n" +
+            "\n" +
+            "スコア　" + playerManagar.score[playerNum[0]] + "\n" +
             "曲名　" + "Chartreuse Green" + "\n" +
             "作曲者名　" + "t+pazolite" + "\n" +
             "難易度　" + "6" + "\n" +
             "\n" +
-            "総打数　" + sceneManager.GetComponent<PlayerManagerScript>().totalHitsNum[playerNum[0]] + "\n" +
-            "奪ったレーン　" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[0]] + "\n" +
-            "奪われたレーン　" + sceneManager.GetComponent<PlayerManagerScript>().stolenLane[playerNum[1]] + "\n" +
+            "総打数　" + playerManagar.totalHitsNum[playerNum[0]] + "\n" +
+            "奪ったレーン　" + playerManagar.stolenLane[playerNum[0]] + "\n" +
+            "奪われたレーン　" + playerManagar.stolenLane[playerNum[1]] + "\n" +
             "\n" +
             "ボタンを押してスキップ";
     }

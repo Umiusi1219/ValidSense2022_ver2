@@ -12346,6 +12346,7 @@ GameObject:
   - component: {fileID: 3379178882633698490}
   - component: {fileID: 2358407633695430116}
   - component: {fileID: -444402406041051639}
+  - component: {fileID: -520897346653262013}
   m_Layer: 0
   m_Name: model_sight
   m_TagString: Untagged
@@ -12552,6 +12553,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-520897346653262013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3816869301824471674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352c3f4ebd8b6804d94422960843b8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaName: Sight
 --- !u!1 &3824735119971976527
 GameObject:
   m_ObjectHideFlags: 0

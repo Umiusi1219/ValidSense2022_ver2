@@ -7319,6 +7319,7 @@ GameObject:
   - component: {fileID: 4189819946786638770}
   - component: {fileID: 6858553239275539446}
   - component: {fileID: 8265486732328097699}
+  - component: {fileID: 1201963080653775944}
   m_Layer: 0
   m_Name: model_smell_taste
   m_TagString: Untagged
@@ -7511,6 +7512,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9bab4ee6fb33cc4a8c366de3a69c47c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1201963080653775944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371887194548091308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 352c3f4ebd8b6804d94422960843b8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charaName: Smell
 --- !u!1 &1389807922946303989
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,24 +16,25 @@ public class Live2D_AnimController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            live2DAnimation.SetTrigger("win_trigger");
+            Anim_Choice();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            live2DAnimation.SetTrigger("att_trigger");
+            Anim_Att();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            live2DAnimation.SetTrigger("hit_trigger");
+            Anim_Hit();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            live2DAnimation.SetTrigger("choice_trigger");
+            Anim_Win();
         }
     }
 
     public void Anim_Att()
     {
+        
         live2DAnimation.SetTrigger("att_trigger");
     }
 
@@ -47,8 +48,20 @@ public class Live2D_AnimController : MonoBehaviour
         live2DAnimation.SetTrigger("win_trigger");
     }
 
+    public void Anim_Win_OnVoice()
+    {
+        this.gameObject.GetComponent<CharaVoicePlayer>().VoiceOneShot(1);
+        live2DAnimation.SetTrigger("win_trigger");
+    }
+
     public void Anim_Choice()
     {
+        live2DAnimation.SetTrigger("choice_trigger");
+    }
+
+    public void Anim_Choice_OnVoice()
+    {
+        this.gameObject.GetComponent<CharaVoicePlayer>().VoiceOneShot(0);
         live2DAnimation.SetTrigger("choice_trigger");
     }
 }

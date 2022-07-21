@@ -52,6 +52,6 @@ public class CharaSelect_CahraClass : MonoBehaviour
         Debug.Log(charaNum + charaLive2D[charaNum].name);
 
         
-        charaLive2D[charaNum].GetComponent<Live2D_AnimController>().Anim_Choice();
+        charaLive2D[charaNum].GetComponent<Live2D_AnimController>().Anim_Choice_OnVoice();
     }
 }

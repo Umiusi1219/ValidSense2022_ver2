@@ -13,12 +13,14 @@ public class Title_PlayerInput : MonoBehaviour
 
     bool _canGetKey = true;
 
+    bool _canToNextScene = false;
+
 
     private void Start()
     {
         sceneManagerTest = GameObject.Find("SceneManager");
 
-
+        Invoke("CanNextScene", 3);
         //MainBGMPlayer.instance.MusicPlay(0);
     }
 
@@ -26,7 +28,7 @@ public class Title_PlayerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.anyKeyDown && !Input.GetMouseButtonDown(0) && _canGetKey)
+        if(Input.anyKeyDown && !Input.GetMouseButtonDown(0) && _canGetKey && _canToNextScene)
         {
             _canGetKey = false;
 
@@ -42,5 +44,12 @@ public class Title_PlayerInput : MonoBehaviour
         
 
         sceneManagerTest.GetComponent<Test>().ToCharaSelectScene();
+    }
+
+
+    void CanNextScene()
+    {
+        _canToNextScene = true;
+
     }
 }
