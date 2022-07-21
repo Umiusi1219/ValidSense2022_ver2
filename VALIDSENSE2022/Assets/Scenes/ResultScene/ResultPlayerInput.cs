@@ -19,7 +19,8 @@ public class ResultPlayerInput : MonoBehaviour
     void Start()
     {
         sceneManager = GameObject.Find("SceneManager");
-        if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0){ ResultBGMPlayer.instance.MusicPlay(1); }
+        if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0)
+        { ResultBGMPlayer.instance.MusicPlay(1); }
         StartCoroutine(AutoToTitleScene());
     }
 

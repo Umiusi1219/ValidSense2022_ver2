@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8359288826927091074}
   - component: {fileID: 8359288826927091073}
+  - component: {fileID: 8672677123738347528}
   m_Layer: 0
   m_Name: CRIWARE
   m_TagString: Untagged
@@ -93,3 +94,15 @@ MonoBehaviour:
   dspBusSetting: 
   dontDestroyOnLoad: 1
   dontRemoveExistsCueSheet: 1
+--- !u!114 &8672677123738347528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8359288826927091072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93d101735ca454b81843b3be63f0c69e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
