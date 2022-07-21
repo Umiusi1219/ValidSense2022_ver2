@@ -179,7 +179,7 @@ public class LinesManager : MonoBehaviour
             SEPlayer.instance.SEOneShot(8);
 
 
-            // Color型への変換成功するとcolorにColor型の赤色が代入される）outキーワードで参照渡しにする
+            // Color型への変換成功するとcolorにColor型の2pキャラのカラーコードが代入される）outキーワードで参照渡しにする
             if (ColorUtility.TryParseHtmlString(charaColorCode[testChara.count[1]],
                 out colorCode))
             {

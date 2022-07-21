@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 264332412}
   - component: {fileID: 264332414}
   - component: {fileID: 264332413}
+  - component: {fileID: 264332415}
   m_Layer: 5
   m_Name: Texture
   m_TagString: Untagged
@@ -249,6 +250,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264332411}
   m_CullTransparentMesh: 1
+--- !u!114 &264332415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264332411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347d6f95f6f11fc45919929cc1097b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerManagerScript: {fileID: 671762628}
+  charaColorCode:
+  - '#8a2be2'
+  - '#7fff00'
+  - '#ff00ff'
+  - '#ffd700'
 --- !u!1 &376462101
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +489,7 @@ MonoBehaviour:
   sceneManagerTest: {fileID: 671762627}
   allVoicePlayer: {fileID: 137597224}
   _toNextScene: 0.5
-  voiceStandbyTime: 0.5
+  voiceStandbyTime: 0.6
 --- !u!4 &522332654
 Transform:
   m_ObjectHideFlags: 0
@@ -605,6 +624,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5525488433164441, guid: eb04a02169d364375a30864eea0e9a5a, type: 3}
   m_PrefabInstance: {fileID: 1780913364}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &671762628 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 69182056458836196, guid: eb04a02169d364375a30864eea0e9a5a, type: 3}
+  m_PrefabInstance: {fileID: 1780913364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671762627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73aba370e15bc654287510e1a250b74c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &861699295
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneManager
       objectReference: {fileID: 0}
+    - target: {fileID: 69182056458836196, guid: eb04a02169d364375a30864eea0e9a5a, type: 3}
+      propertyPath: winCharaNum
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb04a02169d364375a30864eea0e9a5a, type: 3}
 --- !u!1 &1805298614
@@ -984,7 +1018,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1805298615
 RectTransform:
   m_ObjectHideFlags: 0
