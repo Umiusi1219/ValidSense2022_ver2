@@ -75,7 +75,7 @@ public class MusicPlayer : MonoBehaviour
 
     IEnumerator ToNextScene()
     {
-        yield return new WaitForSeconds(9.5f);
+        yield return new WaitForSeconds(8f);
 
         if (score[0].scoreValue >= score[1].scoreValue)
         {

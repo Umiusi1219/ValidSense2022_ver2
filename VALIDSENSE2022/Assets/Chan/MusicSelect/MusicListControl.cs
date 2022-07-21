@@ -45,11 +45,11 @@ public class MusicListControl : MonoBehaviour
     {
         if(canSelectMusic)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(ScrollUp());
             }
-            else if (Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F))
             {
                 StartCoroutine(ScrollDown());
             }

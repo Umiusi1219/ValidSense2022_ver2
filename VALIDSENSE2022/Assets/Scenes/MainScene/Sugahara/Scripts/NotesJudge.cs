@@ -101,15 +101,15 @@ public class NotesJudge : MonoBehaviour
     /// <summary>
     /// Briliantの判定用の値
     /// </summary>
-    private long briliantJudge = 20;
+    private long briliantJudge = 30;
     /// <summary>
     /// Greatの判定用の値
     /// </summary>
-    private long greatJudge = 40;
+    private long greatJudge = 60;
     /// <summary>
     /// Goodの判定用の値
     /// </summary>
-    private long goodJudge = 100;
+    private long goodJudge = 120;
 
 
     /// <summary>

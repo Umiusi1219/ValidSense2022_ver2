@@ -224,23 +224,25 @@ public class SkillManager : MonoBehaviour
     /// <summary>
     /// 現在のキャラにあったスキルの発動が可能かどうか
     /// </summary>
-    public bool IsCanUseSkill()
+    public bool IsCanUseSkill( int usePlayer)
     {
-        switch (testChara.count[0])
-        {
-            case 0:
-                return canSightSkill;
 
-            case 1:
-                return canTactileSkill;
-            case 2:
-                return  canSmaillTasteSkill;
-            case 3:
-                return canHearSkill;
+            switch (testChara.count[usePlayer])
+            {
+                case 0:
+                    return canSightSkill;
 
-            default:
-                return false;
-        }
+                case 1:
+                    return canTactileSkill;
+                case 2:
+                    return canSmaillTasteSkill;
+                case 3:
+                    return canHearSkill;
+
+                default:
+                    return false;
+            }
+
     }
 
 

@@ -449,7 +449,7 @@ public class PlayerInput : MonoBehaviour
 
 
         // 1Pスキルの発動処理---------------------------------------------------------------------------
-        if (skillChargeRate[0].skillValue >= 100 && skillManager.IsCanUseSkill() 
+        if (skillChargeRate[0].skillValue >= 100 && skillManager.IsCanUseSkill(0) 
             && musicPlayer.notMusicEnd)
         {
             if (Input.GetKeyDown(KeyCode.S))
@@ -465,7 +465,7 @@ public class PlayerInput : MonoBehaviour
 
 
         // 2Pスキルの発動処理---------------------------------------------------------------------------
-        if (skillChargeRate[1].skillValue >= 100 && skillManager.IsCanUseSkill()
+        if (skillChargeRate[1].skillValue >= 100 && skillManager.IsCanUseSkill(1)
             && musicPlayer.notMusicEnd)
         {
             if (Input.GetKeyDown(KeyCode.J))
@@ -580,8 +580,7 @@ public class PlayerInput : MonoBehaviour
                 StartCoroutine(L_SkillUseInput_Key_F());
                 _inputWaitTime_L_1P[0] = _inputStandbyTime;
             }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
-                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.F))
+            else if ( Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.F))
             {
                 _inputWaitTime_L_1P[0] = _inputStandbyTime;
             }
@@ -605,7 +604,7 @@ public class PlayerInput : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F)&& skillManager.IsCanUseSkill(0))
             {
                 // スキルSE
                 SEPlayer.instance.SEOneShot(9);
@@ -653,8 +652,7 @@ public class PlayerInput : MonoBehaviour
                 StartCoroutine(R_SkillUseInput_Key_S());
                 _inputWaitTime_R_1P[0] = _inputStandbyTime;
             }
-            else if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.E)
-                || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.S))
+            else if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.S))
             {
                 _inputWaitTime_R_1P[0] = _inputStandbyTime;
             }
@@ -675,7 +673,7 @@ public class PlayerInput : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) && skillManager.IsCanUseSkill(0))
             {
                 // スキルSE
                 SEPlayer.instance.SEOneShot(9);
@@ -759,8 +757,7 @@ public class PlayerInput : MonoBehaviour
                 StartCoroutine(L_SkillUseInput_Key_L());
                 _inputWaitTime_L_2P[0] = _inputStandbyTime;
             }
-            else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I)
-                 || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
+            else if ( Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
                 {
                 _inputWaitTime_L_2P[0] = _inputStandbyTime;
             }
@@ -784,7 +781,7 @@ public class PlayerInput : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.L))
+            if (Input.GetKeyDown(KeyCode.L) && skillManager.IsCanUseSkill(1))
             {
                 // スキルSE
                 SEPlayer.instance.SEOneShot(9);
@@ -832,8 +829,7 @@ public class PlayerInput : MonoBehaviour
                 StartCoroutine(R_SkillUseInput_Key_J());
                 _inputWaitTime_R_2P[0] = _inputStandbyTime;
             }
-            else if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.O) || Input.GetKeyDown(KeyCode.I)
-            || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.L))
+            else if (Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.L))
             {
                 _inputWaitTime_R_2P[0] = _inputStandbyTime;
             }
@@ -854,7 +850,7 @@ public class PlayerInput : MonoBehaviour
         {
             yield return null;
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.J) && skillManager.IsCanUseSkill(1))
             {
                 // スキルSE
                 SEPlayer.instance.SEOneShot(9);

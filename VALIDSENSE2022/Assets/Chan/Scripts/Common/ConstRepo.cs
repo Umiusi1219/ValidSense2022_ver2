@@ -5,7 +5,7 @@ public static class ConstRepo
     /// <summary>
     /// poor自動判定用の変数
     /// </summary>
-    public const long poorTiming = -105;
+    public const long poorTiming = -125;
 
 
     /// <summary>

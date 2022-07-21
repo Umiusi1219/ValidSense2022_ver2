@@ -14,14 +14,14 @@ public class LicenseScene : MonoBehaviour
         criware.SetActive(true);
         otoLogic.SetActive(false);
         QR.SetActive(false);
-        Invoke("Change",2.5f);
+        Invoke("Change",3.2f);
     }
     private void Change()
     {
         criware.SetActive(false);
         otoLogic.SetActive(true);
         QR.SetActive(false);
-        Invoke("ShowQR", 2.5f);
+        Invoke("ShowQR", 3.2f);
     }
 
     void ShowQR()

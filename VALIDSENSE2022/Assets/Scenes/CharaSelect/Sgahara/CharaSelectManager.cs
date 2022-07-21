@@ -57,6 +57,9 @@ public class CharaSelectManager : MonoBehaviour
     [SerializeField]
     private float toNextSceneTiem;
 
+    [SerializeField]
+    bool[] notEndSelect;
+
 
     void Start()
     {
@@ -137,8 +140,9 @@ public class CharaSelectManager : MonoBehaviour
                 
         }
         //1Pキャラの決定
-        else if(Input.GetKeyDown(KeyCode.Q))
+        else if(Input.GetKeyDown(KeyCode.Q)&& notEndSelect[0])
         {
+            notEndSelect[0] = false;
             SEPlayer.instance.SEOneShot(6);
 
             charaClassList[(int)ConstRepo.Player.P1]
@@ -161,8 +165,10 @@ public class CharaSelectManager : MonoBehaviour
             }
         }
         //2Pキャラの決定
-        else if (Input.GetKeyDown(KeyCode.P))
+        else if (Input.GetKeyDown(KeyCode.P) && notEndSelect[1])
         {
+            notEndSelect[1] = false;
+
             SEPlayer.instance.SEOneShot(6);
 
             charaClassList[(int)ConstRepo.Player.P2]
