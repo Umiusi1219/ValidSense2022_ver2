@@ -25,7 +25,6 @@ public class ResultBGMPlayer : MonoBehaviour
         SongcueInfoList = SongExAcb.GetCueInfoList();
         /* AtomExPlayerの生成 */
         SongPlayer = new CriAtomExPlayer(); 
-        MusicPlay(0);
     }
 
     public void MusicPlay(int num)

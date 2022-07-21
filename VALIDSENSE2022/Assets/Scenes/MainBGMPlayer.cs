@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class MainBGMPlayer : MonoBehaviour
 {
     private CriAtomEx.CueInfo[] SongcueInfoList;
     private CriAtomExPlayer SongPlayer;
-    [SerializeField]
     private CriAtomExAcb SongExAcb;
-    private CriAtomExPlayback SongPlayback;
 
     public static MainBGMPlayer instance;
     private void Awake()
@@ -20,14 +20,19 @@ public class MainBGMPlayer : MonoBehaviour
     }
     IEnumerator Start()
     {
-        /* ƒLƒ…[ƒV[ƒgƒtƒ@ƒCƒ‹‚Ìƒ[ƒh‘Ò‚¿ */
+        /* ï¿½Lï¿½ï¿½ï¿½[ï¿½Vï¿½[ï¿½gï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Ìƒï¿½ï¿½[ï¿½hï¿½Ò‚ï¿½ */
         while (CriAtom.CueSheetsAreLoading) { yield return null; }
-        /* Cueî•ñ‚Ìæ“¾ */
-        SongExAcb = CriAtom.GetAcb("tutorialCue");
+        /* Cueï¿½ï¿½ï¿½Ìæ“¾ */
+        SongExAcb = CriAtom.GetAcb("TitleCue");
         SongcueInfoList = SongExAcb.GetCueInfoList();
-        /* AtomExPlayer‚Ì¶¬ */
+        /* AtomExPlayerï¿½Ìï¿½ï¿½ï¿½ */
         SongPlayer = new CriAtomExPlayer();
-        MusicPlay(0);
+        
+        
+        if(SceneManager.GetActiveScene().name == "CharaSelect")
+            MusicPlay(0);
+        else if(SceneManager.GetActiveScene().name == "Title")
+            MusicPlay(1);
     }
 
     public void MusicPlay(int num)
@@ -37,7 +42,7 @@ public class MainBGMPlayer : MonoBehaviour
             SongPlayer.Stop();
         }
         SongPlayer.SetCue(SongExAcb, SongcueInfoList[num].name);
-        SongPlayback = SongPlayer.Start();
+        SongPlayer.Start();
     }
 
     public void StopPlayer()

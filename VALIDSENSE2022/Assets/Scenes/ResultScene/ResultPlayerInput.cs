@@ -19,7 +19,7 @@ public class ResultPlayerInput : MonoBehaviour
     void Start()
     {
         sceneManager = GameObject.Find("SceneManager");
-
+        if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0){ ResultBGMPlayer.instance.MusicPlay(1); }
         StartCoroutine(AutoToTitleScene());
     }
 
@@ -71,7 +71,6 @@ public class ResultPlayerInput : MonoBehaviour
 
     void ToNextScene()
     {
-        ResultBGMPlayer.instance.StopPlayer();
 
         if (sceneManager.GetComponent<PlayerManagerScript>().resultCount == 0)
         {
@@ -89,7 +88,7 @@ public class ResultPlayerInput : MonoBehaviour
         else
         {
             sceneManager.GetComponent<PlayerManagerScript>().resultCount = 0;
-
+            ResultBGMPlayer.instance.StopPlayer();
             sceneManager.GetComponent<Test>().ToLicenseScene() ;
         }
     }
