@@ -34,10 +34,9 @@ public class ResultText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        var playerManagar = sceneManager.GetComponent<PlayerManagerScript>();
-
-
         sceneManager = GameObject.Find("SceneManager");
+
+        var playerManagar = sceneManager.GetComponent<PlayerManagerScript>();
 
         text = gameObject.GetComponent<Text>();
 
