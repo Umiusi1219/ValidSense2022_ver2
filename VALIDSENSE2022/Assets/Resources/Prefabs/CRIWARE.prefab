@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f529aa944b914449d62b8c40f188fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acfFile: BGM.acf
+  acfFile: BGMData/BGM.acf
   cueSheets:
   - name: BGM
     acbFile: BGMData/BGMCue.acb
