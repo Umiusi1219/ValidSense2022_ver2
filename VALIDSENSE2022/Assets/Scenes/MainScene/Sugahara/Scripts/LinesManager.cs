@@ -99,6 +99,7 @@ public class LinesManager : MonoBehaviour
     private int winPlayerNum;
 
 
+
     private void Start()
     {
         // 1p2pのキャラに合わせてLineの色を変える
@@ -216,6 +217,10 @@ public class LinesManager : MonoBehaviour
             testChara.Chara_Anim_Att(1);
 
             testChara.Chara_Anim_Hit(0);
+
+
+            //奪ったレーンカウントを加算
+            scoreScript[1].stolenLaneCount++;
         }
     }
 
@@ -272,6 +277,9 @@ public class LinesManager : MonoBehaviour
             testChara.Chara_Anim_Att(0);
 
             testChara.Chara_Anim_Hit(1);
+
+            //奪ったレーンカウントを加算
+            scoreScript[0].stolenLaneCount++;
         }
     }
 

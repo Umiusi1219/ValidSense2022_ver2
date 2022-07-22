@@ -254,8 +254,25 @@ public class NotesJudge : MonoBehaviour
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            // poor判定したので加算
-            _poorCount[usePlayer]++;
+            if(usePlayer == 0)
+            {
+                //　一番1p側のラインがとられてなかったら
+                if (linesManager.haveLines_1p > 0)
+                {
+                    // poor判定したので加算
+                    _poorCount[usePlayer]++;
+                }
+            }
+            else
+            {
+                //　一番1p側のラインがとられてなかったら
+                if (linesManager.haveLines_1p < 6)
+                {
+                    // poor判定したので加算
+                    _poorCount[1]++;
+                }
+            }
+
 
             //コンボ数のリセット
             ComboScript[usePlayer].ComboReset();
@@ -277,15 +294,11 @@ public class NotesJudge : MonoBehaviour
             {
                 linesManager.LineIsStolen_1p();
 
-                //奪ったレーンカウントを加算
-                scoreValue[1].stolenLaneCount++;
             }
             else
             {
                 linesManager.LineIsStolen_2p();
 
-                //奪ったレーンカウントを加算
-                scoreValue[0].stolenLaneCount++;
             }
 
             _poorCount[usePlayer] = 0;
@@ -317,8 +330,26 @@ public class NotesJudge : MonoBehaviour
             effect[line].rectTransform.position = instancePos[line].position;
 
 
-            // poor判定したので加算
-            _poorCount[usePlayer]++;
+
+            if (usePlayer == 0)
+            {
+                //　一番1p側のラインがとられてなかったら
+                if (linesManager.haveLines_1p > 0)
+                {
+                    // poor判定したので加算
+                    _poorCount[usePlayer]++;
+                }
+            }
+            else
+            {
+                //　一番1p側のラインがとられてなかったら
+                if (linesManager.haveLines_1p < 6)
+                {
+                    // poor判定したので加算
+                    _poorCount[1]++;
+                }
+            }
+
 
             //コンボ数のリセット
             ComboScript[usePlayer].ComboReset();
@@ -419,16 +450,10 @@ public class NotesJudge : MonoBehaviour
             if (usePlayer == 0)
             {
                 linesManager.LineIsStolen_1p();
-
-                //奪ったレーンカウントを加算
-                scoreValue[1].stolenLaneCount++;
             }
             else
             {
                 linesManager.LineIsStolen_2p();
-
-                //奪ったレーンカウントを加算
-                scoreValue[0].stolenLaneCount++;
             }
 
 

@@ -30,10 +30,6 @@ public class PlayerManagerScript : MonoBehaviour
     /// </summary>
     public int[] stolenLane = { 0, 0 };
     /// <summary>
-    /// 奪われたレーン数記憶用
-    /// </summary>
-    public int[] losLanes = { 0, 0 };
-    /// <summary>
     /// 総打数記憶用
     /// </summary>
     public int[] totalHitsNum = { 0, 0 };
